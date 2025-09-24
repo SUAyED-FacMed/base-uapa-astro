@@ -1,3 +1,10 @@
+// Tipos para navegación
+export interface NavItem {
+  label: string;
+  href?: string;
+  children?: NavItem[];
+}
+
 // Configuración centralizada del proyecto UAPA
 export const UAPA_CONFIG = {
   // Información principal
@@ -19,17 +26,30 @@ export const UAPA_CONFIG = {
     imageCaption: "Pie de portada. Tomada de https://suayed.facmed.unam.mx/"
   },
   
-  // Referencias
-  references: {
-    basic: [
-      "Maecenas massa felis, imperdiet nec vehicula ut, aliquet non tellus. Nulla consectetur ligula at nunc ultrices ullamcorper. Aliquam laoreet volutpat nisi, non vestibulum sem facilisis nec. In hac habitasse platea dictumst.",
-      "Nunc nunc sem, porttitor at cursus pellentesque, rutrum in lorem. Phasellus vitae vehicula justo. Duis hendrerit justo eget turpis gravida elementum. In porta in nulla a sodales.",
-      "Aenean sollicitudin mauris id tortor vestibulum, <span class=\"break\">https://pixabay.com/es/</span>."
-    ],
-    complementary: [
-      "Maecenas massa felis, imperdiet nec vehicula ut, aliquet non tellus. Nulla consectetur ligula at nunc ultrices ullamcorper. Aliquam laoreet volutpat nisi, non vestibulum sem facilisis nec. <span class=\"break\">https://pixabay.com/es/</span>.",
-      "Nunc nunc sem, porttitor at cursus pellentesque, rutrum in lorem. Phasellus vitae vehicula justo. Duis hendrerit justo eget turpis gravida elementum. In porta in nulla a sodales.",
-      "Aenean sollicitudin mauris id tortor vestibulum, at molestie odio ultricies. Fusce at ultrices dolor."
-    ]
+  // Navegación
+  navigation: {
+    showTitle: false,
+    title: "Obesidad, Dislipidemias y Síndrome Metabólico",
+    menuItems: [
+      { label: "Introducción", href: "#introduccion" },
+      { 
+        label: "Contenido", 
+        children: [
+          { label: "Vestibulum sed sollicitudin elit", href: "#contenido1" },
+          { label: "Praesent eget dui aliquet mollis velit nec", href: "#contenido2" },
+          { label: "Sed commodo metus non magna rutrum cursus", href: "#contenido3" },
+          { label: "Etiam consectetur in felis et sollicitudin", href: "#contenido4" }
+        ]
+      },
+      {
+        label: "Actividades",
+        children: [
+          { label: "Actividad 1", href: "#actividad1" },
+          { label: "Actividad 2", href: "#actividad2" }
+        ]
+      },
+      { label: "Autoevaluación", href: "#autoevaluacion1" },
+      { label: "Fuentes", href: "#fuentes-info" }
+    ] as NavItem[]
   }
 };

@@ -1,16 +1,20 @@
 ---
+import ResourceLoader from '../components/ResourceLoader.astro';
+
 export interface Props {
   title: string;
   description?: string;
   keywords?: string;
   author?: string;
+  resources?: string[]; // Recursos a cargar
 }
 
 const { 
   title, 
   description = "El sobrepeso y la obesidad son un problema creciente en México que afecta todos los sectores poblacionales debido a malos hábitos alimenticios, sedentarismo, predisposición genética, entre otros, es por eso que la unidad te brindara las herramientas para diagnosticar, estratificar y tratar la obesidad, las dislipidemias y el síndrome metabólico.",
   keywords = "Obesidad, dislipidemias, metabolismo, colesterol",
-  author = "María Teresa Arredondo Garza, Eduardo Mercado Cruz, Domingo Francisco Javier Aguilar Medina, Gil Alfonso Magos Guerrero"
+  author = "María Teresa Arredondo Garza, Eduardo Mercado Cruz, Domingo Francisco Javier Aguilar Medina, Gil Alfonso Magos Guerrero",
+  resources = []
 } = Astro.props;
 ---
 
@@ -50,51 +54,8 @@ const {
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/personalizado.css">
 
-  <!-- ESTILOS DE RECURSOS -->
-  <!-- 1 -->
-  <!-- fichero de conceptos vertical rc02-24 -->
-  <link rel="stylesheet" href="css/recursos/fichero_vertical_rc02/all.css">
-  <link rel="stylesheet" href="css/recursos/fichero_vertical_rc02/estilos-fichero-vert.css">
-  <!-- 2 -->
-  <!-- acordeón vertical rc04-24 -->
-  <link rel="stylesheet" href="css/recursos/acordeon_vertical_rc04/all.css">
-  <link rel="stylesheet" href="css/recursos/acordeon_vertical_rc04/estilos-acordeon-vertical.css">
-
-  <!-- fichero de conceptos horizontal rc01-24 -->
-  <link rel="stylesheet" href="css/recursos/fichero_horizontal/css/estilos-fichero-hor.css">
-  <!-- acordeón horizontal rc05-24 -->
-  <link rel="stylesheet" href="css/recursos/acordeon_horizontal/css/estilos-acordeon-hor.css">
-  <!-- carrusel -->
-  <link rel="stylesheet" href="css/recursos/carrusel/css/estilos-carrusel.css">
-  <!-- folder de contenidos -->
-  <link rel="stylesheet" href="css/recursos/folder_contenidos/css/estilos-folder.css">
-  <!-- hoja de bloc -->
-  <link rel="stylesheet" href="css/recursos/hoja_bloc/css/estilos-hoja-bloc.css">
-  <!-- hoja espiral -->
-  <link rel="stylesheet" href="css/recursos/hoja_espiral/css/estilos-hoja-espiral.css">
-  <!-- hojas desordenadas -->
-  <link rel="stylesheet" href="css/recursos/hojas_desordenadas/css/estilos-hojas-desordenadas.css">
-  <!-- hotspot -->
-  <link rel="stylesheet" href="css/recursos/hotspot/css/estilos-hot-spot.css">
-  <!-- línea de tiempo horizontal -->
-  <link rel="stylesheet" href="css/recursos/linea_tiempo_horizontal/css/estilos-linea-tiempo-horizontal.css">
-  <!-- línea de tiempo vertical -->
-  <link rel="stylesheet" href="css/recursos/linea_tiempo_vertical/css/estilos-linea-tiempo-vertical.css">
-  <!-- lista desplegable -->
-  <link rel="stylesheet" href="css/recursos/lista_desplegable/css/estilos-lista_desplegable.css">
-  <!-- <link rel="stylesheet" href="css/recursos/lista_desplegable/css/listaAnimacion.css"> -->
-  <!-- nota cinta -->
-  <link rel="stylesheet" href="css/recursos/nota_cinta/css/estilos-nota-cinta.css">
-  <!-- nota pin -->
-  <link rel="stylesheet" href="css/recursos/nota_pin/css/estilos-nota-pin.css">
-  <!-- tarjeta desplegable 1 -->
-  <link rel="stylesheet" href="css/recursos/tarjeta_desplegable1/css/estilos-tarjeta-desplegable-1.css">
-  <!-- tarjeta desplegable 2 -->
-  <link rel="stylesheet" href="css/recursos/tarjeta_desplegable2/css/estilos-tarjeta-desplegable2.css">
-  <!-- tarjeta giratoria -->
-  <link rel="stylesheet" href="css/recursos/tarjeta_giratoria/css/estilos-tarjeta-giratoria.css">
-  <!-- triptico -->
-  <link rel="stylesheet" href="css/recursos/triptico/css/estilos-triptico.css">
+  <!-- RECURSOS DINÁMICOS -->
+  <ResourceLoader resources={resources} />
 </head>
 
 <body id="contenido">
@@ -111,20 +72,7 @@ const {
   <script src="/js/ir_arriba.js" is:inline></script>
   
   <!-- ************ SCRIPTS DE RECURSOS ************ -->
-  <!-- acordeón horizontal -->
-  <script src="/css/recursos/acordeon_horizontal/js/acordeon-hor.js" is:inline></script>
-  <script is:inline>
-    acordeonHorizontal("acordeon-horizontal-1");
-    acordeonHorizontal("acordeon-horizontal-2");
-    acordeonHorizontal("acordeon-horizontal-3");
-  </script>
-  
-  <!-- fichero horizontal -->
-  <script src="/css/recursos/fichero_horizontal/js/fichero-hor.js" is:inline></script>
-  <script is:inline>
-    ficheroHorizontal("fichero-hor-1");
-    ficheroHorizontal("fichero-hor-2");
-  </script>
+  <!-- Los scripts de recursos se cargan dinámicamente via ResourceLoader -->
 
   <script is:inline>
     // Bootstrap tooltips initialization

@@ -16,6 +16,7 @@ import { ACTIVITIES_CONFIG, ASSESSMENTS_CONFIG } from '../config/activities-conf
   description={UAPA_CONFIG.description}
   keywords={UAPA_CONFIG.keywords}
   author={UAPA_CONFIG.authors.full}
+  resources={['acordeon-horizontal']}
 >
 
 <Hero 
@@ -25,7 +26,11 @@ import { ACTIVITIES_CONFIG, ASSESSMENTS_CONFIG } from '../config/activities-conf
   imageCaption={UAPA_CONFIG.hero.imageCaption}
 />
 
-<Navigation />
+<Navigation 
+  menuItems={UAPA_CONFIG.navigation.menuItems}
+  showTitle={UAPA_CONFIG.navigation.showTitle}
+  title={UAPA_CONFIG.navigation.title}
+/>
 
 <main>
 
@@ -361,8 +366,6 @@ import { ACTIVITIES_CONFIG, ASSESSMENTS_CONFIG } from '../config/activities-conf
 <References 
   uapaTitle={UAPA_CONFIG.title}
   uapaAuthors={UAPA_CONFIG.authors.full}
-  basicReferences={UAPA_CONFIG.references.basic}
-  complementaryReferences={UAPA_CONFIG.references.complementary}
 />
 
 </main>

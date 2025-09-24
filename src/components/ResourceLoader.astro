@@ -1,0 +1,231 @@
+---
+// ResourceLoader.astro - Carga selectiva de recursos CSS/JS
+export interface Props {
+  resources?: string[];
+}
+
+const { resources = [] } = Astro.props;
+
+// Mapeo de recursos disponibles
+const AVAILABLE_RESOURCES = {
+  // Acordeones
+  'acordeon-horizontal': {
+    css: '/css/recursos/acordeon_horizontal/css/',
+    js: '/css/recursos/acordeon_horizontal/js/',
+    files: {
+      css: ['estilos-acordeon-hor.css'],
+      js: ['acordeon-hor.js']
+    },
+    init: `
+      acordeonHorizontal("acordeon-horizontal-1");
+      acordeonHorizontal("acordeon-horizontal-2");
+      acordeonHorizontal("acordeon-horizontal-3");
+    `
+  },
+  'acordeon-vertical': {
+    css: '/css/recursos/acordeon_vertical_rc04/',
+    js: '/css/recursos/acordeon_vertical_rc04/',
+    files: {
+      css: ['all.css', 'estilos-acordeon-vertical.css'],
+      js: ['acordeon-vertical.js']
+    }
+  },
+  
+  // Carruseles
+  'carrusel': {
+    css: '/css/recursos/carrusel/css/',
+    js: '/css/recursos/carrusel/js/',
+    files: {
+      css: ['estilos-carrusel.css'],
+      js: ['carrusel.js']
+    }
+  },
+  
+  // Ficheros
+  'fichero-horizontal': {
+    css: '/css/recursos/fichero_horizontal/css/',
+    js: '/css/recursos/fichero_horizontal/js/',
+    files: {
+      css: ['estilos-fichero-hor.css'],
+      js: ['fichero-hor.js']
+    },
+    init: `
+      ficheroHorizontal("fichero-hor-1");
+      ficheroHorizontal("fichero-hor-2");
+    `
+  },
+  'fichero-vertical': {
+    css: '/css/recursos/fichero_vertical_rc02/',
+    js: '/css/recursos/fichero_vertical_rc02/',
+    files: {
+      css: ['all.css', 'estilos-fichero-vert.css'],
+      js: ['fichero-vertical.js']
+    }
+  },
+  
+  // Contenidos
+  'folder-contenidos': {
+    css: '/css/recursos/folder_contenidos/css/',
+    js: '/css/recursos/folder_contenidos/js/',
+    files: {
+      css: ['estilos-folder.css'],
+      js: ['folder.js']
+    }
+  },
+  
+  // Hojas
+  'hoja-bloc': {
+    css: '/css/recursos/hoja_bloc/css/',
+    js: '/css/recursos/hoja_bloc/js/',
+    files: {
+      css: ['estilos-hoja-bloc.css'],
+      js: ['hoja-bloc.js']
+    }
+  },
+  'hoja-espiral': {
+    css: '/css/recursos/hoja_espiral/css/',
+    js: '/css/recursos/hoja_espiral/js/',
+    files: {
+      css: ['estilos-hoja-espiral.css'],
+      js: ['hoja-espiral.js']
+    }
+  },
+  'hojas-desordenadas': {
+    css: '/css/recursos/hojas_desordenadas/css/',
+    js: '/css/recursos/hojas_desordenadas/js/',
+    files: {
+      css: ['estilos-hojas-desordenadas.css'],
+      js: ['hojas-desordenadas.js']
+    }
+  },
+  
+  // Hotspot
+  'hotspot': {
+    css: '/css/recursos/hotspot/css/',
+    js: '/css/recursos/hotspot/js/',
+    files: {
+      css: ['estilos-hot-spot.css'],
+      js: ['hotspot.js']
+    }
+  },
+  
+  // Líneas de tiempo
+  'linea-tiempo-horizontal': {
+    css: '/css/recursos/linea_tiempo_horizontal/css/',
+    js: '/css/recursos/linea_tiempo_horizontal/js/',
+    files: {
+      css: ['estilos-linea-tiempo-horizontal.css'],
+      js: ['linea-tiempo-horizontal.js']
+    }
+  },
+  'linea-tiempo-vertical': {
+    css: '/css/recursos/linea_tiempo_vertical/css/',
+    js: '/css/recursos/linea_tiempo_vertical/js/',
+    files: {
+      css: ['estilos-linea-tiempo-vertical.css'],
+      js: ['linea-tiempo-vertical.js']
+    }
+  },
+  
+  // Listas
+  'lista-desplegable': {
+    css: '/css/recursos/lista_desplegable/css/',
+    js: '/css/recursos/lista_desplegable/js/',
+    files: {
+      css: ['estilos-lista_desplegable.css'],
+      js: ['lista-desplegable.js']
+    }
+  },
+  
+  // Notas
+  'nota-cinta': {
+    css: '/css/recursos/nota_cinta/css/',
+    js: '/css/recursos/nota_cinta/js/',
+    files: {
+      css: ['estilos-nota-cinta.css'],
+      js: ['nota-cinta.js']
+    }
+  },
+  'nota-pin': {
+    css: '/css/recursos/nota_pin/css/',
+    js: '/css/recursos/nota_pin/js/',
+    files: {
+      css: ['estilos-nota-pin.css'],
+      js: ['nota-pin.js']
+    }
+  },
+  
+  // Tarjetas
+  'tarjeta-desplegable1': {
+    css: '/css/recursos/tarjeta_desplegable1/css/',
+    js: '/css/recursos/tarjeta_desplegable1/js/',
+    files: {
+      css: ['estilos-tarjeta-desplegable-1.css'],
+      js: ['tarjeta-desplegable1.js']
+    }
+  },
+  'tarjeta-desplegable2': {
+    css: '/css/recursos/tarjeta_desplegable2/css/',
+    js: '/css/recursos/tarjeta_desplegable2/js/',
+    files: {
+      css: ['estilos-tarjeta-desplegable2.css'],
+      js: ['tarjeta-desplegable2.js']
+    }
+  },
+  'tarjeta-giratoria': {
+    css: '/css/recursos/tarjeta_giratoria/css/',
+    js: '/css/recursos/tarjeta_giratoria/js/',
+    files: {
+      css: ['estilos-tarjeta-giratoria.css'],
+      js: ['tarjeta-giratoria.js']
+    }
+  },
+  
+  // Tríptico
+  'triptico': {
+    css: '/css/recursos/triptico/css/',
+    js: '/css/recursos/triptico/js/',
+    files: {
+      css: ['estilos-triptico.css'],
+      js: ['triptico.js']
+    }
+  }
+} as const;
+
+// Filtrar recursos solicitados
+const requestedResources = resources.filter(resource => AVAILABLE_RESOURCES[resource as keyof typeof AVAILABLE_RESOURCES]);
+---
+
+<!-- Cargar CSS de recursos solicitados -->
+{requestedResources.map(resource => {
+  const resourceConfig = AVAILABLE_RESOURCES[resource as keyof typeof AVAILABLE_RESOURCES];
+  return resourceConfig.files.css.map(cssFile => (
+    <link rel="stylesheet" href={`${resourceConfig.css}${cssFile}`} />
+  ));
+})}
+
+<!-- Cargar JS de recursos solicitados -->
+{requestedResources.map(resource => {
+  const resourceConfig = AVAILABLE_RESOURCES[resource as keyof typeof AVAILABLE_RESOURCES];
+  return resourceConfig.files.js.map(jsFile => (
+    <script src={`${resourceConfig.js}${jsFile}`} is:inline></script>
+  ));
+})}
+
+<!-- Scripts de inicialización -->
+{requestedResources.map(resource => {
+  const resourceConfig = AVAILABLE_RESOURCES[resource as keyof typeof AVAILABLE_RESOURCES];
+  if ('init' in resourceConfig && resourceConfig.init) {
+    return (
+      <script is:inline set:html={resourceConfig.init}></script>
+    );
+  }
+  return null;
+})}
+
+<!-- Logs para desarrollo -->
+<script is:inline define:vars={{ requestedResources }}>
+  if (requestedResources.length > 0) {
+    console.log('Recursos cargados:', requestedResources);
+  }
+</script>

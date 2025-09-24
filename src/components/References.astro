@@ -1,25 +1,21 @@
 ---
+import { REFERENCES_CONFIG } from '../config/references-config.ts';
+
 export interface Props {
   basicReferences?: string[];
   complementaryReferences?: string[];
   showColorExamples?: boolean;
+  showDetailsExample?: boolean;
   uapaTitle?: string;
   uapaAuthors?: string;
   uapaUrl?: string;
 }
 
 const { 
-  basicReferences = [
-    "Maecenas massa felis, imperdiet nec vehicula ut, aliquet non tellus. Nulla consectetur ligula at nunc ultrices ullamcorper. Aliquam laoreet volutpat nisi, non vestibulum sem facilisis nec. In hac habitasse platea dictumst.",
-    "Nunc nunc sem, porttitor at cursus pellentesque, rutrum in lorem. Phasellus vitae vehicula justo. Duis hendrerit justo eget turpis gravida elementum. In porta in nulla a sodales.",
-    "Aenean sollicitudin mauris id tortor vestibulum, https://pixabay.com/es/."
-  ],
-  complementaryReferences = [
-    "Maecenas massa felis, imperdiet nec vehicula ut, aliquet non tellus. Nulla consectetur ligula at nunc ultrices ullamcorper. Aliquam laoreet volutpat nisi, non vestibulum sem facilisis nec. https://pixabay.com/es/.",
-    "Nunc nunc sem, porttitor at cursus pellentesque, rutrum in lorem. Phasellus vitae vehicula justo. Duis hendrerit justo eget turpis gravida elementum. In porta in nulla a sodales.",
-    "Aenean sollicitudin mauris id tortor vestibulum, at molestie odio ultricies. Fusce at ultrices dolor."
-  ],
-  showColorExamples = true,
+  basicReferences = REFERENCES_CONFIG.basic,
+  complementaryReferences = REFERENCES_CONFIG.complementary,
+  showColorExamples = REFERENCES_CONFIG.options.showColorExamples,
+  showDetailsExample = REFERENCES_CONFIG.options.showDetailsExample,
   uapaTitle = "Título de la UAPA",
   uapaAuthors = "nombre del autor",
   uapaUrl = "(Vínculo)"
@@ -133,13 +129,26 @@ const {
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
             </div>
 
-            <!-- recurso html mostrar imagen o párrafo -->
-            <details>
-              <summary>hola</summary>
-              <img src="img/cont/imagen1.jpg" alt="">
-              <p class="alert alert-info">qué hace</p>
-            </details>
           </Fragment>
+        )}
+
+        {showDetailsExample && (
+          <!-- recurso html mostrar imagen o párrafo -->
+          <details>
+            <summary>Ejemplo de contenido expandible</summary>
+            <div class="alert alert-info mt-2">
+              <p class="mb-2"><strong>Información adicional:</strong></p>
+              <p class="mb-0">Este es un ejemplo de cómo se puede mostrar contenido adicional de forma expandible usando el elemento HTML <code>&lt;details&gt;</code>.</p>
+            </div>
+          </details>
+        )}
+
+        <!-- Nota sobre formato de citación -->
+        {REFERENCES_CONFIG.options.customCitation && (
+          <div class="alert alert-light border-start border-primary border-3 my-4">
+            <p class="mb-1"><strong>Formato de citación:</strong> {REFERENCES_CONFIG.options.customCitation.format}</p>
+            <p class="mb-0 text-muted small">{REFERENCES_CONFIG.options.customCitation.note}</p>
+          </div>
         )}
 
         <!-- como citar -->
