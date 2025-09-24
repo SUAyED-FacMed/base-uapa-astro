@@ -1,7 +1,7 @@
 ---
-import ResourceLoader from '../components/ResourceLoader.astro';
-import { UAPA_CONFIG } from '../config/uapa-config.ts';
-
+import ResourceLoader from "../components/ResourceLoader.astro";
+import { UAPA_CONFIG } from "../config/uapa-config.ts";
+import Footer from "../components/Footer.astro";
 export interface Props {
   title: string;
   description?: string;
@@ -10,93 +10,112 @@ export interface Props {
   resources?: string[]; // Recursos a cargar
 }
 
-const { 
-  title, 
+const {
+  title,
   description = UAPA_CONFIG.description,
   keywords = UAPA_CONFIG.keywords,
   author = UAPA_CONFIG.authors.full,
-  resources = []
+  resources = [],
 } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- METADATOS DE UAPA -->
-  <meta name="description" content={description}>
-  <meta name="keywords" content={keywords}>
-  <meta name="author" content={author}>
+    <!-- METADATOS DE UAPA -->
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content={author} />
 
-  <title>{title}</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>{title}</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
-  <!-- PLANTILLA -->
-  <link rel="stylesheet" href="css/bootstrap5_3/bootstrap-reboot.css">
-  <link rel="stylesheet" href="css/bootstrap5_3/bootstrap.css">
-  <link rel="stylesheet" href="css/layout/layout.css">
-  <link rel="stylesheet" href="css/layout/medias.css">
-  <!-- estilos de color general -->
-  <link rel="stylesheet" href="css/colores/color_general.css">
-  <!-- animación de imágenes -->
-  <link href="css/layout/aos.css" rel="stylesheet">
+    <!-- PLANTILLA -->
+    <link rel="stylesheet" href="css/bootstrap5_3/bootstrap-reboot.css" />
+    <link rel="stylesheet" href="css/bootstrap5_3/bootstrap.css" />
+    <link rel="stylesheet" href="css/layout/layout.css" />
+    <link rel="stylesheet" href="css/layout/medias.css" />
+    <!-- estilos de color general -->
+    <link rel="stylesheet" href="css/colores/color_general.css" />
+    <!-- animación de imágenes -->
+    <link href="css/layout/aos.css" rel="stylesheet" />
 
-  <!-- FONTS GENERAL-->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,700" rel="stylesheet">
-  <!-- fonts para iconos -->
-  <link rel="stylesheet" href="css/font.css">
-  <!-- fonts para hero -->
-  <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <!-- FONTS GENERAL-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:400,500,700"
+      rel="stylesheet"
+    />
+    <!-- fonts para iconos -->
+    <link rel="stylesheet" href="css/font.css" />
+    <!-- fonts para hero -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Muli"
+      rel="stylesheet"
+    />
 
-  <!-- ESTILOS DE CONTENIDO -->
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/personalizado.css">
+    <!-- ESTILOS DE CONTENIDO -->
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/personalizado.css" />
 
-  <!-- RECURSOS DINÁMICOS -->
-  <ResourceLoader resources={resources} />
-</head>
+    <!-- RECURSOS DINÁMICOS -->
+    <ResourceLoader resources={resources} />
+  </head>
 
-<body id="contenido">
-  <slot />
-  
-  <!-- ************ SCRIPTS ************ -->
-  <script src="/js/bootstrap.bundle.js" is:inline></script>
-  
-  <!-- AOS animations -->
-  <script src="/js/aos/aos.js" is:inline></script>
-  <script src="/js/aos/aos_inicialize.js" is:inline></script>
-  
-  <!-- botón ir arriba -->
-  <script src="/js/ir_arriba.js" is:inline></script>
-  
-  <!-- ************ SCRIPTS DE RECURSOS ************ -->
-  <!-- Los scripts de recursos se cargan dinámicamente via ResourceLoader -->
+  <body id="contenido">
+    <slot />
 
-  <script is:inline>
-    // Bootstrap tooltips initialization
-    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-    
-    // Navbar collapse on mobile
-    (function () { 
-      let t = document.querySelector(".navbar-collapse"); 
-      if (t) {
-        t.addEventListener("click", function(a) { 
-          if (a.target && a.target.tagName === "A") {
-            const target = a.target;
-            if ((target.classList.contains("dropdown-item") || 
-                 target.classList.contains("nav-link") && 
-                 !target.classList.contains("dropdown-toggle"))) {
-              t.classList.remove("show");
-            }
+    <!-- ************ SCRIPTS ************ -->
+    <script src="/js/bootstrap.bundle.js" is:inline></script>
+
+    <!-- AOS animations -->
+    <script src="/js/aos/aos.js" is:inline></script>
+    <script src="/js/aos/aos_inicialize.js" is:inline></script>
+
+    <!-- botón ir arriba -->
+    <script src="/js/ir_arriba.js" is:inline></script>
+
+    <!-- ************ SCRIPTS DE RECURSOS ************ -->
+    <!-- Los scripts de recursos se cargan dinámicamente via ResourceLoader -->
+
+    <script is:inline>
+      // Bootstrap tooltips initialization
+      const tooltipTriggerList = document.querySelectorAll(
+        '[data-bs-toggle="tooltip"]'
+      );
+      const tooltipList = [...tooltipTriggerList].map(
+        (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
+      )(
+        // Navbar collapse on mobile
+        function () {
+          let t = document.querySelector(".navbar-collapse");
+          if (t) {
+            t.addEventListener("click", function (a) {
+              if (a.target && a.target.tagName === "A") {
+                const target = a.target;
+                if (
+                  target.classList.contains("dropdown-item") ||
+                  (target.classList.contains("nav-link") &&
+                    !target.classList.contains("dropdown-toggle"))
+                ) {
+                  t.classList.remove("show");
+                }
+              }
+            });
           }
-        }); 
-      }
-    })();
-  </script>
-</body>
+        }
+      )();
+    </script>
+    <!-- Footer -->
+    <Footer
+      uapaTitle={UAPA_CONFIG.title}
+      authorName={UAPA_CONFIG.authors.full}
+    />
+  </body>
 </html>
-</style>
