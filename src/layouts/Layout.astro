@@ -1,5 +1,6 @@
 ---
 import ResourceLoader from '../components/ResourceLoader.astro';
+import { UAPA_CONFIG } from '../config/uapa-config.ts';
 
 export interface Props {
   title: string;
@@ -11,9 +12,9 @@ export interface Props {
 
 const { 
   title, 
-  description = "El sobrepeso y la obesidad son un problema creciente en México que afecta todos los sectores poblacionales debido a malos hábitos alimenticios, sedentarismo, predisposición genética, entre otros, es por eso que la unidad te brindara las herramientas para diagnosticar, estratificar y tratar la obesidad, las dislipidemias y el síndrome metabólico.",
-  keywords = "Obesidad, dislipidemias, metabolismo, colesterol",
-  author = "María Teresa Arredondo Garza, Eduardo Mercado Cruz, Domingo Francisco Javier Aguilar Medina, Gil Alfonso Magos Guerrero",
+  description = UAPA_CONFIG.description,
+  keywords = UAPA_CONFIG.keywords,
+  author = UAPA_CONFIG.authors.full,
   resources = []
 } = Astro.props;
 ---
