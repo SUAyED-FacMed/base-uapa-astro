@@ -1,0 +1,100 @@
+/** {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}*/
+
+section.accordion[id^='acordeon-vert-'] {
+	--color-recurso: #305E73;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1rem;
+	width: 90%;
+	max-width: 1000px;
+	/*margin: 2rem auto;*/
+	box-shadow: 0 0 0 10px #fff, 0 15px 50px;
+	background-color: #fff;
+}
+
+section.accordion[id^='acordeon-vert-'] .accordion-item {
+	background: #fff;
+	color: #444;
+	margin: 0.7rem 0;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+}
+
+section.accordion[id^='acordeon-vert-'] .accordion-item-header {
+	padding: 0.5rem 1rem;
+	min-height: 3.5rem;
+	line-height: 1.25rem;
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+	position: relative;
+	cursor: pointer;
+	justify-content: space-between;
+	transition: all 0.5s ease-in-out;
+	transition-property: background-color, color;
+}
+
+section.accordion[id^='acordeon-vert-'] .accordion-item-header .icon {
+	transform: rotate(0deg);
+	transition: transform 0.5s ease-in-out;
+}
+
+section.accordion[id^='acordeon-vert-'] .accordion-item-header.active {
+	background-color: var(--color-recurso);
+	color: #fff;
+	/* background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(0,105,217,1) 24%, rgba(0,212,255,1) 100%); */
+	/* background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(0, 105, 217, 1) 50%, rgba(0, 212, 255, 1) 100%); */
+	/* background: linear-gradient(90deg, rgba(0, 212, 255, 1) 0%, rgba(0, 105, 217, 1) 50%, rgba(2, 0, 36, 1) 100%); */
+}
+
+section.accordion[id^='acordeon-vert-'] .accordion-item-header.active .icon {
+	transform: rotate(180deg);
+}
+
+section.accordion[id^='acordeon-vert-'] .accordion-item-body {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.5s ease-out;
+}
+
+section.accordion[id^='acordeon-vert-'] .accordion-item-body-content {
+	padding: 1rem;
+	line-height: 1.5rem;
+	border-top: 1px solid;
+	/* border-image: linear-gradient(to right, #008f68, #fae042) 1; */
+	/* border-image: linear-gradient(to right, #34495e, transparent) 1; */
+	border-image: linear-gradient(to right, transparent, #34495e, transparent) 1;
+}
+
+section.accordion[id^='acordeon-vert-'] .accordion-item-body-content .imagenPie {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+section.accordion[id^='acordeon-vert-'] .accordion-item-body-content .imagenPie img {
+	width: 100%;
+	max-width: 400px;
+}
+
+section.accordion[id^='acordeon-vert-'] .accordion-item-body-content .imagenPie p,
+section.accordion[id^='acordeon-vert-'] .accordion-item-body-content .imagenPie figcaption {
+	/*font-size: 0.75rem;*/
+	text-align: center;
+	margin-top: 20px;
+	overflow-wrap: anywhere;
+}
+
+@media (max-width: 767px) {
+	/* html {
+		font-size: 14px;
+	} */
+	section.accordion[id^='acordeon-vert-'] .accordion-item-body-content .imagenPie img {
+		width: 100%;
+	}
+}
+
+

@@ -1,0 +1,271 @@
+section.acordeon-horizontal {
+	--color-recurso: #0069d9;
+	--alto-seccion: 30em;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1em;
+	margin: 2em auto;
+	line-height: 1.8em;
+	text-align: left;
+	color: #000;
+	font-weight: 300;
+	background-color: #eee;
+	overflow: hidden;
+	box-shadow: 0 0 0 10px #fff, 0 15px 50px;
+	width: min(1000px, 90%);
+	min-width: 300px;
+	display: flex;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: -moz-none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+section.acordeon-horizontal .inputs {
+	display: none;
+}
+
+section.acordeon-horizontal .etiquetas {
+	display: flex;
+	flex-direction: row;
+	flex-grow: 1;
+}
+
+section.acordeon-horizontal .etiquetas label {
+	position: relative;
+	width: 3em;
+	height: var(--alto-seccion);
+	border: 1px solid #fff;
+	color: var(--color-recurso);
+	background-color: var(--color-recurso);
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	flex-grow: 1;
+	background-color: #eee;
+	-webkit-transition: flex-grow 0.75s linear;
+	-moz-transition: flex-grow 0.75s linear;
+	-ms-transition: flex-grow 0.75s linear;
+	-o-transition: flex-grow 0.75s linear;
+	transition: flex-grow 0.75s linear;
+}
+
+section.acordeon-horizontal .etiquetas label .seccion {
+	display: flex;
+	justify-content: center;
+}
+
+section.acordeon-horizontal .etiquetas label img {
+	filter: grayscale(100%);
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	-webkit-transition: filter 0.75s linear;
+	-moz-transition: filter 0.75s linear;
+	-ms-transition: filter 0.75s linear;
+	-o-transition: filter 0.75s linear;
+	transition: filter 0.75s linear;
+}
+
+section.acordeon-horizontal .etiquetas label .titulo {
+	color: #fff;
+	background-color: var(--color-recurso);
+	cursor: pointer;
+	padding: 0.5em;
+	min-width: 100%;
+	position: absolute;
+	bottom: -3px;
+	left: 0;
+	font-size: 1em;
+	font-weight: bold;
+	z-index: 100;
+	white-space: nowrap;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	-webkit-transform: rotate(-90deg) translateX(-45px);
+	transform: rotate(-90deg) translateX(-45px);
+	-webkit-transform-origin: 0% 0%;
+	transform-origin: 0% 0%;
+	-webkit-transition: all 0.75s linear;
+	-moz-transition: all 0.75s linear;
+	-ms-transition: all 0.75s linear;
+	-o-transition: all 0.75s linear;
+	transition: all 0.75s linear;
+	transition-property: transform, background-color;
+}
+
+section.acordeon-horizontal .etiquetas label .titulo .icon {
+	display: none;
+}
+
+section.acordeon-horizontal .etiquetas label .info {
+	display: none;
+}
+
+section.acordeon-horizontal .etiquetas label .info p {
+	padding: 0 10px;
+	visibility: hidden;
+	opacity: 0;
+	transition: all 0.75s linear;
+}
+
+section.acordeon-horizontal .etiquetas label .fondo {
+	height: 100%;
+}
+
+section.acordeon-horizontal .etiquetas label.seleccionado {
+	display: flex;
+	justify-content: center;
+	color: #333;
+	background-color: #fff;
+	flex-grow: calc(10 * var(--numSec));
+}
+
+section.acordeon-horizontal .etiquetas label.seleccionado img {
+	filter: grayscale(0%);
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	padding: 0;
+}
+
+section.acordeon-horizontal .etiquetas label.seleccionado .titulo {
+	position: absolute;
+	width: 100%;
+	font-size: 1.3em;
+	text-indent: 0;
+	text-align: left;
+	padding: 0;
+	margin-top: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.5);
+	-webkit-transform: rotate(0deg);
+	-moz-transform: rotate(0deg);
+	-ms-transform: rotate(0deg);
+	-o-transform: rotate(0deg);
+	transform: rotate(0deg);
+}
+
+section.acordeon-horizontal .etiquetas label.seleccionado .info {
+	position: absolute;
+	color: #222;
+	background: rgba(255, 255, 255, 0.75);
+	width: 95%;
+	margin-top: 10px;
+	top: 0;
+	display: flex;
+}
+
+section.acordeon-horizontal .etiquetas label.seleccionado .info p {
+	visibility: visible;
+	opacity: 1;
+}
+
+/* ##Device = Tablets, Ipads (landscape); Screen = B/w 768px to 1024px */
+@media (min-width: 768px) and (max-width: 1024px) and (max-height: 600px) and (orientation: landscape) {
+	section.acordeon-horizontal .etiquetas {
+		height: 90vh;
+	}
+
+	section.acordeon-horizontal .etiquetas label {
+		height: 100%;
+	}
+
+	section.acordeon-horizontal .etiquetas .info {
+		line-height: normal;
+		font-size: 0.85em;
+	}
+
+	section.acordeon-horizontal .etiquetas label.seleccionado .info p {
+		padding: 10px;
+	}
+}
+
+/* ##Device = Low Resolution Tablets, Mobiles (Landscape); ##Screen = B/w 481px to 767px */
+@media (min-width: 481px) and (max-width: 767px) and (orientation: landscape) {
+	section.acordeon-horizontal .etiquetas {
+		height: 90vh;
+	}
+
+	section.acordeon-horizontal .etiquetas .titulo {
+		font-size: small;
+		bottom: 5px;
+	}
+
+	section.acordeon-horizontal .etiquetas label {
+		height: 100%;
+	}
+
+	section.acordeon-horizontal .etiquetas label.seleccionado .titulo {
+		font-size: 1em;
+	}
+
+	section.acordeon-horizontal .etiquetas .info {
+		line-height: normal;
+		font-size: 0.7em;
+	}
+}
+
+/* ##Device = Most of the Smartphones Mobiles (Portrait); Screen = B/w 320px to 479px */
+@media (max-width: 480px) and (orientation: portrait) {
+	section.acordeon-horizontal .etiquetas {
+		width: 90%;
+		max-width: 1000px;
+		margin: 0 auto;
+		flex-direction: column;
+	}
+
+	section.acordeon-horizontal .etiquetas label .titulo .icon {
+		display: flex;
+		transform: rotate(0deg);
+		transition: transform 0.75s ease-in-out;
+	}
+
+	section.acordeon-horizontal .etiquetas label {
+		width: 100%;
+		max-height: 40px;
+		-webkit-transition: max-height 0.75s linear;
+		-moz-transition: max-height 0.75s linear;
+		-ms-transition: max-height 0.75s linear;
+		-o-transition: max-height 0.75s linear;
+		transition: max-height 0.75s linear;
+	}
+
+	section.acordeon-horizontal .etiquetas label .titulo {
+		transform: none;
+		top: 0;
+		height: fit-content;
+		justify-content: space-between;
+	}
+
+	section.acordeon-horizontal .etiquetas label.seleccionado {
+		max-height: 200px;
+	}
+
+	section.acordeon-horizontal .etiquetas label.seleccionado .titulo {
+		font-size: 1em;
+		padding: 0.3em 0.5em;
+	}
+
+	section.acordeon-horizontal .etiquetas label.seleccionado .titulo .icon {
+		transform: rotate(180deg);
+	}
+
+	section.acordeon-horizontal .etiquetas label .fondo {
+		position: absolute;
+		width: 100%;
+	}
+
+	section.acordeon-horizontal .etiquetas label.seleccionado .info {
+		top: 30px;
+		display: block;
+		height: fit-content;
+	}
+
+	section.acordeon-horizontal .etiquetas label .info {
+		line-height: normal;
+		font-size: 0.85em;
+	}
+}

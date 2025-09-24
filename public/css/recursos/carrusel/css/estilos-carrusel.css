@@ -1,0 +1,176 @@
+:root {
+	--anchoGaleria: 1000%;
+}
+
+section.carrusel.container-slider[id^='carrusel'] {
+	--color-recurso: #0069d9;
+	font-family: 'Open Sans', sans-serif;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+	width: 90%;
+	max-width: 900px;
+	margin: 2em auto;
+	overflow: hidden;
+	box-shadow: 0 0 0 10px #ffffff, 0 15px 50px;
+	position: relative;
+}
+
+section.carrusel.container-slider[id^='carrusel'] {
+	text-align: center;
+}
+
+section.carrusel.container-slider[id^='carrusel'] .sliderCarrusel {
+	display: flex;
+	margin-left: -100%;
+}
+
+section.carrusel.container-slider#carrusel1 .sliderCarrusel {
+	/* desplazamiento del ancho de cada imagen */
+	width: var(--anchoGaleriacarrusel1);
+}
+
+section.carrusel.container-slider#carrusel2 .sliderCarrusel {
+	/* desplazamiento del ancho de cada imagen */
+	width: var(--anchoGaleriacarrusel2);
+}
+
+section.carrusel.container-slider#carrusel3 .sliderCarrusel {
+	/* desplazamiento del ancho de cada imagen */
+	width: var(--anchoGaleriacarrusel3);
+}
+
+section.carrusel.container-slider#carrusel4 .sliderCarrusel {
+	/* desplazamiento del ancho de cada imagen */
+	width: var(--anchoGaleriacarrusel4);
+}
+
+section.carrusel.container-slider[id^='carrusel'] .slider__section {
+	width: 100%;
+	padding: 20px;
+	background: #eee;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+section.carrusel.container-slider[id^='carrusel'] .slider__section .imagenPie {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 1em;
+}
+
+section.carrusel.container-slider[id^='carrusel'] .slider__section .imagenPie img {
+	width: 100%;
+	max-width: 500px;
+}
+
+section.carrusel.container-slider[id^='carrusel'] .slider__section .imagenPie img+p {
+	font-size: 0.75em;
+	text-align: center;
+	margin-top: 20px;
+	overflow-wrap: anywhere;
+}
+
+section.carrusel.container-slider[id^='carrusel'] p,
+section.carrusel.container-slider[id^='carrusel'] li {
+	line-height: normal;
+	text-align: left;
+}
+
+section.carrusel.container-slider[id^='carrusel'] .slider__img {
+	display: block;
+	width: 100%;
+	object-fit: contain;
+	/* cover: la imagen no se deforma, pero se recorta; contain: la imagen no se deforma, pero queda con margenes a los 4 lados */
+}
+
+section.carrusel.container-slider[id^='carrusel'] .slider__btn {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 40px;
+	height: 40px;
+	color: var(--color-recurso);
+	background: rgba(184, 184, 184, 0.7);
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 1rem;
+	font-weight: 300;
+	font-family: monospace;
+	text-align: center;
+	border-radius: 50%;
+	cursor: pointer;
+	opacity: 0.5;
+	transition: all 0.5s ease;
+}
+
+section.carrusel.container-slider[id^='carrusel'] .slider__btn:hover {
+	background: #ffffff;
+	opacity: 1;
+	transform: scale(1.2, 1.2) translateX(0) translateY(-40%);
+}
+
+section.carrusel.container-slider[id^='carrusel'] .slider__btn__regresa {
+	left: 10px;
+}
+
+section.carrusel.container-slider[id^='carrusel'] .slider__btn__avanza {
+	right: 10px;
+}
+
+
+section.carrusel.container-slider[id^='carrusel'] .puntos {
+	width: 100%;
+	padding: 0.4em;
+	margin: 1em 0 0;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	align-items: center;
+}
+
+section.carrusel.container-slider[id^='carrusel'] .punto {
+	width: 20px;
+	height: 10px;
+	border: 1px solid #ddd;
+	margin: 0 6px;
+	list-style: none;
+	border-radius: 100px;
+	cursor: pointer;
+	transition: background-color 0.6s ease;
+}
+
+section.carrusel.container-slider[id^='carrusel'] .punto.activo {
+	background-color: var(--color-recurso);
+}
+
+section.carrusel.container-slider[id^='carrusel'] .slider__section ul,
+section.carrusel.container-slider[id^='carrusel'] .slider__section ol {
+	margin-inline-start: 0;
+}
+
+/* ---------------- */
+/* 
+	##Device = Most of the Smartphones Mobiles (Portrait)
+	##Screen = B/w 320px to 479px
+  */
+@media screen and (max-width: 480px) {
+	body#crm {
+		min-width: 350px;
+	}
+
+	section.carrusel.container-slider[id^='carrusel'] .sliderCarrusel {
+		height: initial;
+		/* desplazamiento del ancho de cada imagen */
+	}
+
+	section.carrusel.container-slider[id^='carrusel'] .slider__section ul,
+	section.carrusel.container-slider[id^='carrusel'] .slider__section ol {
+		margin-inline-start: -2em;
+	}
+}

@@ -1,0 +1,122 @@
+section.contenedor-nota {
+	--amarillo: #f7e999;
+	--azul: #b9dcf4;
+	--rosa: #ffbda3;
+	--verde: #b4f799;
+	font-family: 'Open Sans', sans-serif;
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	align-items: start;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: -moz-none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+section.contenedor-nota .nota-cinta {
+	width: 325px;
+	min-height: 200px;
+	padding: 20px;
+	margin: 20px 22px 44px 22px;
+	position: relative;
+	font-size: 1em;
+	vertical-align: top;
+	display: inline-block;
+	color: #4b453c;
+	line-height: 34px;
+	text-align: left;
+	box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+}
+
+section.contenedor-nota .nota-cinta:before {
+	display: block;
+	content: "";
+	background: #e3c87266;
+	width: 130px;
+	height: 28px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+	border-radius: 6px/18px 0;
+	position: absolute;
+	top: -13px;
+	left: 50px;
+	-webkit-transform: rotate(-2deg);
+	-moz-transform: rotate(-2deg);
+	-o-transform: rotate(-2deg);
+	-ms-transform: rotate(-2deg);
+	transform: rotate(-2deg);
+}
+
+section.contenedor-nota .nota-cinta.azul {
+	background: var(--azul);
+	-webkit-transform: rotate(-2deg);
+	-moz-transform: rotate(-2deg);
+	-o-transform: rotate(-2deg);
+	-ms-transform: rotate(-2deg);
+	transform: rotate(-2deg);
+}
+
+section.contenedor-nota .nota-cinta.rosa {
+	background: var(--rosa);
+	-webkit-transform: rotate(6deg);
+	-moz-transform: rotate(6deg);
+	-o-transform: rotate(6deg);
+	-ms-transform: rotate(6deg);
+	transform: rotate(6deg);
+}
+
+section.contenedor-nota .nota-cinta.amarillo {
+	background: var(--amarillo);
+	-webkit-transform: rotate(2deg);
+	-moz-transform: rotate(2deg);
+	-o-transform: rotate(2deg);
+	-ms-transform: rotate(2deg);
+	transform: rotate(2deg);
+}
+
+section.contenedor-nota .nota-cinta.verde {
+	background: var(--verde);
+	-webkit-transform: rotate(-5deg);
+	-moz-transform: rotate(-5deg);
+	-o-transform: rotate(-5deg);
+	-ms-transform: rotate(-5deg);
+	transform: rotate(-5deg);
+}
+
+section.contenedor-nota .nota-cinta>p,
+section.contenedor-nota .nota-cinta>ul,
+section.contenedor-nota .nota-cinta>ol {
+	line-height: normal;
+}
+
+section.contenedor-nota .nota-cinta>ul,
+section.contenedor-nota .nota-cinta>ol {
+	margin-inline-start: -1em;
+}
+
+section.contenedor-nota .nota-cinta .imagenPie {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 1em;
+}
+
+section.contenedor-nota .nota-cinta .imagenPie img {
+	width: 80%;
+	max-width: 500px;
+}
+
+section.contenedor-nota .nota-cinta .imagenPie p {
+	font-size: 0.75em;
+	text-align: center;
+	margin-top: 20px;
+	overflow-wrap: anywhere;
+}
+
+@media (max-width: 767px) {
+	section.contenedor-nota .nota-cinta {
+		width: 90%;
+	}
+}

@@ -1,0 +1,192 @@
+section.contenedor-lista-desp p {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1em;
+	text-align: left;
+	color: #444444;
+	width: min(1100px, 85%);
+	margin: 2em auto;
+
+}
+
+section.contenedor-lista-desp .cuadrosAnimados {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+
+	text-align: left;
+	color: #444444;
+	font-weight: 300;
+	width: min(1100px, 85%);
+	margin: 3em auto;
+	line-height: 1.8em;
+	user-select: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: -moz-none;
+	-ms-user-select: none;
+	-o-user-select: none;
+}
+
+section.contenedor-lista-desp .cuadrosAnimados ul,
+ol {
+	margin-inline-start: -5px;
+	margin-inline-end: 5px;
+	list-style-position: inside;
+}
+
+section.contenedor-lista-desp .cuadrosAnimados .cuadro1,
+section.contenedor-lista-desp .cuadrosAnimados .cuadro2,
+section.contenedor-lista-desp .cuadrosAnimados .cuadro3,
+section.contenedor-lista-desp .cuadrosAnimados .cuadro4,
+section.contenedor-lista-desp .cuadrosAnimados .cuadro5,
+section.contenedor-lista-desp .cuadrosAnimados .cuadro6,
+section.contenedor-lista-desp .cuadrosAnimados .cuadro7 {
+	color: #ffffff;
+	padding: 20px;
+	margin: 5px;
+	border-radius: 1em;
+	border: 1px solid;
+	max-width: 600px;
+	width: 100%;
+}
+
+.animated.delay-6s {
+	-webkit-animation-delay: 6s;
+	animation-delay: 6s
+}
+
+.animated.delay-7s {
+	-webkit-animation-delay: 7s;
+	animation-delay: 7s
+}
+.animated.delay-8s {
+	-webkit-animation-delay: 8s;
+	animation-delay: 8s
+}
+.animated.delay-9s {
+	-webkit-animation-delay: 9s;
+	animation-delay: 9s
+}
+section.contenedor-lista-desp .cuadrosAnimados.sin-color > *{
+	color: #444444;
+	background-color: #ffffff;
+}
+
+/* ------- VERDE ------------- */
+section.contenedor-lista-desp .cuadrosAnimados.verde .cuadro1 {
+	background-color: #a0dfa0;
+}
+
+section.contenedor-lista-desp .cuadrosAnimados.verde .cuadro2 {
+	background-color: #91d68d;
+}
+
+section.contenedor-lista-desp .cuadrosAnimados.verde .cuadro3 {
+	background-color: #84cc7a;
+}
+
+section.contenedor-lista-desp .cuadrosAnimados.verde .cuadro4 {
+	background-color: #6ab25b;
+}
+
+section.contenedor-lista-desp .cuadrosAnimados.verde .cuadro5 {
+	background-color: #51983c;
+}
+
+section.contenedor-lista-desp .cuadrosAnimados.verde .cuadro6 {
+	background-color: #377e1d;
+}
+
+section.contenedor-lista-desp .cuadrosAnimados.verde .cuadro7 {
+	background-color: #1f6500;
+}
+
+/* ------- NARANJA ------------- */
+section.contenedor-lista-desp .cuadrosAnimados.naranja .cuadro1 {
+	background-color: #f6d6c0;
+}
+
+section.contenedor-lista-desp .cuadrosAnimados.naranja .cuadro2 {
+	background-color: #f7c7a5;
+}
+
+section.contenedor-lista-desp .cuadrosAnimados.naranja .cuadro3 {
+	background-color: #f9b98d;
+}
+
+section.contenedor-lista-desp .cuadrosAnimados.naranja .cuadro4 {
+	background-color: #faac76;
+}
+
+section.contenedor-lista-desp .cuadrosAnimados.naranja .cuadro5 {
+	background-color: #fb9d5c;
+}
+
+section.contenedor-lista-desp .cuadrosAnimados.naranja .cuadro6 {
+	background-color: #fd8b3d;
+}
+
+section.contenedor-lista-desp .cuadrosAnimados.naranja .cuadro7 {
+	background-color: #fe7a20;
+}
+
+/* ------- MORADO ------------- */
+section.contenedor-lista-desp .cuadrosAnimados.morado .cuadro1 {
+	background-color: #c6a9de;
+}
+
+section.contenedor-lista-desp .cuadrosAnimados.morado .cuadro2 {
+	background-color: #bb91df;
+}
+
+section.contenedor-lista-desp .cuadrosAnimados.morado .cuadro3 {
+	background-color: #af76e0;
+}
+
+section.contenedor-lista-desp .cuadrosAnimados.morado .cuadro4 {
+	background-color: #a45de1;
+}
+
+section.contenedor-lista-desp .cuadrosAnimados.morado .cuadro5 {
+	background-color: #9740e2;
+}
+
+section.contenedor-lista-desp .cuadrosAnimados.morado .cuadro6 {
+	background-color: #8a23e3;
+}
+
+section.contenedor-lista-desp .cuadrosAnimados.morado .cuadro7 {
+	background-color: #7e07e4;
+}
+
+/* ------- AZUL ------------- */
+section.contenedor-lista-desp .cuadrosAnimados.azul .cuadro1 {
+	background-color: #95d0f6;
+}
+
+section.contenedor-lista-desp .cuadrosAnimados.azul .cuadro2 {
+	background-color: #7cbeea;
+}
+
+section.contenedor-lista-desp .cuadrosAnimados.azul .cuadro3 {
+	background-color: #63acde;
+}
+
+section.contenedor-lista-desp .cuadrosAnimados.azul .cuadro4 {
+	background-color: #4b9cd2;
+}
+
+section.contenedor-lista-desp .cuadrosAnimados.azul .cuadro5 {
+	background-color: #318ac5;
+}
+
+section.contenedor-lista-desp .cuadrosAnimados.azul .cuadro6 {
+	background-color: #1878b9;
+}
+
+section.contenedor-lista-desp .cuadrosAnimados.azul .cuadro7 {
+	background-color: #0068ad;
+}

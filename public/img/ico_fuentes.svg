@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55.3 53.7">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #666571;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 1.11px;
+      }
+
+      .cls-2 {
+        isolation: isolate;
+      }
+
+      .cls-3 {
+        fill: #f5cb5c;
+      }
+
+      .cls-3, .cls-4 {
+        mix-blend-mode: multiply;
+        stroke-width: 0px;
+      }
+
+      .cls-4 {
+        fill: #2ac8d8;
+        opacity: .7;
+      }
+    </style>
+  </defs>
+  <g class="cls-2">
+    <g id="Capa_1" data-name="Capa 1">
+      <polyline class="cls-1" points="23.87 39.23 11.29 39.23 11.29 9.85 34.62 9.85 34.62 18.46"/>
+      <rect class="cls-1" x="15.69" y="15.65" width="12.95" height="4.64" transform="translate(44.32 35.95) rotate(180)"/>
+      <line class="cls-1" x1="15.68" y1="28.75" x2="25.97" y2="28.75"/>
+      <line class="cls-1" x1="15.68" y1="33.43" x2="23.8" y2="33.43"/>
+      <path class="cls-3" d="m20.03,20.85h10.82v-10.82s-3.31,7.69-10.82,10.82Z"/>
+      <circle class="cls-1" cx="38.64" cy="30.47" r="9.47" transform="translate(-1.14 59.44) rotate(-74.33)"/>
+      <path class="cls-1" d="m30.07,38.16l-4.73,5.98c-.67.84-.52,2.06.32,2.73h0c.84.67,2.06.52,2.73-.32l4.73-5.98"/>
+      <circle class="cls-1" cx="38.64" cy="30.47" r="6.82" transform="translate(-1.14 59.44) rotate(-74.33)"/>
+      <circle class="cls-4" cx="41.65" cy="30.03" r="9.2"/>
+    </g>
+  </g>
+</svg>

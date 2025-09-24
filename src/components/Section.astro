@@ -1,0 +1,26 @@
+---
+export interface Props {
+  id: string;
+  title: string;
+  variant?: 'claro' | 'oscuro';
+  class?: string;
+}
+
+const { 
+  id,
+  title,
+  variant = 'claro',
+  class: className = ''
+} = Astro.props;
+---
+
+<section id={id} class={`wrapper-section ${variant} ${className}`}>
+  <div class="container container-section">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12">
+        <h2>{title}</h2>
+        <slot />
+      </div>
+    </div>
+  </div>
+</section>

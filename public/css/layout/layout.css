@@ -1,0 +1,259 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+/* ==================================================
+  Generales
+================================================== */
+
+html {
+	font-size: 20px;
+	scroll-behavior: smooth;
+}
+
+body {
+	overflow-x: hidden;
+}
+
+
+
+/* ==================================================
+  Hero para home Pagina inicial
+================================================== */
+
+.hero {
+	position: relative;
+	background-color: transparent;
+}
+
+.hero:before {
+	content: '';
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	opacity: 0.6;
+}
+
+.hero .col-xs-12 {
+	z-index: 100;
+}
+
+.hero-brand {
+	width: fit-content;
+}
+
+.hero-brand li:hover {
+	opacity: 0.65;
+}
+
+.not {
+	display: none;
+}
+
+
+.cover-title {
+	max-width: 800px;
+}
+
+.cover-title h1 {
+	font-family: 'Muli', sans-serif;
+	font-weight: 100;
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+
+.tagline {
+	font-family: "Raleway", Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	margin-bottom: 3rem;
+	font-size: 0.7rem;
+}
+
+.hero .btn {
+	font-family: "Roboto", Helvetica, Arial, sans-serif;
+	font-weight: 300;
+	border-radius: 1.5rem;
+	padding: .7rem 2rem;
+	font-size: .9rem;
+}
+
+.hero a {
+	text-decoration: none;
+}
+
+.logos {
+	opacity: .9;
+}
+
+.logos1 {
+	font-size: 6rem;
+	margin-right: .5rem;
+}
+
+.logos2 {
+	width: 5.9rem;
+	height: auto;
+	margin-right: .8rem;
+	margin-top:1rem; /* para el logo de la Facultad de Medicina */
+}
+
+.logos3 {
+	font-size: 8rem;
+}
+
+
+
+/* ==================================================
+  Nav PRINCIPAL
+================================================== */
+
+.titulo-left {
+	display: none;
+	max-width: 12rem;
+	font-size: 0.8rem;
+  	line-height: 0.9rem;
+	left: 20px;
+	text-align: center;
+}
+
+#nav-principal .nav-item,
+#nav-principal .dropdown-item {
+	font-size: 0.9rem;
+}
+
+#nav-principal .dropdown-item  {
+	white-space: initial;
+}
+
+#nav-principal .container-fluid {
+	max-width: 75rem;
+}
+
+#nav-principal .navbar-toggler {
+	font-size: 0.9rem;
+}
+
+#nav-principal .logo-uapa {
+	right: 42%;
+	top: -21px;
+	display: none;
+}
+
+#nav-principal .logo-uapa img {
+	width: 6.5rem;
+}
+
+.menu {
+	position: relative;
+	top: 0px;
+	width: 100%;
+	height: 62px;
+	z-index: 1000;
+}
+
+
+
+/* ==================================================
+  SECCIONTES DE CONTENIDO
+================================================== */
+
+main .wrapper-section {
+	padding: 5rem 0;
+}
+
+.embed-iframe-act iframe, .embed-iframe-autoe iframe {
+	width: 100%;
+	/*height: 100vh;*/
+}
+
+.content-act {
+	padding: 3rem 5%;
+}
+
+
+/* ==================================================
+  FOOTER  
+================================================== */
+footer {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	font-size: 0.65rem;
+	line-height: 1.1rem;
+	letter-spacing: .01rem;
+}
+
+footer {
+	padding: 4rem 0;
+}
+
+footer h2 {
+	font-family: 'Raleway', Helvetica, Arial, sans-serif;
+	font-weight: 700;
+	font-size: .9rem;
+	margin-bottom: 2rem;
+	letter-spacing: .04rem;
+}
+
+footer .btn-link {
+	font-size: .8rem;
+}
+
+footer .btn-link:hover, #creative-commons a:hover {
+	text-decoration: none;
+}
+
+footer .link-cuaieed {
+	max-width: 220px;
+	text-align: center;
+}
+
+#creative-commons .link-creative {
+	max-width: 200px;
+}
+#creative-commons .img-universia {
+	max-width: 220px;
+}
+
+.footer-link {
+	font-size: inherit !important;
+	font-weight: bolder;
+}
+
+
+
+#creditos p {
+	font-size: 0.7rem;
+}
+
+#creditos ul li {
+	padding: 0.5rem;
+}
+
+#creditos ul li div:first-child {
+	font-weight: bolder;
+}
+
+
+
+.ir-arriba {
+	/* posición de botón */
+	bottom:20px;
+	right: -15px;
+
+	/* estilo de botón */
+	display: block;
+	cursor: pointer;
+	font-size: 40px;
+	padding: 0.5rem;
+	border-radius: 50%;
+
+	transform: translateY(100px);
+	opacity: 0;
+	transition: transform 0.5s, opacity 0.3s;
+}
+
+
+.showScrollBtn {
+	transform: translateY(0);
+	opacity: 1;
+}

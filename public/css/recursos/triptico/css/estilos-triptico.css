@@ -1,0 +1,261 @@
+/* * {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+} */
+
+section.contenedor-triptico[id^='triptico'] {
+	--color-recurso: #0069d9;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1rem;
+	margin: 1em auto;
+	max-width: 1000px;
+	width: 90%;
+}
+
+section.contenedor-triptico[id^='triptico'] .triptico {
+	-ms-perspective: 2000px;
+	perspective: 2000px;
+	display: flex;
+}
+
+/* .izq,.cen,.der, */
+section.contenedor-triptico[id^='triptico'] .triptico .izquierda,
+section.contenedor-triptico[id^='triptico'] .triptico .centro,
+section.contenedor-triptico[id^='triptico'] .triptico .derecha {
+	height: 500px;
+	background-color: #fff;
+	width: calc(100% / 3);
+	border: 1px solid;
+	transition: 0.7s ease-in-out;
+	margin: 0 auto;
+}
+
+section.contenedor-triptico[id^='triptico'] .triptico .izquierda {
+	position: absolute;
+	left: -3px;
+	transform: rotateY(180deg);
+	transform-origin: 100% 50%;
+	box-shadow: inset 300px 0 50px rgba(0, 0, 0, .5), 0 10px 20px rgba(0, 0, 0, .5);
+}
+
+section.contenedor-triptico[id^='triptico'] .triptico .centro {
+	box-shadow: inset 300px 0 50px rgba(0, 0, 0, .5), 0 10px 20px rgba(0, 0, 0, .5);
+}
+
+section.contenedor-triptico[id^='triptico'] .triptico .derecha {
+	position: absolute;
+	transform: rotateY(-180deg);
+	transform-origin: 0% 50%;
+	top: 0;
+	right: 0;
+	visibility: hidden;
+}
+
+section.contenedor-triptico[id^='triptico'] .triptico .izquierda.ver,
+section.contenedor-triptico[id^='triptico'] .triptico .derecha.ver {
+	transform: rotateY(0deg);
+	transition: 0.7s ease-in-out;
+}
+
+section.contenedor-triptico[id^='triptico'] .triptico .izquierda.ver {
+	box-shadow: inset 300px 0 50px rgba(0, 0, 0, .5), -10px 10px 20px rgba(0, 0, 0, .5);
+}
+
+section.contenedor-triptico[id^='triptico'] .triptico .derecha.ver {
+	visibility: visible;
+	box-shadow: inset 300px 0 50px rgba(0, 0, 0, .5), 10px 10px 20px rgba(0, 0, 0, .5);
+}
+
+section.contenedor-triptico[id^='triptico'] .triptico .adelante,
+section.contenedor-triptico[id^='triptico'] .triptico .atras {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	background-color: #fff;
+	top: 0;
+}
+
+section.contenedor-triptico[id^='triptico'] .triptico .adelante {
+	transform: rotateY(180deg);
+}
+
+section.contenedor-triptico[id^='triptico'] .triptico .atras {
+	visibility: hidden;
+}
+
+section.contenedor-triptico[id^='triptico'] .triptico .atras.ver {
+	visibility: visible;
+}
+
+section.contenedor-triptico[id^='triptico'] .triptico .izquierda .atras button {
+	visibility: hidden;
+}
+
+section.contenedor-triptico[id^='triptico'] .triptico .contenido {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+	overflow: hidden;
+	background-color: #fff;
+}
+
+section.contenedor-triptico[id^='triptico'] .triptico .contenido p {
+	max-height: 100px;
+	overflow-y: auto;
+	max-height: 100%;
+	text-align: left;
+	line-height: initial;
+}
+
+section.contenedor-triptico[id^='triptico'] .triptico .contenido h1 {
+	font-size: 1.5em;
+	color: var(--color-recurso);
+	padding-top: 10px;
+}
+
+section.contenedor-triptico[id^='triptico'] .triptico .contenido hr {
+	margin-bottom: 10px;
+	border: 1px solid #fff;
+	width: 90%;
+	height: 5px;
+	background: linear-gradient(90deg, transparent 0%, var(--color-recurso) 50%, transparent 100%);
+}
+
+section.contenedor-triptico[id^='triptico'] .triptico .contenido .mostrar {
+	position: absolute;
+	border: 1px solid;
+	background-color: transparent;
+	padding: 5px;
+	margin-bottom: auto;
+	min-width: 120px;
+	max-width: 150px;
+	bottom: 15px;
+	transition: 0.2s ease-in-out;
+	cursor: pointer;
+}
+
+section.contenedor-triptico[id^='triptico'] .triptico .contenido .mostrar:hover {
+	background-color: var(--color-recurso);
+	color: #fff;
+	transition: 0.2s ease-in-out;
+}
+
+section.contenedor-triptico[id^='triptico'] .triptico .cerrar#vert,
+section.contenedor-triptico[id^='triptico'] .triptico .cerrar#horiz {
+	position: absolute;
+	border: 1px solid;
+	background-color: transparent;
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+	font-size: 1em;
+	cursor: pointer;
+	top: 10px;
+	right: 10px;
+	/* display: none; */
+}
+
+section.contenedor-triptico[id^='triptico'] .triptico .cerrar#vert:hover {
+	background-color: var(--color-recurso);
+	color: #fff;
+	transition: 0.2s ease-in-out;
+}
+
+/* @media screen and (orientation: portrait) { */
+@media (max-width: 767px) {
+
+	section.contenedor-triptico[id^='triptico'] {
+		display: flex;
+		justify-content: center;
+		transition: all 1s ease;
+		font-size: 0.8em;
+	}
+
+	section.contenedor-triptico[id^='triptico'].abierto {
+		transform: translateY(100%);
+		margin-bottom: 40em;
+	}
+
+	section.contenedor-triptico[id^='triptico'] .triptico {
+		-ms-perspective: 2000px;
+		perspective: 2000px;
+		width: 90%;
+		margin: 0 auto;
+	}
+
+	section.contenedor-triptico[id^='triptico'] .triptico .cerrar#horiz {
+		display: none;
+	}
+
+	section.contenedor-triptico[id^='triptico'] .triptico .atras.ver .cerrar#horiz {
+		display: initial;
+	}
+
+	section.contenedor-triptico[id^='triptico'] .triptico .izquierda,
+	section.contenedor-triptico[id^='triptico'] .triptico .centro,
+	section.contenedor-triptico[id^='triptico'] .triptico .derecha {
+		width: 100%;
+		height: 250px;
+	}
+
+	section.contenedor-triptico[id^='triptico'] .triptico .izquierda {
+		transform: rotateX(0deg) rotateY(180deg);
+		transform-origin: center top;
+		box-shadow: inset 300px 0 50px rgba(0, 0, 0, .5), 0 10px 20px rgba(0, 0, 0, .5);
+	}
+
+	section.contenedor-triptico[id^='triptico'] .triptico .derecha {
+		transform: rotateX(0deg) rotateY(180deg);
+		transform-origin: center bottom;
+	}
+
+	section.contenedor-triptico[id^='triptico'] .triptico .izquierda.ver {
+		transition: 0.7s ease-in-out;
+		transform: rotateX(180deg) rotateY(180deg);
+		box-shadow: inset 300px 0 50px rgba(0, 0, 0, .5), 0 10px 20px rgba(0, 0, 0, .5);
+	}
+
+	section.contenedor-triptico[id^='triptico'] .triptico .derecha.ver {
+		transition: 0.7s ease-in-out;
+		transform: rotateX(-180deg) rotateY(180deg);
+		box-shadow: inset 300px 0 50px rgba(0, 0, 0, .5), 0 -10px 20px rgba(0, 0, 0, .5);
+	}
+
+	section.contenedor-triptico[id^='triptico'] .triptico .adelante {
+		transform: rotateY(180deg);
+	}
+
+	section.contenedor-triptico[id^='triptico'] .triptico .atras.ver {
+		transform: rotate(180deg);
+	}
+
+	section.contenedor-triptico[id^='triptico'] .triptico .izquierda .atras button#horiz {
+		visibility: visible;
+	}
+
+	section.contenedor-triptico[id^='triptico'] .triptico .derecha .contenido {
+		transform: rotate(180deg);
+	}
+
+	section.contenedor-triptico[id^='triptico'] .triptico .derecha button {
+		visibility: hidden;
+	}
+
+	section.contenedor-triptico[id^='triptico'] .triptico .izquierda .adelante .contenido p {
+		max-height: 100px;
+		overflow-y: auto;
+		max-height: 50%;
+		text-align: left;
+	}
+}
+
+@media (max-width: 576px) {
+	body#crm {
+		font-size: 1em;
+	}
+}

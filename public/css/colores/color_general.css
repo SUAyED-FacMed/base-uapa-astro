@@ -1,0 +1,286 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+/* ==================================================
+  Hero para home Pagina inicial
+================================================== */
+
+.hero:before {
+    background-color: #000;
+}
+
+.cover-index {
+    background-color: #6b615d;
+}
+
+.hero-brand a:focus-visible {
+    box-shadow: 0 0 0 0.15rem rgba(242, 242, 242, 0.7);
+    outline: 0;
+    border: 2px solid #fff;;
+}
+
+.cover-title h1 {
+    color: #fff;
+}
+
+.tagline {
+    color: #fff;
+}
+
+.hero .btn {
+    color: #162932;
+    background-color: #29C7D9;
+    border: 2px solid #29C7D9;
+}
+
+.hero .btn:hover, .hero .btn:focus-visible {
+    background-color: #B4D2DF;
+    color: #1C3540;
+    border: 2px solid #B4D2DF;
+}
+
+.hero .btn:focus-visible {
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 0.15rem rgba(242, 242, 242, 0.7);
+}
+
+.logos {
+    color: #fff;
+}
+
+
+/* ==================================================
+  Nav PRINCIPAL
+================================================== */
+
+.alpha-menu {
+    border-top: 13px solid #29C7D9;
+    background-color: #B4D2DF !important;
+}
+#nav-principal a {
+    border:1px solid transparent;
+}
+
+#nav-principal .navbar-nav .nav-link, #nav-principal .navbar-toggler, #nav-principal .titulo-left {
+    color:#1C3540;
+}
+
+
+#nav-principal a.active, #nav-principal a:hover, #nav-principal a:focus {
+    background-color: #485B63;
+    color: #fff !important;
+}
+
+#nav-principal .dropdown-item:hover, #nav-principal .dropdown-item:focus {
+    background-color: rgba(222,224,227,1);
+    color:#333 !important;
+    
+}
+#nav-principal .dropdown-item:focus-visible {
+    border:solid 2px #305E73;
+    outline: 0;
+}
+
+#nav-principal .nav-link:focus-visible {
+    box-shadow: 0 0 0 0.15rem rgba(242, 242, 242, 0.7);
+    border: 3px solid #fff;
+  }
+
+
+
+
+/* ==================================================
+SECCIONES
+================================================== */
+section.claro {
+    background-color: #fff;
+}
+
+section.oscuro {
+    background-color: #eaeaea;
+}
+
+.wrapper-act {
+    background-color: #44C6D5;
+}
+
+/*.wrapper-act .content-act {
+    background-color: #003072;
+    color: #fff;
+}*/
+
+.wrapper-autoe {
+    background-color: #0070A8;
+}
+
+.content-act {
+    background-color: #fff;
+}
+
+/* ==================================================
+TEXTO
+================================================== */
+
+main {
+    color: #000;
+}
+
+main h2 {
+    color: #29315f;
+}
+
+.content-act h2 {
+    border-bottom: 2px solid #997f8f;
+    color: #305E73;
+}
+
+/* #fuentes-info .envolv {
+	background-color: #305E73;
+	color: #fff;
+  } */
+
+#fuentes-info {
+    background-color: #efefef;
+}
+
+/* ==================================================
+BOTONES DE CONTENIDO
+================================================== */
+
+main a {
+    color: #305E73;
+    font-weight: bolder;
+}
+main a:focus {
+    outline: 3px solid #305E73 !important;
+    outline-offset: 3px;
+  }
+
+
+.btn-comenzar, .btn-comenzar:active {
+    background-color: #305E73;
+    color: #fff;
+}
+
+
+.content-act button {
+    border:2px solid #305E73;
+}
+
+.content-act button:focus-visible {
+    box-shadow: 0 0 0 0.15rem rgba(48, 94, 115, .8);
+}
+
+.content-act button:hover, .content-act button:focus {
+    background-color: #575757;
+    color: #fff;
+    border-color:#fff;
+}
+
+.btn-comenzar:active {
+    background-color: #474D8A !important;
+    border:2px solid #fff !important;
+}
+
+.btn-outline-secondary:focus, .btn-close:focus-visible {
+    outline: 3px solid rgba(48, 94, 115, .8);
+    box-shadow: 0 0 0 0.15rem transparent;
+    border:3px solid #fff;
+}
+
+
+/* ==================================================
+FIGURAS 
+================================================== */
+
+.note {
+    color: #222;
+    background: #E3F8F7;
+}
+
+.note:before {
+    border-color: rgba(255, 255, 255, 0) rgba(255, 255, 255, 0) #9DD2D0 rgba(255, 255, 255, 0);
+    background-color: #ffffff;
+}
+
+
+/* ==================================================
+  FOOTER  
+================================================== */
+
+footer {
+    background-color: #010326;
+    color: #fff;
+}
+
+footer .link-cuaieed:focus-visible, .btn-link:focus-visible, .ir-arriba:focus-visible, .link-creative:focus-visible {
+    box-shadow: 0 0 0 0.15rem rgba(242, 242, 242, 0.7);
+    outline: 0;
+    border: 2px solid #fff;
+}
+
+footer .btn-link {
+    color: #fff;
+}
+
+.btn-link:focus-visible {
+    color: #eee;
+}
+
+footer .btn-link:hover {
+    color: #eee;
+}
+
+#creditos h1 {
+    color: #555;
+}
+
+#creditos p {
+    color: #222;
+}
+
+#creditos ul li {
+    border: 1px solid #ddd;
+}
+
+#creditos ul li:nth-child(2n) {
+    background-color: #f2f2f2;
+}
+
+
+
+/* botón para subir */
+.ir-arriba {
+    background-color: rgba(15,17,63, 1);
+    color: #fff;
+    border-color: transparent;
+}
+	
+
+.ir-arriba:hover, .ir-arriba:focus-visible {
+    background-color: rgba(153,154,173, 0.8);
+    color: #000;
+}
+
+
+@media (min-width: 992px) {
+    #creditos ul li div:first-child {
+		background-color: #ddd;
+	}
+
+	#creditos ul li:nth-child(2n) div:first-child {
+		background-color: #f2f2f2;
+	}
+
+	#creditos ul li div:nth-child(2) {
+		background-color: #fff;
+	}
+}
+
+
+
+/* ==================================================
+  RECURSOS DE CONTENIDO
+================================================== */
+

@@ -1,0 +1,196 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+header li {
+	transition: all 0.5s;
+}
+/* ==================================================
+TÍTULOS
+================================================== */
+main h1,
+main h2 {
+	font-family: 'Raleway', Helvetica, Arial, sans-serif;
+}
+
+main h2 {
+	margin-bottom: 2.5rem;
+}
+main h3 {
+	margin: 2rem 0;
+	font-style: italic;
+	font-size: 1.2rem;
+}
+
+.content-act h2 {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	padding-bottom: 1rem;
+	margin-bottom: 1rem;
+}
+
+#fuentes-info h3 {
+	margin: 2rem 0;
+	font-size: 1.15rem;
+	font-style: normal; /* cuando hay h4 */
+	/*font-style: italic; /* cuando no hay h4 */ 
+}
+
+#fuentes-info h4 {
+	margin-top: 2rem;
+	font-size: 1rem;
+	font-style: italic;
+}
+
+#fuentes-info .envolv {
+	font-family: 'Raleway', Helvetica, Arial, sans-serif;
+	font-size: 1.5rem;
+	font-style: normal;
+	border-radius: 50px;
+	font-size: 1.5rem;
+	width: max-content;
+	padding: 0.3rem 0;
+	margin-bottom:1rem;
+	margin-top: 3rem;
+  }
+
+  #fuentes-info .envolv .icon-pen {
+	font-size: 1.4rem;
+  }
+
+  /* #fuentes-info .envolv span {
+	font-weight: bold;
+  } */
+
+/* ==================================================
+ TEXTO GENERAL
+================================================== */
+
+main {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	line-height: 1.65rem;
+}
+
+main figcaption, .figcap2 {
+	font-size: 0.7rem;
+	line-height: 1.1rem;
+	margin-top: 0.5rem;
+}
+
+.blockquote {
+	font-size: 0.85rem;
+	margin: 1rem 3%;
+}
+
+.modal-title {
+	font-family: 'Open Sans', sans-serif;
+}
+
+main cite {
+	font-style: normal;
+}
+
+#fuentes-info ul {
+	list-style:none;
+	padding-left:0;
+}
+#fuentes-info ul li {
+	margin-bottom:0.7rem;
+}
+
+.break { /* estilo para dividir las palabras en las URL*/
+	word-break: break-all;
+}
+
+
+
+
+/* ==================================================
+ ICONOS 
+================================================== */
+
+.icono {
+	font-size: 2em;
+	vertical-align: middle;
+}
+.icono-act {
+	max-width: 155px;
+  	width: 100%;
+}
+#fuentes-info .icono-svg {
+	/*max-width: 3rem;*/
+	max-width: 95px;
+}
+
+/* ==================================================
+ FIGURAS Y VIDEO
+================================================== */
+
+.w-450 {
+	max-width: 450px;
+}
+
+.w-600 {
+	max-width: 600px;
+}
+
+.w-650 {
+	max-width: 650px;
+}
+.w-700 {
+	max-width: 700px;
+}
+
+.w-750 {
+	max-width: 750px;
+}
+
+.w-800 {
+	max-width: 800px;
+}
+
+.w-900 {
+	max-width: 900px;
+}
+
+.my-recursos {
+	margin-top: 3rem;
+	margin-bottom: 3rem;
+}
+
+.note-container {
+	text-align: center;
+}
+
+.note {
+	vertical-align: top;
+	height: initial !important;
+	position: relative;
+	overflow: hidden;
+	padding: 1rem;
+}
+.note img {
+	max-width: 130px;
+	width: 100%;
+}
+
+.note:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	border-width: 0 16px 16px 0;
+	border-style: solid;
+	display: block;
+	width: 0;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3), -1px 1px 1px rgba(0, 0, 0, 0.2);
+	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3), -1px 1px 1px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3), -1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.video iframe {
+	max-width: 650px;
+	width: 100%;
+	height: 350px;
+}

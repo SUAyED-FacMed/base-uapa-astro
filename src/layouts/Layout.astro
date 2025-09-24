@@ -1,22 +1,154 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+export interface Props {
+  title: string;
+  description?: string;
+  keywords?: string;
+  author?: string;
+}
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
+const { 
+  title, 
+  description = "El sobrepeso y la obesidad son un problema creciente en México que afecta todos los sectores poblacionales debido a malos hábitos alimenticios, sedentarismo, predisposición genética, entre otros, es por eso que la unidad te brindara las herramientas para diagnosticar, estratificar y tratar la obesidad, las dislipidemias y el síndrome metabólico.",
+  keywords = "Obesidad, dislipidemias, metabolismo, colesterol",
+  author = "María Teresa Arredondo Garza, Eduardo Mercado Cruz, Domingo Francisco Javier Aguilar Medina, Gil Alfonso Magos Guerrero"
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- METADATOS DE UAPA -->
+  <meta name="description" content={description}>
+  <meta name="keywords" content={keywords}>
+  <meta name="author" content={author}>
+
+  <title>{title}</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- PLANTILLA -->
+  <link rel="stylesheet" href="css/bootstrap5_3/bootstrap-reboot.css">
+  <link rel="stylesheet" href="css/bootstrap5_3/bootstrap.css">
+  <link rel="stylesheet" href="css/layout/layout.css">
+  <link rel="stylesheet" href="css/layout/medias.css">
+  <!-- estilos de color general -->
+  <link rel="stylesheet" href="css/colores/color_general.css">
+  <!-- animación de imágenes -->
+  <link href="css/layout/aos.css" rel="stylesheet">
+
+  <!-- FONTS GENERAL-->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,700" rel="stylesheet">
+  <!-- fonts para iconos -->
+  <link rel="stylesheet" href="css/font.css">
+  <!-- fonts para hero -->
+  <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+
+  <!-- ESTILOS DE CONTENIDO -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/personalizado.css">
+
+  <!-- ESTILOS DE RECURSOS -->
+  <!-- 1 -->
+  <!-- fichero de conceptos vertical rc02-24 -->
+  <link rel="stylesheet" href="css/recursos/fichero_vertical_rc02/all.css">
+  <link rel="stylesheet" href="css/recursos/fichero_vertical_rc02/estilos-fichero-vert.css">
+  <!-- 2 -->
+  <!-- acordeón vertical rc04-24 -->
+  <link rel="stylesheet" href="css/recursos/acordeon_vertical_rc04/all.css">
+  <link rel="stylesheet" href="css/recursos/acordeon_vertical_rc04/estilos-acordeon-vertical.css">
+
+  <!-- fichero de conceptos horizontal rc01-24 -->
+  <link rel="stylesheet" href="css/recursos/fichero_horizontal/css/estilos-fichero-hor.css">
+  <!-- acordeón horizontal rc05-24 -->
+  <link rel="stylesheet" href="css/recursos/acordeon_horizontal/css/estilos-acordeon-hor.css">
+  <!-- carrusel -->
+  <link rel="stylesheet" href="css/recursos/carrusel/css/estilos-carrusel.css">
+  <!-- folder de contenidos -->
+  <link rel="stylesheet" href="css/recursos/folder_contenidos/css/estilos-folder.css">
+  <!-- hoja de bloc -->
+  <link rel="stylesheet" href="css/recursos/hoja_bloc/css/estilos-hoja-bloc.css">
+  <!-- hoja espiral -->
+  <link rel="stylesheet" href="css/recursos/hoja_espiral/css/estilos-hoja-espiral.css">
+  <!-- hojas desordenadas -->
+  <link rel="stylesheet" href="css/recursos/hojas_desordenadas/css/estilos-hojas-desordenadas.css">
+  <!-- hotspot -->
+  <link rel="stylesheet" href="css/recursos/hotspot/css/estilos-hot-spot.css">
+  <!-- línea de tiempo horizontal -->
+  <link rel="stylesheet" href="css/recursos/linea_tiempo_horizontal/css/estilos-linea-tiempo-horizontal.css">
+  <!-- línea de tiempo vertical -->
+  <link rel="stylesheet" href="css/recursos/linea_tiempo_vertical/css/estilos-linea-tiempo-vertical.css">
+  <!-- lista desplegable -->
+  <link rel="stylesheet" href="css/recursos/lista_desplegable/css/estilos-lista_desplegable.css">
+  <!-- <link rel="stylesheet" href="css/recursos/lista_desplegable/css/listaAnimacion.css"> -->
+  <!-- nota cinta -->
+  <link rel="stylesheet" href="css/recursos/nota_cinta/css/estilos-nota-cinta.css">
+  <!-- nota pin -->
+  <link rel="stylesheet" href="css/recursos/nota_pin/css/estilos-nota-pin.css">
+  <!-- tarjeta desplegable 1 -->
+  <link rel="stylesheet" href="css/recursos/tarjeta_desplegable1/css/estilos-tarjeta-desplegable-1.css">
+  <!-- tarjeta desplegable 2 -->
+  <link rel="stylesheet" href="css/recursos/tarjeta_desplegable2/css/estilos-tarjeta-desplegable2.css">
+  <!-- tarjeta giratoria -->
+  <link rel="stylesheet" href="css/recursos/tarjeta_giratoria/css/estilos-tarjeta-giratoria.css">
+  <!-- triptico -->
+  <link rel="stylesheet" href="css/recursos/triptico/css/estilos-triptico.css">
+</head>
+
+<body id="contenido">
+  <slot />
+  
+  <!-- ************ SCRIPTS ************ -->
+  <script src="/js/bootstrap.bundle.js" is:inline></script>
+  
+  <!-- AOS animations -->
+  <script src="/js/aos/aos.js" is:inline></script>
+  <script src="/js/aos/aos_inicialize.js" is:inline></script>
+  
+  <!-- botón ir arriba -->
+  <script src="/js/ir_arriba.js" is:inline></script>
+  
+  <!-- ************ SCRIPTS DE RECURSOS ************ -->
+  <!-- acordeón horizontal -->
+  <script src="/css/recursos/acordeon_horizontal/js/acordeon-hor.js" is:inline></script>
+  <script is:inline>
+    acordeonHorizontal("acordeon-horizontal-1");
+    acordeonHorizontal("acordeon-horizontal-2");
+    acordeonHorizontal("acordeon-horizontal-3");
+  </script>
+  
+  <!-- fichero horizontal -->
+  <script src="/css/recursos/fichero_horizontal/js/fichero-hor.js" is:inline></script>
+  <script is:inline>
+    ficheroHorizontal("fichero-hor-1");
+    ficheroHorizontal("fichero-hor-2");
+  </script>
+
+  <script is:inline>
+    // Bootstrap tooltips initialization
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    
+    // Navbar collapse on mobile
+    (function () { 
+      let t = document.querySelector(".navbar-collapse"); 
+      if (t) {
+        t.addEventListener("click", function(a) { 
+          if (a.target && a.target.tagName === "A") {
+            const target = a.target;
+            if ((target.classList.contains("dropdown-item") || 
+                 target.classList.contains("nav-link") && 
+                 !target.classList.contains("dropdown-toggle"))) {
+              t.classList.remove("show");
+            }
+          }
+        }); 
+      }
+    })();
+  </script>
+</body>
+</html>
 	}
 </style>

@@ -1,0 +1,66 @@
+section.hoja-espiral {
+	--color-hoja: #fff5bd;
+	font-family: 'Open Sans', sans-serif;
+	padding: 0;
+	box-sizing: border-box;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: -moz-none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+section.hoja-espiral .hoja {
+	width: min(500px, 80%);
+	min-width: 275px;
+	min-height: 200px;
+	margin: 2em auto;
+	background-color: var(--color-hoja);
+	background-image: url("data:image/svg+xml,%3Csvg fill='none' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 21'%3E%3Cpath d='M20 0h-7v6.9a7.5 7.5 0 107 0V0z' fill='%23000000'/%3E%3Cpath d='M13 0h3v6.9a7.5 7.5 0 002 14 7.5 7.5 0 01-9-7.4c0-2.9 1.6-5.4 4-6.6V0z' fill='%23000000'/%3E%3C/svg%3E");
+	background-size: 2em 1.3125em;
+	background-repeat: space no-repeat;
+	background-position: center top, center 6px, center 6px;
+	padding: 40px 20px 5px 20px;
+	box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.5);
+}
+
+section.hoja-espiral .hoja p {
+	line-height: normal;
+}
+
+section.hoja-espiral .hoja ul,
+section.hoja-espiral .hoja ol {
+	margin-inline-start: 0;
+}
+
+section.hoja-espiral .hoja ul li {
+	margin-bottom: 1em;
+}
+
+section.hoja-espiral .hoja .imagenPie {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 1em;
+}
+
+section.hoja-espiral .hoja .imagenPie img {
+	width: 80%;
+	max-width: 600px;
+}
+
+section.hoja-espiral .hoja .imagenPie p {
+	font-size: 0.75em;
+	text-align: center;
+	margin-top: 20px;
+	overflow-wrap: anywhere;
+}
+
+@media (max-width: 767px) {
+	section.hoja-espiral .hoja ul,
+	section.hoja-espiral .hoja ol {
+		margin-inline-start: -1em;
+	}
+	
+	}

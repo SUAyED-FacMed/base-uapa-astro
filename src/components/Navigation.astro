@@ -1,0 +1,89 @@
+---
+export interface NavItem {
+  label: string;
+  href?: string;
+  children?: NavItem[];
+}
+
+export interface Props {
+  menuItems?: NavItem[];
+  showTitle?: boolean;
+  title?: string;
+}
+
+const { 
+  showTitle = false,
+  title = "Título de la UAPA",
+  menuItems = [
+    { label: "Introducción", href: "#introduccion" },
+    { 
+      label: "Contenido", 
+      children: [
+        { label: "Vestibulum sed sollicitudin elit", href: "#contenido1" },
+        { label: "Praesent eget dui aliquet mollis velit nec", href: "#contenido2" },
+        { label: "Sed commodo metus non magna rutrum cursus", href: "#contenido3" },
+        { label: "Etiam consectetur in felis et sollicitudin", href: "#contenido4" }
+      ]
+    },
+    {
+      label: "Actividades",
+      children: [
+        { label: "Actividad 1", href: "#actividad1" },
+        { label: "Actividad 2", href: "#actividad2" }
+      ]
+    },
+    { label: "Autoevaluación", href: "#autoevaluacion1" },
+    { label: "Fuentes", href: "#fuentes-info" }
+  ]
+} = Astro.props;
+---
+
+<!-- ************* INICIA NAV ************** -->
+<nav id="nav-principal" class="navbar sticky-top navbar-expand-md bg-body-tertiary alpha-menu py-0" aria-label="Menú">
+  <div class="container-fluid justify-content-end position-relative">
+
+    <button class="navbar-toggler my-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Menú principal">
+      Menú<span class="navbar-toggler-icon ms-2"></span>
+    </button>
+
+    {showTitle && (
+      <!-- título de UAPA en menú -->
+      <div class="titulo-left pe-4 position-absolute" aria-hidden="true">
+        <p class="mb-0">{title}</p>
+      </div>
+      <!-- termina título de UAPA en menú -->
+    )}
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav mx-lg-auto">
+        {menuItems.map(item => (
+          <li class="nav-item" class:list={[item.children && "dropdown"]}>
+            {item.children ? (
+              <>
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  {item.label}
+                </a>
+                <ul class="dropdown-menu">
+                  {item.children.map(child => (
+                    <li><a class="dropdown-item" href={child.href}>{child.label}</a></li>
+                  ))}
+                </ul>
+              </>
+            ) : (
+              <a class="nav-link" href={item.href}>{item.label}</a>
+            )}
+          </li>
+        ))}
+      </ul>
+
+      <div class="position-absolute logo-uapa">
+        <!--Quitar CUAED-->
+        <img src="img/logo_UAPA.svg" alt="">
+        <!--Descomentar CUAED-->
+        <!-- <img src="img/logo_cuaieed.svg" alt=""> -->
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- ************* TERMINA NAV ************** -->

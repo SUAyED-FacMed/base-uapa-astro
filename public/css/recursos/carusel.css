@@ -1,0 +1,25 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+.carousel-inner {
+    padding:.5rem;
+}
+.carousel-item {
+    margin-bottom: 2.5rem;
+}
+
+#carusel1 .carousel-item img {
+    max-width: 450px;
+    margin:0 auto;
+    width: 100%;
+}
+
+.carousel-dark .carousel-indicators [data-bs-target] {
+    height: 10px;
+    border-radius: 5px;
+}
+
+.carousel-indicators [data-bs-target]:focus {
+    outline-offset: 3px;
+}

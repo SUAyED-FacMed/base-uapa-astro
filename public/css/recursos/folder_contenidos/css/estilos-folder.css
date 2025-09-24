@@ -1,0 +1,192 @@
+section.contenedor-folder {
+	--altura-folder: 400px;
+	--color-link: #0069d9;
+	--color-curso: #444;
+	--amarillo: #f7e999;
+	--azul: #b9dcf4;
+	--blanco: #ffffff;
+	--verde: #73ebb7;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 100%;
+	margin: 0;
+	padding: 0;
+	max-width: 1000px;
+	margin: 10px auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: -moz-none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+section.contenedor-folder .folder {
+	position: relative;
+	margin: 20px;
+	width: 300px;
+	min-width: 290px;
+	height: var(--altura-folder);
+	background-color: #fff;
+	transform-style: preserve-3d;
+	transform: perspective(2000px);
+	transition: 1s;
+	/* box-shadow: inset 300px 0 50px rgba(0, 0, 0, 0.5); */
+	/* box-shadow: inset 300px 0 50px rgba(0, 0, 0, .5), 0 20px 100px rgba(0, 0, 0, .5); */
+}
+
+section.contenedor-folder .folder:hover {
+	z-index: 1000;
+	transform: perspective(2000px) rotate(-10deg);
+	box-shadow: inset 20px 0 50px rgba(0, 0, 0, 0.5);
+}
+
+section.contenedor-folder .folder:before {
+	content: '';
+	position: absolute;
+	top: -5px;
+	left: 0;
+	width: 100%;
+	height: 5px;
+	background-color: #363636;
+	transform-origin: bottom;
+	transform: skewX(-45deg);
+}
+
+section.contenedor-folder .folder:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: -5px;
+	width: 5px;
+	height: 100%;
+	background-color: #363637;
+	transform-origin: left;
+	transform: skewY(-45deg);
+}
+
+section.contenedor-folder .folder .caratula {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border: 1px solid #000;
+	box-sizing: border-box;
+	transform-origin: left;
+	z-index: 1;
+	transition: 1s;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 20px;
+}
+
+section.contenedor-folder .folder.amarillo .caratula {
+	background-color: var(--amarillo);
+}
+
+section.contenedor-folder .folder.azul .caratula {
+	background-color: var(--azul);
+}
+
+section.contenedor-folder .folder.blanco .caratula {
+	background-color: var(--blanco);
+}
+
+section.contenedor-folder .folder.verde .caratula {
+	background-color: var(--verde);
+}
+
+section.contenedor-folder .folder:hover .caratula {
+	transform: rotateY(-135deg);
+}
+
+section.contenedor-folder .imagenPie {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 1em;
+}
+
+section.contenedor-folder .imagenPie img {
+	width: 100%;
+	max-width: 500px;
+}
+
+section.contenedor-folder .imagenPie p {
+	font-size: 0.75em;
+	text-align: center;
+	margin-top: 20px;
+	overflow-wrap: anywhere;
+}
+
+section.contenedor-folder .folder .contenido video {
+	width: 260px;
+}
+
+section.contenedor-folder .folder .caratula p,
+section.contenedor-folder .folder .contenido p {
+	color: #000;
+}
+
+section.contenedor-folder .folder .caratula .vermas {
+	position: absolute;
+	bottom: 0.5em;
+	border: 1px solid #444444;
+	background-color: #eeeeee;
+}
+
+section.contenedor-folder .folder .caratula .vermas p {
+	margin: 0.5em;
+}
+
+section.contenedor-folder .folder .contenido {
+	position: absolute;
+	top: 0;
+	left: 0;
+	box-sizing: border-box;
+	padding: 20px;
+	text-align: center;
+	overflow: hidden;
+	height: 100%;
+}
+
+section.contenedor-folder>div>.contenido>h2 {
+	font-size: 1em;
+}
+
+section.contenedor-folder>div>.contenido>p,
+section.contenedor-folder>div>.contenido>ul,
+section.contenedor-folder>div>.contenido>ol {
+	font-size: 0.9em;
+	overflow-y: auto;
+	max-height: 80%;
+	text-align: left;
+}
+
+section.contenedor-folder>div>.contenido>p>a {
+	color: var(--color-link);
+	font-size: 12px;
+}
+
+section.contenedor-folder>div>.contenido>p>a,
+section.contenedor-folder>div>.contenido>p>a:hover,
+section.contenedor-folder>div>.contenido>p>a:active,
+section.contenedor-folder>div>.contenido>p>a:visited {
+	text-decoration: none;
+}
+
+section.contenedor-folder>div>.caratula>ul,
+section.contenedor-folder>div>.caratula>ol,
+section.contenedor-folder>div>.contenido>ul,
+section.contenedor-folder>div>.contenido>ol {
+	margin-inline-start: -1em;
+}
+
+section.contenedor-folder>div>.contenido>a.info {
+	padding: 7px 8px;
+	background: var(--color-link);
+	color: #fff;
+}

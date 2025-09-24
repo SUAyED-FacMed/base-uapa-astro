@@ -1,0 +1,208 @@
+section.contenedor-pin {
+	box-sizing: border-box;
+	font-size: 100%;
+	font-family: 'Open Sans', sans-serif;
+	padding: 0;
+	display: flex;
+	justify-content: space-around;
+	align-items: start;
+	flex-wrap: wrap;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: -moz-none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+section.contenedor-pin .hoja-pin {
+	position: relative;
+	margin: 6em auto;
+	width: 350px;
+	min-height: 150px;
+	background: linear-gradient(135deg,
+			var(--paper-color),
+			30%,
+			var(--paper-color));
+	box-shadow: 3px 3px 2px var(--paper-shadow);
+	transform: rotate(10deg);
+	transform-origin: center center;
+	padding: 15px;
+	margin-bottom: 50px;
+	padding-top: 40px;
+}
+
+section.contenedor-pin .hoja-pin.amarillo {
+	--paper-color: #ffed87;
+	--paper-shadow: #c9bf8d;
+}
+
+section.contenedor-pin .hoja-pin.azul {
+	--paper-color: #b9dcf4;
+	--paper-shadow: #94abac;
+}
+
+section.contenedor-pin .hoja-pin.rosa {
+	--paper-color: #ffbda3;
+	--paper-shadow: #ac9a94;
+}
+
+section.contenedor-pin .hoja-pin.verde {
+	--paper-color: #94f1a8;
+	--paper-shadow: #9ec98d;
+}
+
+section.contenedor-pin .hoja-pin p {
+	margin: 0 auto;
+}
+
+section.contenedor-pin .hoja-pin ul,
+section.contenedor-pin .hoja-pin ol {
+	padding-inline-start: 2em;
+	line-height: normal;
+}
+
+section.contenedor-pin .hoja-pin ul li,
+section.contenedor-pin .hoja-pin ol li {
+	margin-bottom: 1em;
+}
+
+section.contenedor-pin .hoja-pin .pin {
+	position: absolute;
+	top: 0;
+	left: 20px;
+	width: 60px;
+	height: 50px;
+}
+
+section.contenedor-pin .hoja-pin .pin.azul {
+	--pin-color: #0099ff;
+	--pin-dark: #062e9e;
+	--pin-light: #7da4fc;
+}
+
+section.contenedor-pin .hoja-pin .pin.morado {
+	--pin-color: #7e07e4;
+	--pin-dark: #1d069e;
+	--pin-light: #8e7dfc;
+}
+
+section.contenedor-pin .hoja-pin .pin.naranja {
+	--pin-color: #fe7a20;
+	--pin-dark: #9e3e06;
+	--pin-light: #fca47d;
+}
+
+section.contenedor-pin .hoja-pin .pin.rojo {
+	--pin-color: #d02627;
+	--pin-dark: #9e0608;
+	--pin-light: #fc7e7d;
+}
+
+section.contenedor-pin .hoja-pin .pin.verde {
+	--pin-color: #94c57e;
+	--pin-dark: #069e0b;
+	--pin-light: #7dfcbf;
+}
+
+section.contenedor-pin .hoja-pin .pin .shadow {
+	position: absolute;
+	top: 19px;
+	left: -14px;
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
+	background: radial-gradient(var(--paper-shadow), 20%, rgba(201, 191, 141, 0));
+	filter: blur(2px);
+}
+
+section.contenedor-pin .hoja-pin .metal {
+	position: absolute;
+	width: 5px;
+	height: 20px;
+	background: linear-gradient(to right, #808080, 40%, #eae8e8, 50%, #808080);
+	border-radius: 0 0 30% 30%;
+	transform: rotate(50deg);
+	transform-origin: bottom left;
+	top: 15px;
+	border-bottom: 1px solid #808080;
+}
+
+section.contenedor-pin .hoja-pin .bottom-circle {
+	position: absolute;
+	right: 15px;
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
+	background-color: var(--pin-color);
+	background: radial-gradient(circle at bottom right,
+			var(--pin-light),
+			25%,
+			var(--pin-dark),
+			90%,
+			var(--pin-color));
+}
+
+section.contenedor-pin .hoja-pin .bottom-circle::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: -2px;
+	width: 20px;
+	height: 30px;
+	transform: rotate(55deg);
+	transform-origin: 100% 100%;
+	border-radius: 0 0 40% 40%;
+	background: linear-gradient(to right,
+			var(--pin-dark),
+			30%,
+			var(--pin-color),
+			90%,
+			var(--pin-light));
+}
+
+section.contenedor-pin .hoja-pin .bottom-circle::after {
+	content: "";
+	position: absolute;
+	right: -10px;
+	top: -5px;
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	background: radial-gradient(circle at right,
+			var(--pin-light),
+			30%,
+			var(--pin-color),
+			var(--pin-dark) 80%);
+}
+
+section.contenedor-pin .hoja-pin .imagenPie {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 2em;
+}
+
+section.contenedor-pin .hoja-pin .imagenPie img {
+	width: 50%;
+	max-width: 600px;
+}
+
+section.contenedor-pin .hoja-pin .imagenPie p {
+	font-size: 0.75em;
+	text-align: center;
+	margin-top: 20px;
+	overflow-wrap: anywhere;
+}
+
+@media (max-width: 767px) {
+	section.contenedor-pin .hoja-pin {
+		margin: 1em auto;
+		width: 90%;
+		transform: rotate(0);
+	}
+
+	section.contenedor-pin .hoja-pin .imagenPie img {
+		width: 100%;
+	}
+}

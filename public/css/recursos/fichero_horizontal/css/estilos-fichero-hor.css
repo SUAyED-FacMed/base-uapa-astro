@@ -1,0 +1,325 @@
+section.fichero-hor[id^='fichero-hor-'] {
+	--fondo-activo: #fff;
+	--color-recurso: #0069d9;
+	/* --color-recurso: #fe7a20; */
+	/* --color-recurso: #7e07e4; */
+	/* --color-recurso: #94c57e; */
+	font-family: 'Open Sans', sans-serif;
+	text-align: left;
+	font-size: 1em;
+	color: #000;
+	font-weight: 300;
+	overflow: hidden;
+	width: min(1100px, 85%);
+	box-shadow: 0 0 0 10px #fff, 0 15px 50px;
+	margin: 3em auto;
+	line-height: 1.8em;
+	background: var(--fondo-activo);
+	user-select: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: -moz-none;
+	-ms-user-select: none;
+	-o-user-select: none;
+}
+
+section.fichero-hor[id^='fichero-hor-'] .fichero-hor-tabs {
+	display: none;
+}
+
+section.fichero-hor[id^='fichero-hor-'] .fichero-hor-tabs :focus {
+	outline: none;
+}
+
+section.fichero-hor[id^='fichero-hor-'] .fichero-hor-item {
+	border-bottom: 1px solid #eaeaea;
+}
+
+section.fichero-hor[id^='fichero-hor-'] .fichero-hor-item:last-child {
+	border: none;
+}
+
+section.fichero-hor[id^='fichero-hor-'] .fichero-hor-item__label {
+	display: flex;
+	justify-content: space-between;
+	margin: 0;
+	padding: 0.55em;
+	cursor: pointer;
+	-webkit-transition: padding .2s ease;
+	transition: padding .2s ease;
+	position: relative;
+	color: #d3d3d3;
+}
+
+section.fichero-hor[id^='fichero-hor-'] .fichero-hor-item__label .icon {
+	display: flex;
+	align-items: center;
+	transform: rotate(0deg);
+	transition: transform 0.5s ease-in-out;
+}
+
+section.fichero-hor[id^='fichero-hor-'] .fichero-hor-item__label:hover {
+	background: #d3e1ff;
+}
+
+section.fichero-hor[id^='fichero-hor-'] .fichero-hor-item__container {
+	padding: 0 1.25em;
+	height: 0;
+	overflow: hidden;
+	opacity: 0;
+	-webkit-transition: padding .2s ease, opacity .5s .15s ease;
+	transition: padding .2s ease, opacity .5s .15s ease, max-height 0.5s ease-out;
+}
+
+section.fichero-hor[id^='fichero-hor-'] .fichero-hor-active .icon {
+	transform: rotate(180deg);
+}
+
+section.fichero-hor[id^='fichero-hor-'] .fichero-hor-active .fichero-hor-item__label {
+	cursor: inherit;
+	color: #ffffff;
+	background-color: var(--color-recurso);
+}
+
+section.fichero-hor[id^='fichero-hor-'] .fichero-hor-active .fichero-hor-item__container {
+	padding: 0.55em;
+	height: auto;
+	opacity: 1;
+}
+
+section.fichero-hor[id^='fichero-hor-'] .fichero-hor-active .fichero-hor-item__container p:first-child,
+section.fichero-hor[id^='fichero-hor-'] .fichero-hor-active .fichero-hor-item__container h1:first-child,
+section.fichero-hor[id^='fichero-hor-'] .fichero-hor-active .fichero-hor-item__container h2:first-child,
+section.fichero-hor[id^='fichero-hor-'] .fichero-hor-active .fichero-hor-item__container h3:first-child,
+section.fichero-hor[id^='fichero-hor-'] .fichero-hor-active .fichero-hor-item__container h4:first-child,
+section.fichero-hor[id^='fichero-hor-'] .fichero-hor-active .fichero-hor-item__container h5:first-child,
+section.fichero-hor[id^='fichero-hor-'] .fichero-hor-active .fichero-hor-item__container h6:first-child {
+	margin-top: 0;
+}
+
+section.fichero-hor[id^='fichero-hor-'] .fichero-hor-active .fichero-hor-item__container p:last-child,
+section.fichero-hor[id^='fichero-hor-'] .fichero-hor-active .fichero-hor-item__container h1:last-child,
+section.fichero-hor[id^='fichero-hor-'] .fichero-hor-active .fichero-hor-item__container h2:last-child,
+section.fichero-hor[id^='fichero-hor-'] .fichero-hor-active .fichero-hor-item__container h3:last-child,
+section.fichero-hor[id^='fichero-hor-'] .fichero-hor-active .fichero-hor-item__container h4:last-child,
+section.fichero-hor[id^='fichero-hor-'] .fichero-hor-active .fichero-hor-item__container h5:last-child,
+section.fichero-hor[id^='fichero-hor-'] .fichero-hor-active .fichero-hor-item__container h6:last-child {
+	margin-bottom: 0;
+}
+
+section.fichero-hor[id^='fichero-hor-'] .slider {
+	position: relative;
+	width: 20%;
+	transition: all 0.33s cubic-bezier(0.38, 0.8, 0.32, 1.07);
+}
+
+section.fichero-hor[id^='fichero-hor-'] .slider .indicator {
+	position: relative;
+	width: 75%;
+	max-width: 100%;
+	margin: 0 auto;
+	height: 4px;
+	background-color: var(--color-recurso);
+	border-radius: 1px;
+}
+
+section.fichero-hor[id^='fichero-hor-'] .fichero-hor-content>article.fichero-hor-item.fichero-hor-active>div>p {
+	color: #444444;
+	animation-name: content;
+	animation-direction: normal;
+	animation-duration: 0.3s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: 1;
+}
+
+section.fichero-hor[id^='fichero-hor-'] .fichero-hor-content .imagenPie {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 1em;
+}
+
+section.fichero-hor[id^='fichero-hor-'] .fichero-hor-content .imagenPie img {
+	width: 100%;
+	max-width: 500px;
+}
+
+section.fichero-hor[id^='fichero-hor-'] .fichero-hor-content .imagenPie p {
+	font-size: 0.75em;
+	text-align: center;
+	margin-top: 20px;
+	overflow-wrap: anywhere;
+}
+
+section.fichero-hor[id^='fichero-hor-'] .fichero-hor-content ul,
+section.fichero-hor[id^='fichero-hor-'] .fichero-hor-content ol {
+	margin-inline-start: 0;
+}
+
+@keyframes content {
+	from {
+		opacity: 0;
+		transform: translateY(5%);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0%);
+	}
+}
+
+@media (min-width: 767px) {
+	section.fichero-hor[id^='fichero-hor-'] .fichero-hor-tabs {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		background: #447fff1a;
+	}
+
+	section.fichero-hor[id^='fichero-hor-'] .fichero-hor-tabs .fichero-hor-tab {
+		background: #fff;
+		color: #d3d3d3;
+		font: inherit;
+		-webkit-box-flex: 1;
+		-ms-flex: 1;
+		flex: 1;
+		border: none;
+		cursor: pointer;
+		-webkit-transition: all .5s ease;
+		transition: all .5s ease;
+		padding: 10px 0;
+		line-height: normal;
+	}
+
+	section.fichero-hor[id^='fichero-hor-'] .fichero-hor-tabs .fichero-hor-tab:hover:not(.fichero-hor-active) {
+		background: var(--color-recurso);
+		opacity: 0.1;
+	}
+
+	section.fichero-hor[id^='fichero-hor-'] .fichero-hor-tabs .fichero-hor-tab:last-child {
+		border-right: 0;
+	}
+
+	section.fichero-hor[id^='fichero-hor-'] .fichero-hor-tabs .fichero-hor-tab.fichero-hor-active {
+		background: var(--fondo-activo);
+		color: var(--color-recurso);
+		transition: all .5s;
+		font-weight: bold;
+	}
+
+	section.fichero-hor[id^='fichero-hor-'] .fichero-hor-item {
+		padding: 1.4em;
+		display: none;
+		border: none;
+		background: var(--fondo-activo);
+		min-height: 260px;
+	}
+
+	section.fichero-hor[id^='fichero-hor-'] .fichero-hor-item__label,
+	.fichero-hor-item__container {
+		padding: 0;
+		-webkit-transition: inherit;
+		transition: inherit;
+	}
+
+	section.fichero-hor[id^='fichero-hor-'] .fichero-hor-item__label {
+		margin-bottom: 1.5em;
+		display: none;
+	}
+
+	section.fichero-hor[id^='fichero-hor-'] .fichero-hor-item.fichero-hor-active {
+		display: block;
+	}
+
+	section.fichero-hor[id^='fichero-hor-'] .fichero-hor-item.fichero-hor-active .fichero-hor-item__container {
+		padding: 0;
+	}
+
+	section.fichero-hor[id^='fichero-hor-'] .fichero-hor-content .imagenPie img {
+		width: 45%;
+	}
+
+}
+
+/* ---------------- 
+	##Device = Desktops
+	##Screen = 1281px to higher resolution desktops
+*/
+@media (min-width: 1281px) {
+	section.fichero-hor[id^='fichero-hor-'] .fichero-hor-active .fichero-hor-item__label:after {
+		opacity: 0;
+	}
+}
+
+/* ----------------
+	##Device = Laptops, Desktops
+	##Screen = B/w 1025px to 1280px
+*/
+@media (min-width: 1025px) and (max-width: 1280px) {
+	section.fichero-hor[id^='fichero-hor-'] .fichero-hor-active .fichero-hor-item__label:after {
+		opacity: 0;
+	}
+}
+
+/* ----------------
+	##Device = Tablets, Ipads (portrait)
+	##Screen = B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) {
+	section.fichero-hor[id^='fichero-hor-'] .fichero-hor-active .fichero-hor-item__label:after {
+		opacity: 0;
+	}
+}
+
+/* ----------------
+	##Device = Tablets, Ipads (landscape)
+	##Screen = B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+	section.fichero-hor[id^='fichero-hor-'] {
+		width: 95%;
+	}
+
+	section.fichero-hor[id^='fichero-hor-'] .fichero-hor-active .fichero-hor-item__label:after {
+		opacity: 0;
+	}
+}
+
+/* ----------------
+	##Device = Low Resolution Tablets, Mobiles (Landscape)
+	##Screen = B/w 481px to 767px
+*/
+@media (min-width: 481px) and (max-width: 767px) {
+	section.fichero-hor[id^='fichero-hor-'] {
+		width: 95%;
+	}
+
+	section.fichero-hor[id^='fichero-hor-'] .fichero-hor-active .fichero-hor-item__label:after {
+		transform: rotate(-135deg);
+		transition: transform 0.5s ease;
+	}
+
+	section.fichero-hor[id^='fichero-hor-'] .slider {
+		display: none;
+	}
+}
+
+/* ----------------
+	##Device = Most of the Smartphones Mobiles (Portrait)
+	##Screen = B/w 320px to 479px
+*/
+@media (max-width: 480px) {
+	section.fichero-hor[id^='fichero-hor-'] .slider {
+		display: none;
+	}
+
+	section.fichero-hor[id^='fichero-hor-'] .fichero-hor-active .fichero-hor-item__label:after {
+		transform: rotate(-135deg);
+		transition: transform 0.5s ease;
+	}
+
+	section.fichero-hor[id^='fichero-hor-'] .fichero-hor-content ul,
+	section.fichero-hor[id^='fichero-hor-'] .fichero-hor-content ol {
+		margin-inline-start: -1em;
+	}
+}

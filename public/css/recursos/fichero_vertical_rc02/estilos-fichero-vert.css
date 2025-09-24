@@ -1,0 +1,384 @@
+/** {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}*/
+
+/* :root {
+	--fondo-activo: #f9f9f9;
+} */
+
+body#crm {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+
+	text-align: left;
+	/*color: #000;*/
+	font-weight: 400;
+	margin: 2em;
+	user-select: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: -moz-none;
+	-ms-user-select: none;
+	-o-user-select: none;
+}
+
+section.fichero-vert[id^='fichero-vert-'] {
+	--fondo-activo: #f9f9f9;
+	--color-recurso: #305E73;
+	font-family: 'Open Sans', sans-serif;
+	overflow: hidden;
+	width: 95%;
+	max-width: 1200px;
+	background: var(--fondo-activo);
+	display: flex;
+	box-shadow: 0 0 0 10px #fff, 0 15px 50px;
+	font-size: 1rem;
+	line-height: 1.8em;
+}
+
+section.fichero-vert[id^='fichero-vert-'] .fichero-vert-tabs {
+	width: 195px;
+}
+
+section.fichero-vert[id^='fichero-vert-'] .fichero-vert-tabs :focus {
+	outline: none;
+}
+
+section.fichero-vert[id^='fichero-vert-'] .fichero-vert-item {
+	border-bottom: 1px solid #eaeaea;
+}
+
+section.fichero-vert[id^='fichero-vert-'] .fichero-vert-item:last-child {
+	border: none;
+}
+
+section.fichero-vert[id^='fichero-vert-'] .fichero-vert-item__label {
+	display: flex;
+	justify-content: space-between;
+	margin: 0;
+	padding: 0.55rem;
+	cursor: pointer;
+	-webkit-transition: padding .2s ease;
+	transition: padding .2s ease;
+	position: relative;
+}
+
+section.fichero-vert[id^='fichero-vert-'] .fichero-vert-item__label .icon {
+	display: flex;
+	align-items: center;
+	transform: rotate(0deg);
+	transition: transform 0.5s ease-in-out;
+	display: none;
+}
+
+section.fichero-vert[id^='fichero-vert-'] .fichero-vert-active .icon {
+	transform: rotate(180deg);
+}
+
+section.fichero-vert[id^='fichero-vert-'] .fichero-vert-item__container {
+	padding: 0 1.25rem;
+	height: 0;
+	overflow: hidden;
+	opacity: 0;
+	-webkit-transition: padding .2s ease, opacity .5s .15s ease;
+	transition: padding .2s ease, opacity .5s .15s ease;
+}
+
+section.fichero-vert[id^='fichero-vert-'] .fichero-vert-active .fichero-vert-item__label {
+	cursor: inherit;
+}
+
+section.fichero-vert[id^='fichero-vert-'] .fichero-vert-active .fichero-vert-item__container {
+	padding: 0.55rem;
+	height: auto;
+	opacity: 1;
+}
+
+section.fichero-vert[id^='fichero-vert-'] .fichero-vert-active .fichero-vert-item__container p:first-child,
+section.fichero-vert[id^='fichero-vert-'] .fichero-vert-active .fichero-vert-item__container h1:first-child,
+section.fichero-vert[id^='fichero-vert-'] .fichero-vert-active .fichero-vert-item__container h2:first-child,
+section.fichero-vert[id^='fichero-vert-'] .fichero-vert-active .fichero-vert-item__container h3:first-child,
+section.fichero-vert[id^='fichero-vert-'] .fichero-vert-active .fichero-vert-item__container h4:first-child,
+section.fichero-vert[id^='fichero-vert-'] .fichero-vert-active .fichero-vert-item__container h5:first-child,
+section.fichero-vert[id^='fichero-vert-'] .fichero-vert-active .fichero-vert-item__container h6:first-child {
+	margin-top: 0;
+}
+
+section.fichero-vert[id^='fichero-vert-'] .fichero-vert-active .fichero-vert-item__container p:last-child,
+section.fichero-vert[id^='fichero-vert-'] .fichero-vert-active .fichero-vert-item__container h1:last-child,
+section.fichero-vert[id^='fichero-vert-'] .fichero-vert-active .fichero-vert-item__container h2:last-child,
+section.fichero-vert[id^='fichero-vert-'] .fichero-vert-active .fichero-vert-item__container h3:last-child,
+section.fichero-vert[id^='fichero-vert-'] .fichero-vert-active .fichero-vert-item__container h4:last-child,
+section.fichero-vert[id^='fichero-vert-'] .fichero-vert-active .fichero-vert-item__container h5:last-child,
+section.fichero-vert[id^='fichero-vert-'] .fichero-vert-active .fichero-vert-item__container h6:last-child {
+	margin-bottom: 0;
+}
+
+section.fichero-vert[id^='fichero-vert-'] .fichero-vert-tabs .fichero-vert-tab {
+	width: 195px;
+}
+
+section.fichero-vert[id^='fichero-vert-'] .fichero-vert-content>article.fichero-vert-item.fichero-vert-active>div>p {
+	animation-name: content;
+	animation-direction: normal;
+	animation-duration: 0.3s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: 1;
+}
+
+section.fichero-vert[id^='fichero-vert-'] .fichero-vert-content .imagenPie {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+section.fichero-vert[id^='fichero-vert-'] .fichero-vert-content .imagenPie img {
+	width: 100%;
+	max-width: 600px;
+}
+
+section.fichero-vert[id^='fichero-vert-'] .fichero-vert-content .imagenPie p {
+	font-size: 0.75rem;
+	text-align: center;
+	margin-top: 20px;
+	overflow-wrap: anywhere;
+}
+
+@keyframes content {
+	from {
+		opacity: 0;
+		transform: translateY(5%);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0%);
+	}
+}
+
+* {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+
+section.fichero-vert[id^='fichero-vert-'] .fichero-vert+p {
+	color: rgba(255, 255, 255, 0.8);
+	font-weight: 300;
+	font-size: .9rem;
+	margin-top: 2rem;
+}
+
+
+/* ---------------- 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+@media (min-width: 1281px) {
+
+	/* body {
+		background: turquoise;
+	} */
+	section.fichero-vert[id^='fichero-vert-'] .fichero-vert-active .fichero-vert-item__label:after {
+		opacity: 0;
+	}
+}
+
+/* ----------------
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+@media (min-width: 1025px) and (max-width: 1280px) {
+
+	/* body {
+		background: antiquewhite;
+	} */
+	section.fichero-vert[id^='fichero-vert-'] .fichero-vert-active .fichero-vert-item__label:after {
+		opacity: 0;
+	}
+}
+
+/* ----------------
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) {
+
+	/* body {
+		background: lightblue;
+	} */
+	section.fichero-vert[id^='fichero-vert-'] .fichero-vert-active .fichero-vert-item__label:after {
+		opacity: 0;
+	}
+}
+
+/* ----------------
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+
+	/* body {
+		background: lightsalmon;
+	} */
+	section.fichero-vert[id^='fichero-vert-'] .fichero-vert {
+		width: 95%;
+	}
+
+	section.fichero-vert[id^='fichero-vert-'] .fichero-vert-active .fichero-vert-item__label:after {
+		opacity: 0;
+	}
+}
+
+/* ----------------
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+@media (min-width: 481px) and (max-width: 767px) {
+
+	/* body {
+		background: beige;
+	} */
+	section.fichero-vert[id^='fichero-vert-'] .fichero-vert {
+		width: 95%;
+	}
+
+	section.fichero-vert[id^='fichero-vert-'] .fichero-vert-tabs {
+		display: none;
+	}
+
+	section.fichero-vert[id^='fichero-vert-'] .fichero-vert-active .fichero-vert-item__label:after {
+		transform: rotate(-135deg);
+		transition: transform 0.5s ease;
+	}
+}
+
+/* ----------------
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+@media (max-width: 480px) {
+
+	/* body { */
+	/* background: lightskyblue; */
+	/* min-width: 310px; */
+	/* margin: 0; */
+	/* } */
+	/* .fichero-vert{ */
+	/* width: 95%; */
+	/* } */
+	section.fichero-vert[id^='fichero-vert-'] .fichero-vert-tabs {
+		display: none;
+	}
+
+	section.fichero-vert[id^='fichero-vert-'] .fichero-vert-item__label {
+		color: #d3d3d3;
+	}
+
+	section.fichero-vert[id^='fichero-vert-'] .fichero-vert-active .fichero-vert-item__label {
+		color: #ffffff;
+		background-color: var(--color-recurso);
+	}
+
+	section.fichero-vert[id^='fichero-vert-'] .fichero-vert-active .icon {
+		display: initial;
+	}
+
+	section.fichero-vert[id^='fichero-vert-'] .fichero-vert-item__label .icon {
+		display: initial;
+	}
+
+	/* .fichero-vert-active .fichero-vert-item__label:after {
+		transform: rotate(-135deg);
+		transition: transform 0.5s ease; */
+	/* } */
+}
+
+
+@media (min-width: 767px) {
+	section.fichero-vert[id^='fichero-vert-'] .fichero-vert-tabs {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		background: #447fff1a;
+		flex-direction: column;
+	}
+
+	section.fichero-vert[id^='fichero-vert-'] .fichero-vert-tabs .fichero-vert-tab {
+		background: #f2f2f2;
+		color: #d3d3d3;
+		font: inherit;
+		-webkit-box-flex: 1;
+		-ms-flex: 1;
+		flex: 1;
+		border: none;
+		cursor: pointer;
+		-webkit-transition: all .5s ease;
+		transition: all .5s ease;
+		padding: 10px 0;
+	}
+
+	section.fichero-vert[id^='fichero-vert-'] .fichero-vert-tabs .fichero-vert-tab:hover:not(.fichero-vert-active) {
+		background: var(--color-recurso);
+		opacity: 0.1;
+
+	}
+
+	section.fichero-vert[id^='fichero-vert-'] .fichero-vert-tabs .fichero-vert-tab:last-child {
+		border-right: 0;
+	}
+
+	section.fichero-vert[id^='fichero-vert-'] .fichero-vert-tabs .fichero-vert-tab.fichero-vert-active {
+		border-left: 3px solid;
+		background: var(--fondo-activo);
+		color: var(--color-recurso);
+		transition: all .5s;
+		font-weight: bold;
+	}
+
+	section.fichero-vert[id^='fichero-vert-'] .fichero-vert-item {
+		padding: 1.4rem;
+		display: none;
+		border: none;
+		background: var(--fondo-activo);
+		min-height: 260px;
+	}
+
+	section.fichero-vert[id^='fichero-vert-'] .fichero-vert-item__label,
+	section.fichero-vert[id^='fichero-vert-'] .fichero-vert-item__container {
+		padding: 0;
+		-webkit-transition: inherit;
+		transition: inherit;
+	}
+
+	section.fichero-vert[id^='fichero-vert-'] .fichero-vert-item__label {
+		margin-bottom: 1.5rem;
+		display: none;
+	}
+
+	section.fichero-vert[id^='fichero-vert-'] .fichero-vert-item.fichero-vert-active {
+		display: block;
+	}
+
+	section.fichero-vert[id^='fichero-vert-'] .fichero-vert-item.fichero-vert-active .fichero-vert-item__container {
+		padding: 0;
+	}
+
+	section.fichero-vert[id^='fichero-vert-'] .fichero-vert-content .imagenPie img {
+		width: 45%;
+	}
+}

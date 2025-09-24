@@ -1,0 +1,122 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+
+
+/* ==================================================
+  Diseño Rsponsivo
+  ================================================== */
+
+  @media (min-width: 1400px) {
+	.hero, .hero .row {
+		min-height: 750px !important;
+	}
+	.contenedor-ir-arriba {
+		max-width: 1500px;
+	}
+}
+
+@media (min-width: 1200px) {
+
+	.container-section,
+	.content-act {
+		max-width: 1200px;
+	}
+}
+
+@media (min-width: 1100px) {
+	.titulo-left {
+		display: block;
+	}
+}
+
+@media (min-width: 992px) {
+	#creditos ul li div {
+		padding: 0.5rem;
+	}
+
+	#creditos ul li {
+		padding: 0;
+	}
+	
+}
+
+
+@media (min-width: 991px) and (max-width:1200px) {
+	.modal-act .modal-dialog {
+		max-width: 80%;
+	}
+}
+
+@media (min-width: 577px) and (max-width:992px) {
+	.modal-act .modal-dialog {
+		max-width: 90%;
+	}
+}
+
+
+@media (min-width: 768px) {
+	.cover-index {
+		background-image: url(../../img/portada.jpg);
+		background-color: transparent;
+		background-position: center center;
+		background-size: cover;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+	}
+
+	.not {
+		display: block;
+	}
+	.hero, .hero .row {
+		min-height: 100vh;
+	}
+
+	.hero-brand {
+		margin-bottom: 2rem;
+	}
+
+	.cover-title h1 {
+		font-size: 2.2rem;
+		margin-bottom: 1rem;
+	}
+
+	.tagline {
+		font-size: 1.2rem;
+	}
+
+	#nav-principal .logo-uapa {
+		right: 20px;
+	}
+	#nav-principal .dropdown-item  {
+		white-space: nowrap;
+	}
+
+	main h1,
+	main h2 {
+		font-size: 1.8rem;
+	}
+}
+
+
+@media (min-width: 576px) {
+	#nav-principal .logo-uapa {
+		display: block;
+	}
+	.ir-arriba {
+		right:0;
+		bottom:26px;
+	}
+}
+
+@media (max-width: 767px) {
+	#nav-principal .nav-link {
+		padding-left: 0.7rem;
+		padding-right: 0.7rem;
+	}
+}
+

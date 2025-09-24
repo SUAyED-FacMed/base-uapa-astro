@@ -1,0 +1,205 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+/* aquí se colocan los estilos que sean solo de esta UAPA para que no se mezclen con la plantilla general */
+
+/* *****Estilos Extra***** */
+
+.pie-portada {
+    display: none;
+    color: #FFF;
+    opacity: .5;
+    font-size: 0.7rem;
+    line-height: 1.1rem;
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* **************************** animación **************************** */
+.scroll--bloque{
+    animation: aparece 1s linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+}
+@keyframes aparece {
+    from {
+        opacity: 0;
+        scale: 0.4;
+        /* transform: translateX(0); */
+    }
+    to {
+        opacity: 1;
+        scale: 1;
+        /* transform: translateX(-100px); */
+    }
+}
+
+.mensaje {
+    border-top: 1px  dotted black;
+    border-bottom: 1px  dotted black;
+}
+
+.muestra--1{
+    view-timeline-name: --reveal;
+    animation-name: muestra;
+    animation-fill-mode: both;
+    animation-timeline: --reveal;
+    animation-range: entry 25% cover 50%;
+
+}
+@keyframes muestra {
+    from {
+        opacity: 0;
+        scale: 0.4;
+    }
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+
+/* altura de actividad 1 */
+@media (max-width: 767px) {
+    .embed-iframe-act iframe {
+        min-height: 500px;
+    }
+}
+
+@media (min-width: 768px) {
+    .embed-iframe-act iframe {
+        min-height: 800px;
+    }
+}
+
+@media (min-width: 992px) {
+    .embed-iframe-act iframe {
+        min-height: 750px;
+    }
+}
+@media (min-width: 1200px) {
+    .embed-iframe-act iframe {
+        min-height: 650px;
+    }
+}
+
+/* altura de actividad 2 */
+@media (max-width: 767px) {
+    #act-2 .embed-iframe-act iframe {
+        min-height: 800px;
+    }
+}
+
+@media (min-width: 768px) {
+    #act-2 .embed-iframe-act iframe {
+        min-height: 800px;
+    }
+}
+
+@media (min-width: 992px) {
+    #act-2 .embed-iframe-act iframe {
+        min-height: 750px;
+    }
+}
+@media (min-width: 1200px) {
+    #act-2 .embed-iframe-act iframe {
+        min-height: 650px;
+    }
+}
+
+
+
+
+
+/* altura de autoevaluación */
+@media (max-width: 767px) {
+    .embed-iframe-autoe iframe {
+        min-height: 800px;
+    }
+}
+
+@media (min-width: 768px) {
+    .embed-iframe-autoe iframe {
+        min-height: 1000px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .embed-iframe-autoe iframe {
+        min-height: 850px;
+    }
+}
+
+/* ***Pie portada*** */
+@media (min-width:768px) {
+         .pie-portada {
+    display: block;
+    
+}
+
+
+/*botones flotantes*/
+#tools {
+    /* display: none; */
+    position: fixed;
+    top: 198px;
+    right: 0;
+    margin-right: 20px;
+    width: 46px;
+    height: 200px;
+    z-index: 9999;
+    border-radius: 20px 0px 0px 20px;
+    cursor: pointer !important;
+    font-size: 10px !important;
+
+}
+#tools a:hover{
+    opacity:0.90;
+}
+/*botones flotantes*/
+.line{
+    border: 0;
+    border-top: 2px solid #fff;
+    
+    margin: 0 auto;
+    margin-bottom: 30px;
+    /* border: 0;
+    height: 2px;
+    background-image: linear-gradient(to right, #f0f0f0, #ffffff); */
+}
+.autores {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+.custom-tooltip {
+    --bs-tooltip-bg: var(--bs-gray-200);
+    --bs-tooltip-color: #444444;
+    --bs-tooltip-max-width: 500px;
+    --bs-tooltip-opacity: 1;
+    -webkit-filter: drop-shadow(2px 4px 0.5rem #444);
+    filter: drop-shadow(2px 4px 0.5rem #444);
+
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+
+    min-width: 300px;
+    -webkit-user-select: none;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.custom-tooltip>.tooltip-inner>h1,
+.custom-tooltip>.tooltip-inner>p,
+.custom-tooltip>.tooltip-inner>ul,
+.custom-tooltip>.tooltip-inner>ol {
+    text-align: left;
+    color: #444444;
+}
+
+.custom-tooltip>.tooltip-inner>h1 {
+    font-size: 1em;
+    font-weight: 300;
+}

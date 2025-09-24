@@ -1,0 +1,216 @@
+section.contenedor-tarjeta-giratoria {
+	--altura-tar-gir: 400px;
+	--azul: #0099ff;
+	--verde: #94c57e;
+	--morado: #7e07e4;
+	--naranja: #fe7a20;
+	--amarillo: #f7e999;
+	--rosa: #ffc0cb;
+	--color1: #28d7ea;
+	font-family: 'Open Sans', sans-serif;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	flex-direction: row;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: -moz-none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+section.tarjeta-giratoria {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	transform-style: preserve-3d;
+	width: 400px;
+	max-width: 100%;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+section.tarjeta-giratoria .tarjeta {
+	position: relative;
+	width: 300px;
+	height: var(--altura-tar-gir);
+	margin: 20px;
+	transform-style: preserve-3d;
+	perspective: 1000px;
+}
+
+section.tarjeta-giratoria .tarjeta .box {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	transform-style: preserve-3d;
+	transition: 1s ease;
+}
+
+section.tarjeta-giratoria .tarjeta:hover .box {
+	transform: rotateY(180deg);
+}
+
+section.tarjeta-giratoria .tarjeta .box .contenedor1 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+section.tarjeta-giratoria .tarjeta .box .contenedor1> p {
+	text-align: center;
+	margin: 1em;
+}
+
+section.tarjeta-giratoria .tarjeta .box .contenedor1 i.fas.fa-redo.fa-flip-vertical {
+	position: fixed;
+	bottom: 1em;
+	right: 1em;
+	color: #444444;
+	transform: rotateX(45deg) rotateY(180deg);
+}
+
+section.tarjeta-giratoria.azul .tarjeta .box {
+	background: linear-gradient(45deg, var(--azul), #ffffff);
+}
+
+section.tarjeta-giratoria.azul .tarjeta .box .contenedor2 div {
+	background-color: var(--azul);
+}
+
+section.tarjeta-giratoria.verde .tarjeta .box {
+	background: linear-gradient(45deg, var(--verde), #ffffff);
+}
+
+section.tarjeta-giratoria.verde .tarjeta .box .contenedor2 div {
+	background-color: var(--verde);
+}
+
+section.tarjeta-giratoria.morado .tarjeta .box {
+	background: linear-gradient(45deg, var(--morado), #ffffff);
+}
+
+section.tarjeta-giratoria.morado .tarjeta .box .contenedor2 div {
+	background-color: var(--morado);
+}
+
+section.tarjeta-giratoria.naranja .tarjeta .box {
+	background: linear-gradient(45deg, var(--naranja), #ffffff);
+}
+
+section.tarjeta-giratoria.naranja .tarjeta .box .contenedor2 div {
+	background-color: var(--naranja);
+}
+
+section.tarjeta-giratoria.amarillo .tarjeta .box {
+	background: linear-gradient(45deg, var(--amarillo), #ffffff);
+}
+
+section.tarjeta-giratoria.amarillo .tarjeta .box .contenedor2 div {
+	background-color: var(--amarillo);
+}
+
+section.tarjeta-giratoria.rosa .tarjeta .box {
+	background: linear-gradient(45deg, var(--rosa), #ffffff);
+}
+
+section.tarjeta-giratoria.rosa .tarjeta .box .contenedor2 div {
+	background-color: var(--rosa);
+}
+
+section.tarjeta-giratoria.color1 .tarjeta .box {
+	background: linear-gradient(45deg, var(--color1), #ffffff);
+}
+
+section.tarjeta-giratoria.color1 .tarjeta .box .contenedor2 div {
+	background-color: var(--color1);
+}
+
+section.tarjeta-giratoria .imagenPie {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+section.tarjeta-giratoria .imagenPie img {
+	width: 100%;
+	max-width: 400px;
+}
+
+section.tarjeta-giratoria .imagenPie img+p {
+	font-size: 0.75em;
+	text-align: center;
+	margin-top: 20px;
+	overflow-wrap: anywhere;
+}
+
+section.tarjeta-giratoria .tarjeta .box .contenedor1 img {
+	width: 90%;
+}
+
+section.tarjeta-giratoria .tarjeta .box .contenedor2 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #aaaaaa;
+	backface-visibility: hidden;
+	transform-style: preserve-3d;
+	transform: rotateY(180deg);
+}
+
+section.tarjeta-giratoria .tarjeta .box .contenedor2>div {
+	display: flex;
+	flex-direction: column;
+	transform-style: preserve-3d;
+	width: 100%;
+	padding: 20px;
+	transform: translateZ(100px);
+}
+
+section.tarjeta-giratoria .tarjeta .box .contenedor2>div h2 {
+	color: #222222;
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+
+section.tarjeta-giratoria .tarjeta .box .contenedor2>div p {
+	color: #222222;
+	line-height: normal;
+}
+
+section.tarjeta-giratoria .tarjeta .box .contenedor2>div ul {
+	padding-inline-start: 1em;
+}
+
+section.tarjeta-giratoria .tarjeta .box .contenedor2>div a.info {
+	font-family: 'Open Sans', sans-serif;
+	display: inline-block;
+	text-decoration: none;
+	padding: 7px 10px;
+	background: #000;
+	color: #fff;
+	-webkit-box-shadow: 0 0 1px #000;
+	-moz-box-shadow: 0 0 1px #000;
+	box-shadow: 0 0 1px #000;
+	font-size: 12px;
+	width: 100px;
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 10px;
+}
