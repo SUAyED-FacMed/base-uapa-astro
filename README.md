@@ -1,4 +1,4 @@
-# Astro Starter Kit: Basics
+# UAPA Astro Project
 
 ```sh
 npm create astro@latest -- --template basics

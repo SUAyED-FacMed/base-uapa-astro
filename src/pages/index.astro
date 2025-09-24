@@ -3,20 +3,26 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import Navigation from '../components/Navigation.astro';
 import Section from '../components/Section.astro';
+import Activity from '../components/Activity.astro';
+import SelfAssessment from '../components/SelfAssessment.astro';
+import References from '../components/References.astro';
+import Footer from '../components/Footer.astro';
+import { UAPA_CONFIG } from '../config/uapa-config.ts';
+import { ACTIVITIES_CONFIG, ASSESSMENTS_CONFIG } from '../config/activities-config.ts';
 ---
 
 <Layout 
-  title="UAPA. Título de la UApA"
-  description="El sobrepeso y la obesidad son un problema creciente en México que afecta todos los sectores poblacionales debido a malos hábitos alimenticios, sedentarismo, predisposición genética, entre otros, es por eso que la unidad te brindara las herramientas para diagnosticar, estratificar y tratar la obesidad, las dislipidemias y el síndrome metabólico."
-  keywords="Obesidad, dislipidemias, metabolismo, colesterol"
-  author="María Teresa Arredondo Garza, Eduardo Mercado Cruz, Domingo Francisco Javier Aguilar Medina, Gil Alfonso Magos Guerrero"
+  title={`UAPA. ${UAPA_CONFIG.title}`}
+  description={UAPA_CONFIG.description}
+  keywords={UAPA_CONFIG.keywords}
+  author={UAPA_CONFIG.authors.full}
 >
 
 <Hero 
-  title="Título de la UAPA"
-  subtitle="Unidad de Apoyo para el Aprendizaje" 
-  authors="Autor 1 | Autor 2 | Autor 3"
-  imageCaption="Pie de portada. Tomada de https://suayed.facmed.unam.mx/"
+  title={UAPA_CONFIG.title}
+  subtitle={UAPA_CONFIG.subtitle}
+  authors={UAPA_CONFIG.authors.display}
+  imageCaption={UAPA_CONFIG.hero.imageCaption}
 />
 
 <Navigation />
@@ -244,6 +250,127 @@ import Section from '../components/Section.astro';
   </section>
 </Section>
 
+<!-- Actividad 1 -->
+<Activity
+  {...ACTIVITIES_CONFIG.actividad1}
+/>
+
+<!-- Contenido 2 -->
+<Section id="contenido2" title="Praesent eget dui aliquet mollis velit nec" variant="claro">
+  <p>Proin ullamcorper, mi sit amet scelerisque vehicula, ex dolor imperdiet risus, id faucibus risus nibh at
+    mi. Duis augue orci, vulputate quis elit ac, malesuada scelerisque diam. Suspendisse eu consequat tellus.
+    Nam laoreet neque non sagittis tincidunt. Nulla hendrerit turpis ac quam elementum, ut cursus mi sodales.
+    Suspendisse luctus, nibh vitae imperdiet sollicitudin, libero felis mattis sem, in hendrerit diam elit et
+    augue. Vivamus blandit quam a felis ultrices, eu dictum dolor pretium. Suspendisse laoreet condimentum
+    lobortis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+    Morbi at sem nisl. Cras arcu ligula, convallis malesuada mi sit amet, hendrerit venenatis neque. Vivamus
+    ac nisl pellentesque leo condimentum venenatis at eu nunc. Duis a magna quis elit vestibulum finibus a sed
+    eros. Sed nec erat nisl. Praesent imperdiet ex et felis dictum, sit amet congue mauris fermentum. Nam est
+    risus, pulvinar eget lectus ut, laoreet pharetra ex.</p>
+
+  <div class="row note my-recursos w-900 mx-auto" data-aos="fade-left" data-aos-once="true"
+    data-aos-duration="1500" data-aos-anchor-placement="top-bottom" data-aos-offset="150"
+    data-aos-easing="ease-in-out-back">
+    <div class="col-xs-12 col-sm-12">
+      <p class="mb-1">Nam mattis egestas odio, ut bibendum tortor interdum sit amet. Sed eget urna enim. Ut
+        bibendum non odio nec iaculis. Aliquam erat volutpat. Cras nec dapibus erat, nec iaculis purus.
+        Maecenas tempus mauris ac urna elementum rutrum. Etiam ac egestas ipsum.</p>
+    </div>
+  </div>
+
+  <p>Nam commodo odio vel consectetur sagittis. Aliquam vel rhoncus ipsum. Praesent nec arcu id dui feugiat
+    fringilla. Pellentesque sem nisl, luctus id metus id, ultricies commodo justo. Donec efficitur enim sit
+    amet purus interdum viverra. Morbi ornare urna quis quam bibendum laoreet at a eros. Morbi vel elit
+    efficitur, placerat lacus ut, ullamcorper elit. Sed sit amet arcu nec turpis pellentesque sollicitudin ac
+    et ante. Sed lorem sem, ultrices vel suscipit et, luctus sit amet felis.</p>
+
+  <figure class="w-750 mx-auto my-recursos" data-aos="fade-zoom-in" data-aos-once="true"
+    data-aos-easing="ease-in-back" data-aos-duration="800" data-aos-anchor-placement="top-bottom"
+    data-aos-offset="150">
+    <img class="img-fluid rounded d-block w-100" src="img/cont/esquema_estudio_transversal.png" alt="Esquema" title="Esquema">
+    <figcaption class="text-center">Curabitur ullamcorper lectus diam, id fermentum risus sagittis sed.
+    </figcaption>
+  </figure>
+
+  <p>Proin eu ante nibh. Curabitur lacinia, ipsum egestas bibendum vulputate, neque est tristique justo, sit
+    amet iaculis dolor quam hendrerit erat. Curabitur eget pellentesque lorem. Curabitur lacinia mattis odio,
+    in congue orci consequat et. Proin suscipit et dolor vel vestibulum. Aenean et nisi non quam pellentesque
+    dignissim eget hendrerit ipsum. Phasellus rhoncus odio eros, vulputate semper augue eleifend et. Cras eu
+    mollis neque, sed tempor nunc. Aliquam vestibulum sapien ac velit blandit pretium. Sed imperdiet nibh
+    magna, id consectetur nisi luctus venenatis.</p>
+</Section>
+
+<!-- Contenido 3 -->
+<Section id="contenido3" title="Sed commodo metus non magna rutrum cursus" variant="oscuro">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-xl-6">
+      <p>Integer blandit, sem et rhoncus eleifend, elit nunc aliquet tellus, eget auctor ipsum nibh nec felis.
+        Nunc cursus, ipsum tempus mollis laoreet, nulla mauris finibus neque, a consequat velit orci at dolor.
+        Mauris eget ullamcorper felis, ut dignissim dolor. Donec id nibh facilisis urna ornare consectetur.
+        Duis ac odio pellentesque metus tincidunt pretium eu sit amet elit. Sed rutrum nulla in dui porta,
+        eget vestibulum tortor aliquet. Interdum et malesuada fames ac ante ipsum primis in faucibus. Praesent
+        non nulla eu nunc porttitor laoreet. Suspendisse congue, elit a elementum consequat, lectus elit
+        pulvinar turpis, a fermentum risus arcu iaculis magna. Cras luctus tortor vitae lectus suscipit
+        vehicula. Vestibulum fringilla, orci ut venenatis pharetra, turpis nunc bibendum nisi, ut dictum neque
+        orci id ex. Etiam non pulvinar odio.</p>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-xl-6">
+      <figure class="w-600 mx-auto my-recursos my-xl-0" data-aos="fade-zoom-in" data-aos-once="true"
+        data-aos-easing="ease-in-back" data-aos-duration="800" data-aos-anchor-placement="top-bottom"
+        data-aos-offset="150">
+        <img class="img-fluid rounded d-block w-100" src="img/cont/6_9.png" alt="Imagen 4"
+          title="Imagen 4">
+      </figure>
+    </div>
+  </div>
+
+  <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aliquam erat
+    volutpat. Sed malesuada ligula in sapien placerat porta efficitur in augue. Vivamus lectus mauris, maximus
+    ac enim at, lobortis accumsan erat. Etiam aliquet efficitur ex, in convallis massa lobortis vitae. Quisque
+    eu rutrum neque. Vivamus ultrices iaculis erat, maximus lobortis orci euismod in. Quisque ut fermentum
+    ligula, ac dictum ipsum. Proin volutpat venenatis orci nec pellentesque. Pellentesque lacinia condimentum
+    dui, sed pellentesque neque iaculis eu.</p>
+</Section>
+
+<!-- Contenido 4 -->
+<Section id="contenido4" title="Etiam consectetur in felis et sollicitudin" variant="claro">
+  <p>Duis ut velit mattis sem finibus consectetur ac vel arcu. Cras sit amet hendrerit ex, ut ornare felis.
+    Pellentesque tristique elit sit amet neque maximus, sed feugiat urna blandit. Suspendisse malesuada velit
+    ut tempor mattis. Cras imperdiet euismod porttitor. Vestibulum ante ipsum primis in faucibus orci luctus
+    et ultrices posuere cubilia curae; Proin risus justo, fringilla quis eleifend ultricies, finibus a purus.
+  </p>
+
+  <p>Praesent tempus feugiat massa, et porta mi elementum nec. In vulputate magna ac ullamcorper rhoncus.
+    Aliquam commodo, ante sed imperdiet feugiat, tellus nulla ullamcorper mi, id laoreet lorem mauris in
+    justo. Mauris sagittis ligula eget eros dapibus sollicitudin. Fusce tellus libero, rhoncus non velit
+    fringilla, efficitur dictum neque. Nam et nisi odio. Vivamus luctus, arcu eget placerat vestibulum, lectus
+    risus eleifend neque, in porttitor justo leo et ex. Curabitur a urna eros.</p>
+</Section>
+
+<!-- Actividad 2 -->
+<Activity
+  {...ACTIVITIES_CONFIG.actividad2}
+/>
+
+<!-- Autoevaluación -->
+<SelfAssessment
+  {...ASSESSMENTS_CONFIG.autoevaluacion1}
+/>
+
+<!-- Referencias -->
+<References 
+  uapaTitle={UAPA_CONFIG.title}
+  uapaAuthors={UAPA_CONFIG.authors.full}
+  basicReferences={UAPA_CONFIG.references.basic}
+  complementaryReferences={UAPA_CONFIG.references.complementary}
+/>
+
 </main>
+
+<!-- Footer -->
+<Footer
+  uapaTitle={UAPA_CONFIG.title}
+  authorName={UAPA_CONFIG.authors.full}
+/>
 
 </Layout>

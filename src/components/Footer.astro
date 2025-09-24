@@ -1,0 +1,271 @@
+---
+export interface Props {
+  showCuaedSection?: boolean;
+  showToolsMenu?: boolean;
+  showCreditsModal?: boolean;
+  uapaTitle?: string;
+  authorName?: string;
+}
+
+const { 
+  showCuaedSection = true,
+  showToolsMenu = true,
+  showCreditsModal = true,
+  uapaTitle = "Título de la UAPA",
+  authorName = "nombre del autor"
+} = Astro.props;
+---
+
+<!-- ************* INICIA FOOTER ************** -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <!-- contenido -->
+      
+      {showCuaedSection && (
+        <div class="col-xs-12 col-sm-12 col-lg-3">
+          <!-- quitar para CUAED -->
+          <h2 class="text-center text-lg-start">Desarrollado por:</h2>
+          <a class="d-block link-cuaieed mx-auto mx-lg-0 mb-5 " href="https://cuaieed.unam.mx/" target="_blank"
+            title="CUAED" aria-label="CUAED"><img class="img-fluid" id="cuaieedlogo" src="img/logo_cuaed.png"
+              alt=""></a>
+          <!-- Termina quitar para CUAED -->    
+        </div>
+      )}
+
+      <div class="col-xs-12 col-sm-12 col-lg-6">
+        {showCuaedSection && (
+          <Fragment>
+            <!-- quitar para CUAED -->
+            <h2 class="text-center text-lg-start">Aviso legal</h2>
+            <p>Coordinación de Universidad Abierta y Educación Digital de la UNAM. ©Todos los
+              derechos reservados 2025. Hecho en México. Este sitio puede ser reproducido con fines no lucrativos, siempre
+              y cuando no se mutile, se cite la fuente completa y su dirección electrónica, de otra forma, se requiere
+              permiso previo por escrito de la Institución.</p>
+            <p>Al navegar en este sitio, encontrará contenidos diseñados por académicos de la UNAM, denominados Recursos
+              Educativos Abiertos (REA), disponibles para todo el público en forma gratuita. Los contenidos de cada REA
+              son responsabilidad exclusiva de sus autores, y de las entidades académicas a las que están adscritos
+              quienes los desarrollan. Asimismo, los REA no tienen impedimento en materia de propiedad intelectual; ni
+              contienen información que por su naturaleza pueda considerarse confidencial y reservada.
+            </p>
+            <p>Los REA podrán ser utilizados sin fines de lucro, citando invariablemente la fuente y sin alterar la obra,
+              respetando los términos institucionales de uso y los derechos de propiedad intelectual de terceros. Si desea
+              más información, escriba a proyectos@cuaed.unam.mx</p>
+            <!-- termina quitar para CUAED -->
+          </Fragment>
+        )}
+
+        <!--  ****** Creative Commons ****** -->
+        <div id="creative-commons">
+          <hr aria-hidden="true" class="my-4">
+          <a class="link-creative d-block mx-auto mx-lg-0" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
+            target="_blank" aria-hidden="true"> <img src="img/licencia_cc.svg" class="img-fluid w-100" alt=""></a>
+          <p class="mt-4">{uapaTitle} por {authorName} se distribuye bajo una <a
+              class="footer-link btn-link" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
+              target="_blank">Licencia Creative Commons
+              Atribución-NoComercial-SinDerivadas 4.0 Internacional.</a>
+          </p>      
+        </div>
+      </div>
+
+      {showCreditsModal && (
+        <div class="col-xs-12 col-sm-12 col-lg-3 d-flex justify-content-center align-items-start pt-4 pt-lg-0">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#creditos">
+            Créditos
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="creditos" tabindex="-1" aria-labelledby="creditosLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-6" id="creditosLabel">Créditos</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                  <ul class="container-fluid">
+                    <li class="row">
+                      <div class="col-xs-12 col-sm-12 col-lg-6">
+                        <p class="mb-0">Coordinación general</p>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-lg-6">
+                        <p class="mb-0">Jorge León Martínez</p>
+                      </div>
+                    </li>
+                    <li class="row">
+                      <div class="col-xs-12 col-sm-12 col-lg-6">
+                        <p class="mb-0">Coordinación de desarrollo</p>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-lg-6">
+                        <p class="mb-0">Edith Tapia Rangel</p>
+                      </div>
+                    </li>
+                    <li class="row">
+                      <div class="col-xs-12 col-sm-12 col-lg-6">
+                        <p class="mb-0">Coordinación académica</p>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-lg-6">
+                        <p class="mb-0"></p>
+                      </div>
+                    </li>
+                    <li class="row">
+                      <div class="col-xs-12 col-sm-12 col-lg-6">
+                        <p class="mb-0">Elaboración del contenido</p>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-lg-6">
+                        <p class="mb-0"></p>
+                      </div>
+                    </li>
+                    <li class="row">
+                      <div class="col-xs-12 col-sm-12 col-lg-6">
+                        <p class="mb-0">Administración del proyecto</p>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-lg-6">
+                        <p class="mb-0">Juan Luis Becerril Gutiérrez</p>
+                      </div>
+                    </li>
+                    <li class="row">
+                      <div class="col-xs-12 col-sm-12 col-lg-6 d-flex align-items-md-center">
+                        <p class="mb-0">Coordinación de asesoría pedagógica</p>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-lg-6">
+                        <p class="mb-0">Elisa Campero Malo</p>
+                      </div>
+                    </li>
+                    <li class="row">
+                      <div class="col-xs-12 col-sm-12 col-lg-6 d-flex align-items-md-center">
+                        <p class="mb-0">Asesoría pedagógica</p>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-lg-6">
+                        <p class="mb-0"></p>
+                      </div>
+                    </li>
+                    <li class="row">
+                      <div class="col-xs-12 col-sm-12 col-lg-6">
+                        <p class="mb-0">Coordinación de corrección de estilo</p>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-lg-6">
+                        <p class="mb-0">Brenda Gómez Sánchez</p>
+                      </div>
+                    </li>
+                    <li class="row">
+                      <div class="col-xs-12 col-sm-12 col-lg-6">
+                        <p class="mb-0">Corrección de estilo</p>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-lg-6">
+                        <p class="mb-0"></p>
+                      </div>
+                    </li>
+                    <li class="row">
+                      <div class="col-xs-12 col-sm-12 col-lg-6 d-flex align-items-md-center">
+                        <p class="mb-0">Coordinación de diseño gráfico e integración</p>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-lg-6">
+                        <p class="mb-0">Juan de Dios Fuentes Reyes</p>
+                      </div>
+                    </li>
+                    <li class="row">
+                      <div class="col-xs-12 col-sm-12 col-lg-6 d-flex align-items-md-center">
+                        <p class="mb-0">Diseño gráfico e integración</p>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-lg-6">
+                        <p class="mb-0"></p>
+                      </div>
+                    </li>
+                    <li class="row">
+                      <div class="col-xs-12 col-sm-12 col-lg-6">
+                        <p class="mb-0">Coordinación de programación de recursos</p>
+                      </div>
+                      <div class="col-xs-12 col-sm-12 col-lg-6">
+                        <p class="mb-0">Juan Luis Becerril Gutiérrez</p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <!-- boton para ir al inicio del sitio -->
+      <div class="col-xs-12 col-sm-12 fixed-bottom">
+        <div class="container-fluid contenedor-ir-arriba">
+          <div class="row">
+            <div class="col-xs-12 col-sm-12">
+              <div class="position-relative">
+                <a href="#contenido" role="button" class="ir-arriba text-decoration-none position-absolute"
+                  aria-label="Ir al inicio del contenido"><span class="icon-keyboard_arrow_up"></span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{showToolsMenu && (
+  <Fragment>
+    <!--***********************Menú lateral flotante***********************-->
+    <!-- tools -->
+    <div id="tools">
+      <a data-bs-toggle="modal" data-bs-target="#foro"> <img src="img/foro.svg" alt="foro" width="50" height="50" 
+         data-toggle="tooltip" data-placement="top" title="Foro"></a> 
+      
+      <a data-bs-toggle="modal" data-bs-target="#evalua"> <img src="img/evalua.svg" alt="evalua-la-uapa" width="50" height="50"
+         data-toggle="tooltip" data-placement="top" title="¡Danos tu opinión!"></a> 
+
+      <a href="http://ponteenlinea.facmed.unam.mx/" target="_blank"> <img src="img/enlinea.svg" alt="ponte-en-linea" width="50" height="50" data-toggle="tooltip" data-placement="top" title="Ponte en líne@"></a> 
+      <a href="http://ponteenlinea.facmed.unam.mx/moodle/login/logout.php"> <img src="img/salir.svg" alt="cerrar-sesion" width="50" height="50" data-toggle="tooltip" data-placement="top" title="Cerrar sesión"></a> 
+    </div>
+    <!-- fin tools -->
+
+    <!-- modal tools -->
+    <!-- Modal foro -->
+    <div class="modal fade" id="foro" tabindex="-1" aria-labelledby="foro-Label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-6" id="foro-Label">Foro</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <div class="embed-iframe-act">
+              <iframe src="evaluacion/comple_arras1/index.html"></iframe>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Modal evalua -->
+    <div class="modal fade" id="evalua" tabindex="-1" aria-labelledby="evalua-Label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-6" id="evalua-Label">Evalua</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <div class="embed-iframe-act">
+              <iframe src="evaluacion/comple_arras1/index.html"></iframe>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Fragment>
+)}
+
+<!-- ************* TERMINA FOOTER ************** -->

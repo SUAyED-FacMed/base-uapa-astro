@@ -1,0 +1,76 @@
+---
+export interface Props {
+  id: string;
+  title: string;
+  description: string;
+  modalId: string;
+  modalTitle: string;
+  iframeSrc: string;
+  icon?: string;
+}
+
+const { 
+  id, 
+  title, 
+  description, 
+  modalId, 
+  modalTitle, 
+  iframeSrc,
+  icon = "img/ico_act.svg"
+} = Astro.props;
+---
+
+<!-- ************* INICIA ACTIVIDAD ************** -->
+<section id={id} class="wrapper-section wrapper-act">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12">
+        <!-- contenido -->
+        <div class="row content-act rounded shadow mx-auto">
+          <div class="col-xs-12 col-ms-12 col-lg-2">
+            <img src={icon} class="img-fluid d-block mx-auto mx-lg-0 mb-4 icono-act" alt=""
+              data-aos="flip-right" data-aos-once="true" data-aos-duration="1500"
+              data-aos-anchor-placement="top-bottom" data-aos-offset="150">
+          </div>
+
+          <div class="col-xs-12 col-ms-12 col-lg-10">
+            <h2>{title}</h2>
+            <p>{description}</p>
+          </div>
+
+          <!-- Button trigger modal -->
+          <div class="col-xs-12 col-ms-12 d-flex justify-content-center align-items-start pt-4">
+            <button type="button" class="btn btn-primary btn-comenzar" data-bs-toggle="modal"
+              data-bs-target={`#${modalId}`} aria-label="Comenzar la actividad">
+              Comenzar
+            </button>
+          </div>
+        </div>
+        <!-- termina contenido -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal actividad -->
+<div class="modal fade modal-act" id={modalId} tabindex="-1" aria-labelledby={`${modalId}-Label`} aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-6" id={`${modalId}-Label`}>{modalTitle}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <div class="embed-iframe-act">
+          <iframe src={iframeSrc}></iframe>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Termina modal actividad -->
+
+<!-- ************* TERMINA ACTIVIDAD ************** -->

@@ -1,0 +1,155 @@
+---
+export interface Props {
+  basicReferences?: string[];
+  complementaryReferences?: string[];
+  showColorExamples?: boolean;
+  uapaTitle?: string;
+  uapaAuthors?: string;
+  uapaUrl?: string;
+}
+
+const { 
+  basicReferences = [
+    "Maecenas massa felis, imperdiet nec vehicula ut, aliquet non tellus. Nulla consectetur ligula at nunc ultrices ullamcorper. Aliquam laoreet volutpat nisi, non vestibulum sem facilisis nec. In hac habitasse platea dictumst.",
+    "Nunc nunc sem, porttitor at cursus pellentesque, rutrum in lorem. Phasellus vitae vehicula justo. Duis hendrerit justo eget turpis gravida elementum. In porta in nulla a sodales.",
+    "Aenean sollicitudin mauris id tortor vestibulum, https://pixabay.com/es/."
+  ],
+  complementaryReferences = [
+    "Maecenas massa felis, imperdiet nec vehicula ut, aliquet non tellus. Nulla consectetur ligula at nunc ultrices ullamcorper. Aliquam laoreet volutpat nisi, non vestibulum sem facilisis nec. https://pixabay.com/es/.",
+    "Nunc nunc sem, porttitor at cursus pellentesque, rutrum in lorem. Phasellus vitae vehicula justo. Duis hendrerit justo eget turpis gravida elementum. In porta in nulla a sodales.",
+    "Aenean sollicitudin mauris id tortor vestibulum, at molestie odio ultricies. Fusce at ultrices dolor."
+  ],
+  showColorExamples = true,
+  uapaTitle = "Título de la UAPA",
+  uapaAuthors = "nombre del autor",
+  uapaUrl = "(Vínculo)"
+} = Astro.props;
+---
+
+<!-- ************* INICIA REFERENCIAS ************** -->
+<section id="fuentes-info" class="wrapper-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12">
+        <!-- contenido -->
+        <h2>
+          <!--<i class="icon-fuentes-icon icono me-2" aria-hidden="true"></i>-->
+          <!-- cuando el icono es una fuente -->
+          <img class="me-2 img-fluid icono-svg" src="img/ico_fuentes.svg" alt="">
+          <!-- cuando el icono es una imagen -->
+          Fuentes de información
+        </h2>
+
+        <h3>Básicas</h3>
+        <h4>Bibliografía</h4>
+
+        <ul>
+          {basicReferences.map(ref => (
+            <li set:html={ref}></li>
+          ))}
+        </ul>
+
+        <h3>Complementarias</h3>
+        <h4>Bibliografía</h4>
+
+        <ul>
+          {complementaryReferences.map(ref => (
+            <li set:html={ref}></li>
+          ))}
+        </ul>
+
+        {showColorExamples && (
+          <Fragment>
+            <!-- no funcionan bien en firefox -->
+            <div class="scroll--bloque alert alert-danger">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis incidunt soluta nostrum maiores vel animi tempora eius nulla facere, necessitatibus voluptate odit sequi cum. Sunt, quia corporis? Laborum, est fugiat.
+            </div>
+            <div class="scroll--bloque alert alert-primary">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis incidunt soluta nostrum maiores vel animi tempora eius nulla facere, necessitatibus voluptate odit sequi cum. Sunt, quia corporis? Laborum, est fugiat.
+            </div>
+            <div class="scroll--bloque alert alert-dark">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis incidunt soluta nostrum maiores vel animi tempora eius nulla facere, necessitatibus voluptate odit sequi cum. Sunt, quia corporis? Laborum, est fugiat.
+            </div>
+            <div class="scroll--bloque alert alert-warning">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis incidunt soluta nostrum maiores vel animi tempora eius nulla facere, necessitatibus voluptate odit sequi cum. Sunt, quia corporis? Laborum, est fugiat.
+            </div>
+            <div class="scroll--bloque alert alert-success">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis incidunt soluta nostrum maiores vel animi tempora eius nulla facere, necessitatibus voluptate odit sequi cum. Sunt, quia corporis? Laborum, est fugiat.
+            </div>
+            <div class="scroll--bloque alert alert-info">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis incidunt soluta nostrum maiores vel animi tempora eius nulla facere, necessitatibus voluptate odit sequi cum. Sunt, quia corporis? Laborum, est fugiat.
+            </div>
+            <!-- animación entrada -->
+            <div class="muestra--1 alert alert-danger">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
+            </div>
+            <!-- clases de colores a usar  bg-primay bg-secondary bg-success bg-danger bg-warning bg-info bg-dark bg-light -->
+            <!-- color verde -->
+            <div class="muestra--1 bg-success mb-2 p-2 text-white rounded">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
+            </div>
+            <div class="muestra--1 bg-success mb-2 p-2 text-white bg-opacity-75 rounded">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
+            </div>
+            <div class="muestra--1 bg-success mb-2 p-2 bg-opacity-50 rounded">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
+            </div>
+            <div class="muestra--1 bg-success mb-2 p-2 bg-opacity-25 rounded">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
+            </div>
+            <div class="muestra--1 bg-success mb-2 p-2 bg-opacity-10 rounded">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
+            </div>
+            <!-- color amarillo -->
+            <div class="muestra--1 bg-warning mb-2 p-2 text-white rounded">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
+            </div>
+            <div class="muestra--1 bg-warning mb-2 p-2 text-white bg-opacity-75 rounded">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
+            </div>
+            <div class="muestra--1 bg-warning mb-2 p-2 bg-opacity-50 rounded">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
+            </div>
+            <div class="muestra--1 bg-warning mb-2 p-2 bg-opacity-25 rounded">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
+            </div>
+            <div class="muestra--1 bg-warning mb-2 p-2 bg-opacity-10 rounded">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
+            </div>
+            <!-- color azul -->
+            <div class="muestra--1 bg-primary mb-2 p-2 text-white rounded">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
+            </div>
+            <div class="muestra--1 bg-primary mb-2 p-2 text-white bg-opacity-75 rounded">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
+            </div>
+            <div class="muestra--1 bg-primary mb-2 p-2 bg-opacity-50 rounded">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
+            </div>
+            <div class="muestra--1 bg-primary mb-2 p-2 bg-opacity-25 rounded">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
+            </div>
+            <div class="muestra--1 bg-primary mb-2 p-2 bg-opacity-10 rounded">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
+            </div>
+
+            <!-- recurso html mostrar imagen o párrafo -->
+            <details>
+              <summary>hola</summary>
+              <img src="img/cont/imagen1.jpg" alt="">
+              <p class="alert alert-info">qué hace</p>
+            </details>
+          </Fragment>
+        )}
+
+        <!-- como citar -->
+        <h3 class="envolv"><i class="icon-pen me-2" aria-hidden="true"></i><span>Cómo citar</span></h3>
+        <p>Apellido de autor, iniciales del nombre (Año). {uapaTitle}. <em>Unidades de Apoyo para el Aprendizaje</em>.
+          CUAED/Facultad de Medicina-UNAM. {uapaUrl}</p>
+
+        <!-- termina contenido -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ************* TERMINAN REFERENCIAS ************** -->
