@@ -1,0 +1,55 @@
+---
+// Figure.astro - Componente para imágenes con AOS animations y caption opcional
+export interface Props {
+  src: string;
+  alt: string;
+  title?: string;
+  caption?: string;
+  width?: 'w-600' | 'w-650' | 'w-750' | 'w-900';  // Anchos predefinidos comunes
+  class?: string;                                   // Clases adicionales
+  aosType?: string;                                // Tipo de animación AOS
+  aosDuration?: string | number;                   // Duración de animación
+  aosEasing?: string;                              // Tipo de easing
+  aosOffset?: string | number;                     // Offset para activación
+  aosAnchor?: string;                              // Punto de anclaje AOS
+}
+
+const {
+  src,
+  alt,
+  title,
+  caption,
+  width = 'w-750',                                 // Ancho por defecto
+  class: className = '',
+  aosType = 'fade-zoom-in',                        // Animación por defecto
+  aosDuration = '800',
+  aosEasing = 'ease-in-back', 
+  aosOffset = '150',
+  aosAnchor = 'top-bottom'
+} = Astro.props;
+
+// Construir clases CSS
+const figureClasses = `${width} mx-auto my-recursos ${className}`.trim();
+---
+
+<figure 
+  class={figureClasses}
+  data-aos={aosType}
+  data-aos-once="true"
+  data-aos-easing={aosEasing}
+  data-aos-duration={aosDuration}
+  data-aos-anchor-placement={aosAnchor}
+  data-aos-offset={aosOffset}
+>
+  <img 
+    class="img-fluid rounded d-block w-100" 
+    src={src} 
+    alt={alt}
+    title={title || alt}
+  />
+  {caption && (
+    <figcaption class="text-center">
+      {caption}
+    </figcaption>
+  )}
+</figure>

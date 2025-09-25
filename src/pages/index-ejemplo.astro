@@ -7,6 +7,7 @@ import Activity from '../components/Activity.astro';
 import SelfAssessment from '../components/SelfAssessment.astro';
 import References from '../components/References.astro';
 import Objetivo from '../components/Objetivo.astro';
+import Figure from '../components/Figure.astro';
 import { UAPA_CONFIG } from '../config/uapa-config.ts';
 import { formatAuthors } from '../config/format-utils.ts';
 import { ACTIVITIES_CONFIG, ASSESSMENTS_CONFIG } from '../config/activities-config.ts';
@@ -49,13 +50,13 @@ import { ACTIVITIES_CONFIG, ASSESSMENTS_CONFIG } from '../config/activities-conf
       </p>
     </div>
     <div class="col-xs-12 col-sm-12 col-xl-6">
-      <figure class="w-650 mx-auto my-recursos mt-xl-0" data-aos="fade-zoom-in" data-aos-once="true"
-        data-aos-easing="ease-in-back" data-aos-duration="800" data-aos-anchor-placement="top-bottom"
-        data-aos-offset="150">
-        <img class="img-fluid rounded d-block w-100" src="img/cont/confusion.jpg" alt="Imagen 1" title="Imagen 1">
-        <figcaption class="text-center">Vestibulum scelerisque tellus sit amet sem lobortis vulputate.
-        </figcaption>
-      </figure>
+      <Figure 
+        src="img/cont/confusion.jpg" 
+        alt="Imagen 1" 
+        width="w-650"
+        class="mt-xl-0"
+        caption="Vestibulum scelerisque tellus sit amet sem lobortis vulputate."
+      />
     </div>
   </div>
 
@@ -256,7 +257,7 @@ import { ACTIVITIES_CONFIG, ASSESSMENTS_CONFIG } from '../config/activities-conf
 />
 
 <!-- Contenido 2 -->
-<Section id="contenido2" title="Praesent eget dui aliquet mollis velit nec" variant="claro">
+<Section id="contenido2">
   <p>Proin ullamcorper, mi sit amet scelerisque vehicula, ex dolor imperdiet risus, id faucibus risus nibh at
     mi. Duis augue orci, vulputate quis elit ac, malesuada scelerisque diam. Suspendisse eu consequat tellus.
     Nam laoreet neque non sagittis tincidunt. Nulla hendrerit turpis ac quam elementum, ut cursus mi sodales.
@@ -284,13 +285,12 @@ import { ACTIVITIES_CONFIG, ASSESSMENTS_CONFIG } from '../config/activities-conf
     efficitur, placerat lacus ut, ullamcorper elit. Sed sit amet arcu nec turpis pellentesque sollicitudin ac
     et ante. Sed lorem sem, ultrices vel suscipit et, luctus sit amet felis.</p>
 
-  <figure class="w-750 mx-auto my-recursos" data-aos="fade-zoom-in" data-aos-once="true"
-    data-aos-easing="ease-in-back" data-aos-duration="800" data-aos-anchor-placement="top-bottom"
-    data-aos-offset="150">
-    <img class="img-fluid rounded d-block w-100" src="img/cont/esquema_estudio_transversal.png" alt="Esquema" title="Esquema">
-    <figcaption class="text-center">Curabitur ullamcorper lectus diam, id fermentum risus sagittis sed.
-    </figcaption>
-  </figure>
+  <Figure 
+    src="img/cont/esquema_estudio_transversal.png" 
+    alt="Esquema" 
+    width="w-750"
+    caption="Curabitur ullamcorper lectus diam, id fermentum risus sagittis sed."
+  />
 
   <p>Proin eu ante nibh. Curabitur lacinia, ipsum egestas bibendum vulputate, neque est tristique justo, sit
     amet iaculis dolor quam hendrerit erat. Curabitur eget pellentesque lorem. Curabitur lacinia mattis odio,
@@ -301,7 +301,7 @@ import { ACTIVITIES_CONFIG, ASSESSMENTS_CONFIG } from '../config/activities-conf
 </Section>
 
 <!-- Contenido 3 -->
-<Section id="contenido3" title="Sed commodo metus non magna rutrum cursus" variant="oscuro">
+<Section id="contenido3">
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-xl-6">
       <p>Integer blandit, sem et rhoncus eleifend, elit nunc aliquet tellus, eget auctor ipsum nibh nec felis.
@@ -315,12 +315,12 @@ import { ACTIVITIES_CONFIG, ASSESSMENTS_CONFIG } from '../config/activities-conf
         orci id ex. Etiam non pulvinar odio.</p>
     </div>
     <div class="col-xs-12 col-sm-12 col-xl-6">
-      <figure class="w-600 mx-auto my-recursos my-xl-0" data-aos="fade-zoom-in" data-aos-once="true"
-        data-aos-easing="ease-in-back" data-aos-duration="800" data-aos-anchor-placement="top-bottom"
-        data-aos-offset="150">
-        <img class="img-fluid rounded d-block w-100" src="img/cont/6_9.png" alt="Imagen 4"
-          title="Imagen 4">
-      </figure>
+      <Figure 
+        src="img/cont/6_9.png" 
+        alt="Imagen 4"
+        width="w-600"
+        class="my-xl-0"
+      />
     </div>
   </div>
 
@@ -333,7 +333,7 @@ import { ACTIVITIES_CONFIG, ASSESSMENTS_CONFIG } from '../config/activities-conf
 </Section>
 
 <!-- Contenido 4 -->
-<Section id="contenido4" title="Etiam consectetur in felis et sollicitudin" variant="claro">
+<Section id="contenido4">
   <p>Duis ut velit mattis sem finibus consectetur ac vel arcu. Cras sit amet hendrerit ex, ut ornare felis.
     Pellentesque tristique elit sit amet neque maximus, sed feugiat urna blandit. Suspendisse malesuada velit
     ut tempor mattis. Cras imperdiet euismod porttitor. Vestibulum ante ipsum primis in faucibus orci luctus
