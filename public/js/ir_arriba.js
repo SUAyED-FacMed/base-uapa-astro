@@ -1,8 +1,14 @@
 
 
-document.addEventListener("scroll", handleScroll);
+document.addEventListener("DOMContentLoaded", function() {
   // get a reference to our predefined button
   var scrollToTopBtn = document.querySelector(".ir-arriba");
+  
+  // Only initialize if button exists
+  if (scrollToTopBtn) {
+    document.addEventListener("scroll", handleScroll);
+    scrollToTopBtn.addEventListener("click", scrollToTop);
+  }
   
   function handleScroll() {
     var scrollableHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -19,11 +25,10 @@ document.addEventListener("scroll", handleScroll);
     }
   }
   
-  scrollToTopBtn.addEventListener("click", scrollToTop);
-  
   function scrollToTop() {
     window.scrollTo({
       top: 0,
       behavior: "smooth"
     });
   }
+});

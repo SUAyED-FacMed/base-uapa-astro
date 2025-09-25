@@ -55,7 +55,7 @@ const {
       rel="stylesheet"
     />
     <!-- fonts para iconos -->
-    <link rel="stylesheet" href="css/font.css" />
+    <link rel="stylesheet" href="./css/font.css" />
     <!-- fonts para hero -->
     <link
       href="https://fonts.googleapis.com/css?family=Muli"
@@ -63,8 +63,8 @@ const {
     />
 
     <!-- ESTILOS DE CONTENIDO -->
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/personalizado.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/personalizado.css" />
 
     <!-- RECURSOS DINÁMICOS -->
     <ResourceLoader resources={resources} />
@@ -73,46 +73,51 @@ const {
   <body id="contenido">
     <slot />
 
+    <!-- Botón ir arriba -->
+    <i class="ir-arriba fas fa-chevron-up fa-2x"></i>
+
     <!-- ************ SCRIPTS ************ -->
-    <script src="/js/bootstrap.bundle.js" is:inline></script>
+    <script src="./js/bootstrap.bundle.js" is:inline></script>
 
     <!-- AOS animations -->
-    <script src="/js/aos/aos.js" is:inline></script>
-    <script src="/js/aos/aos_inicialize.js" is:inline></script>
+    <script src="./js/aos/aos.js" is:inline></script>
+    <script src="./js/aos/aos_inicialize.js" is:inline></script>
 
     <!-- botón ir arriba -->
-    <script src="/js/ir_arriba.js" is:inline></script>
+    <script src="./js/ir_arriba.js" is:inline></script>
 
     <!-- ************ SCRIPTS DE RECURSOS ************ -->
     <!-- Los scripts de recursos se cargan dinámicamente via ResourceLoader -->
 
     <script is:inline>
-      // Bootstrap tooltips initialization
-      const tooltipTriggerList = document.querySelectorAll(
-        '[data-bs-toggle="tooltip"]'
-      );
-      const tooltipList = [...tooltipTriggerList].map(
-        (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
-      )(
-        // Navbar collapse on mobile
-        function () {
-          let t = document.querySelector(".navbar-collapse");
-          if (t) {
-            t.addEventListener("click", function (a) {
-              if (a.target && a.target.tagName === "A") {
-                const target = a.target;
-                if (
-                  target.classList.contains("dropdown-item") ||
-                  (target.classList.contains("nav-link") &&
-                    !target.classList.contains("dropdown-toggle"))
-                ) {
-                  t.classList.remove("show");
-                }
-              }
-            });
-          }
+      document.addEventListener("DOMContentLoaded", function() {
+        // Bootstrap tooltips initialization
+        if (typeof bootstrap !== 'undefined') {
+          const tooltipTriggerList = document.querySelectorAll(
+            '[data-bs-toggle="tooltip"]'
+          );
+          const tooltipList = [...tooltipTriggerList].map(
+            (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
+          );
         }
-      )();
+
+        // Navbar collapse on mobile
+        let t = document.querySelector(".navbar-collapse");
+        if (t) {
+          t.addEventListener("click", function (a) {
+            if (a.target && a.target.tagName === "A") {
+              const target = a.target;
+              if (
+                target.classList.contains("dropdown-item") ||
+                (target.classList.contains("nav-link") &&
+                  !target.classList.contains("dropdown-toggle"))
+              ) {
+                t.classList.remove("show");
+              }
+            }
+          });
+        }
+      });
     </script>
     <!-- Footer -->
     <Footer
