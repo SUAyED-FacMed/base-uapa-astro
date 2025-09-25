@@ -22,10 +22,12 @@ export const UAPA_CONFIG = {
   keywords: "Obesidad, dislipidemias, metabolismo, colesterol",
   
   // Autores
-  authors: {
-    full: "María Teresa Arredondo Garza, Eduardo Mercado Cruz, Domingo Francisco Javier Aguilar Medina, Gil Alfonso Magos Guerrero",
-    display: "María Teresa Arredondo Garza | Eduardo Mercado Cruz | Domingo Francisco Javier Aguilar Medina | Gil Alfonso Magos Guerrero"
-  },
+  authors: [
+    "María Teresa Arredondo Garza",
+    "Eduardo Mercado Cruz", 
+    "Domingo Francisco Javier Aguilar Medina", 
+    "Gil Alfonso Magos Guerrero"
+  ],
   
   // Hero
   hero: {
@@ -67,15 +69,15 @@ export const UAPA_CONFIG = {
     credits: [
       { role: "Coordinación general", name: "Jorge León Martínez" },
       { role: "Coordinación de desarrollo", name: "Edith Tapia Rangel" },
-      { role: "Coordinación académica", name: "" },
-      { role: "Elaboración del contenido", name: "" },
+      { role: "Coordinación académica", name: "Persona A, Persona B, Persona C" },
+      { role: "Elaboración del contenido", name: "Autor 1, Autor 2, Autor 3" },
       { role: "Administración del proyecto", name: "Juan Luis Becerril Gutiérrez" },
       { role: "Coordinación de asesoría pedagógica", name: "Elisa Campero Malo" },
-      { role: "Asesoría pedagógica", name: "" },
+      { role: "Asesoría pedagógica", name: "Pedagogo A, Pedagogo B" },
       { role: "Coordinación de corrección de estilo", name: "Brenda Gómez Sánchez" },
-      { role: "Corrección de estilo", name: "" },
+      { role: "Corrección de estilo", name: "Editor 1, Editor 2" },
       { role: "Coordinación de diseño gráfico e integración", name: "Juan de Dios Fuentes Reyes" },
-      { role: "Diseño gráfico e integración", name: "" },
+      { role: "Diseño gráfico e integración", name: "Diseñador A, Diseñador B, Diseñador C" },
       { role: "Coordinación de programación de recursos", name: "Juan Luis Becerril Gutiérrez" }
     ]
   }

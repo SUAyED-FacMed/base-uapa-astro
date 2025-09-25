@@ -1,5 +1,6 @@
 ---
-import { UAPA_CONFIG } from '../config/uapa-config';
+import { UAPA_CONFIG } from '../config/uapa-config.ts';
+import { formatAuthors, formatNamesWithBreaks } from '../config/format-utils.ts';
 
 export interface Props {
   showCuaedSection?: boolean;
@@ -14,7 +15,7 @@ const {
   showToolsMenu = UAPA_CONFIG.footer.showToolsMenu,
   showCreditsModal = UAPA_CONFIG.footer.showCreditsModal,
   uapaTitle = UAPA_CONFIG.title,
-  authorName = UAPA_CONFIG.authors.display
+  authorName = formatAuthors(UAPA_CONFIG.authors, 'display')
 } = Astro.props;
 
 const credits = UAPA_CONFIG.footer.credits;
@@ -95,7 +96,7 @@ const credits = UAPA_CONFIG.footer.credits;
                           <p class="mb-0">{credit.role}</p>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-lg-6">
-                          <p class="mb-0">{credit.name}</p>
+                          <p class="mb-0" set:html={formatNamesWithBreaks(credit.name)}></p>
                         </div>
                       </li>
                     ))}
