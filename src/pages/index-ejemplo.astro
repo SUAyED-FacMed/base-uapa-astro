@@ -18,7 +18,7 @@ import { ACTIVITIES_CONFIG, ASSESSMENTS_CONFIG } from '../config/activities-conf
   description={UAPA_CONFIG.description}
   keywords={UAPA_CONFIG.keywords}
   author={formatAuthors(UAPA_CONFIG.authors, 'full')}
-  resources={['acordeon-horizontal']}
+  resources={['acordeon-vertical']}
 >
 
 <Hero 
@@ -96,156 +96,64 @@ import { ACTIVITIES_CONFIG, ASSESSMENTS_CONFIG } from '../config/activities-conf
 </Section>
 
 <Section id="contenido1">
-  <!-- acordeón horizontal -->
-  <section class="acordeon-horizontal" id="acordeon-horizontal-3">
-    <div class="etiquetas">
-      <label for="radioC1" id="img1">
-        <div class="seccion" id='sec1'>
-          <div class="titulo">
-            Sección 1
-            <div class="icon">
-              <i class="fas fa-chevron-down"></i>
-            </div>
-          </div>
-          <div class="fondo">
-          </div>
-          <div class="info">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore doloremque illum quia
-              veniam rerum, asperiores aliquam? Praesentium explicabo aliquam voluptatem nesciunt officia
-              nihil, autem nobis, placeat provident sequi fugiat, ducimus culpa. Sit illum et labore
-              quaerat officia corrupti soluta.
-            </p>
-          </div>
-        </div>
-      </label>
-      <label for="radioC2" id="img2">
-        <div class="seccion" id="sec2">
-          <div class="titulo">
-            Sección 2
-            <div class="icon">
-              <i class="fas fa-chevron-down"></i>
-            </div>
-          </div>
-          <div class="fondo">
-          </div>
-          <div class="info">
-            <p>
-              Facilis libero perspiciatis voluptatem odit, optio iste porro accusamus eius molestiae atque
-              distinctio maiores explicabo ea animi voluptatum, quia ducimus. Doloremque commodi
-              aspernatur eaque ipsum iure quam qui voluptates deleniti et. Laboriosam laudantium neque
-              accusantium modi, distinctio officia repudiandae similique.
-            </p>
-          </div>
-        </div>
-      </label>
-      <label for="radioC3" id="img3">
-        <div class="seccion" id="sec3">
-          <div class="titulo">
-            Sección 3
-            <div class="icon">
-              <i class="fas fa-chevron-down"></i>
-            </div>
-          </div>
-          <div class="fondo">
-            <img src="css/recursos/acordeon_horizontal/img/imagen1.jpg" alt="">
-          </div>
-          <div class="info">
-          </div>
-        </div>
-      </label>
-      <label for="radioC4" id="img4">
-        <div class="seccion" id="sec4">
-          <div class="titulo">
-            Sección 4
-            <div class="icon">
-              <i class="fas fa-chevron-down"></i>
-            </div>
-          </div>
-          <div class="fondo">
-            <img src="css/recursos/acordeon_horizontal/img/imagen1.jpg" alt="">
-          </div>
-          <div class="info">
-          </div>
-        </div>
-      </label>
-      <label for="radioC5" id="img5">
-        <div class="seccion" id="sec5">
-          <div class="titulo">
-            Sección 5
-            <div class="icon">
-              <i class="fas fa-chevron-down"></i>
-            </div>
-          </div>
-          <div class="fondo">
-            <img src="css/recursos/acordeon_horizontal/img/imagen1.jpg" alt="">
-          </div>
-          <div class="info">
-          </div>
-        </div>
-      </label>
-      <label for="radioC6" id="img6">
-        <div class="seccion" id="sec6">
-          <div class="titulo">
-            Sección 6
-            <div class="icon">
-              <i class="fas fa-chevron-down"></i>
-            </div>
-          </div>
-          <div class="fondo">
-            <img src="css/recursos/acordeon_horizontal/img/imagen1.jpg" alt="">
-          </div>
-          <div class="info">
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum illo sit odit, et voluptate
-              deserunt esse nostrum. Architecto eius vero quas molestiae autem quisquam. Doloribus
-              voluptas sint voluptate aut consectetur.
-            </p>
-          </div>
-        </div>
-      </label>
-      <label for="radioC7" id="img7">
-        <div class="seccion" id="sec7">
-          <div class="titulo">
-            Sección 7
-            <div class="icon">
-              <i class="fas fa-chevron-down"></i>
-            </div>
-          </div>
-          <div class="fondo">
-            <img src="css/recursos/acordeon_horizontal/img/imagen1.jpg" alt="">
-          </div>
-          <div class="info">
-            <p>
-              Fugit rem modi doloremque culpa qui corporis eveniet suscipit nihil iusto repellendus,
-              praesentium beatae natus cupiditate est vitae aut hic vero reiciendis! Reprehenderit
-              voluptatum hic earum id quam nobis corrupti!
-            </p>
-          </div>
-        </div>
-      </label>
+  <!-- Acordeón vertical -->
+  <section class="accordion" id="acordeon-vert-1">
+    <div class="accordion-item-header">
+      Sección 1 - Definición de estudio transversal
     </div>
-    <div class="inputs">
-      <div class="radios">
-        <input type="radio" name="acordeon" id="radioC1"><i></i>
+    <div class="accordion-item-body">
+      <div class="accordion-item-body-content">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore doloremque illum quia
+          veniam rerum, asperiores aliquam? Praesentium explicabo aliquam voluptatem nesciunt officia
+          nihil, autem nobis, placeat provident sequi fugiat, ducimus culpa. Sit illum et labore
+          quaerat officia corrupti soluta.
+        </p>
       </div>
-      <div class="radios">
-        <input type="radio" name="acordeon" id="radioC2"><i></i>
+    </div>
+  </section>
+
+  <section class="accordion" id="acordeon-vert-2">
+    <div class="accordion-item-header">
+      Sección 2 - Características principales
+    </div>
+    <div class="accordion-item-body">
+      <div class="accordion-item-body-content">
+        <p>
+          Facilis libero perspiciatis voluptatem odit, optio iste porro accusamus eius molestiae atque
+          distinctio maiores explicabo ea animi voluptatum, quia ducimus. Doloremque commodi
+          aspernatur eaque ipsum iure quam qui voluptates deleniti et. Laboriosam laudantium neque
+          accusantium modi, distinctio officia repudiandae similique.
+        </p>
       </div>
-      <div class="radios">
-        <input type="radio" name="acordeon" id="radioC3"><i></i>
+    </div>
+  </section>
+
+  <section class="accordion" id="acordeon-vert-3">
+    <div class="accordion-item-header">
+      Sección 3 - Ejemplo con imagen
+    </div>
+    <div class="accordion-item-body">
+      <div class="accordion-item-body-content">
+        <div class="row">
+          <div class="col-md-8">
+            <p>Esta sección incluye una imagen como ejemplo del contenido visual que puede tener un acordeón vertical.</p>
+          </div>
+          <div class="col-md-4">
+            <img src="css/recursos/acordeon_horizontal/img/imagen1.jpg" alt="Imagen de ejemplo" class="img-responsive">
+          </div>
+        </div>
       </div>
-      <div class="radios">
-        <input type="radio" name="acordeon" id="radioC4"><i></i>
-      </div>
-      <div class="radios">
-        <input type="radio" name="acordeon" id="radioC5"><i></i>
-      </div>
-      <div class="radios">
-        <input type="radio" name="acordeon" id="radioC6"><i></i>
-      </div>
-      <div class="radios">
-        <input type="radio" name="acordeon" id="radioC7"><i></i>
+    </div>
+  </section>
+
+  <section class="accordion" id="acordeon-vert-4">
+    <div class="accordion-item-header">
+      Sección 4 - Contenido adicional
+    </div>
+    <div class="accordion-item-body">
+      <div class="accordion-item-body-content">
+        <p>Contenido de la sección 4 con información adicional sobre estudios transversales.</p>
       </div>
     </div>
   </section>

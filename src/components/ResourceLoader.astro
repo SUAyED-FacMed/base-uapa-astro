@@ -28,7 +28,15 @@ const AVAILABLE_RESOURCES = {
     files: {
       css: ['all.css', 'estilos-acordeon-vertical.css'],
       js: ['acordeon-vertical.js']
-    }
+    },
+    init: `
+      document.addEventListener('DOMContentLoaded', function() {
+        acordeonVertical("acordeon-vert-1");
+        acordeonVertical("acordeon-vert-2");
+        acordeonVertical("acordeon-vert-3");
+        acordeonVertical("acordeon-vert-4");
+      });
+    `
   },
   
   // Carruseles
