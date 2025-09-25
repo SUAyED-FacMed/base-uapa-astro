@@ -61,45 +61,7 @@ export const UAPA_CONFIG = {
     ] as NavItem[]
   },
 
-  // Configuración de secciones (orden determina patrón zebra automático)
-  sections: [
-    {
-      id: "introduccion",
-      title: "Introducción"
-    },
-    {
-      id: "contenido1", 
-      title: "Vestibulum sed sollicitudin elit"
-    },
-    {
-      id: "contenido2",
-      title: "Praesent eget dui aliquet mollis velit nec"
-    },
-    {
-      id: "contenido3",
-      title: "Sed commodo metus non magna rutrum cursus"
-    },
-    {
-      id: "contenido4",
-      title: "Etiam consectetur in felis et sollicitudin"
-    },
-    {
-      id: "actividad1",
-      title: "Actividad 1"
-    },
-    {
-      id: "actividad2", 
-      title: "Actividad 2"
-    },
-    {
-      id: "autoevaluacion1",
-      title: "Autoevaluación"
-    },
-    {
-      id: "fuentes-info",
-      title: "Fuentes de Información"
-    }
-  ],
+
 
   // Footer y créditos
   footer: {

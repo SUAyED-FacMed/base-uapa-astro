@@ -1,16 +1,20 @@
 // Utilidades para formatear contenido de la configuración UAPA
+import { UAPA_CONFIG, type NavItem } from './uapa-config.ts';
 
 /**
  * Formatea un array de autores según el contexto
  * @param authors Array de nombres de autores
- * @param format 'display' para Hero (con |), 'full' para metadatos (con comas)
+ * @param type 'display' para Hero (solo primero), 'full' para metadatos (todos)
  * @returns String formateado
  */
-export function formatAuthors(authors: string[], format: 'display' | 'full' = 'full'): string {
-  if (format === 'display') {
-    return authors.join(' | ');
+export function formatAuthors(authors: string[], type: 'display' | 'full'): string {
+  if (type === 'display') {
+    // Solo el primer autor para display
+    return authors[0] || '';
+  } else {
+    // Todos los autores separados por comas para full
+    return authors.join(', ');
   }
-  return authors.join(', ');
 }
 
 /**
@@ -31,34 +35,48 @@ export function formatNamesWithBreaks(names: string): string {
 }
 
 /**
- * Verifica si un string contiene múltiples nombres (tiene comas)
- * @param names String de nombres
- * @returns boolean
+ * Extrae todas las secciones de la navegación (incluyendo hijos)
+ * Esto elimina la duplicación entre navigation.menuItems y sections
+ * @returns Array de secciones con id y título
  */
-export function hasMultipleNames(names: string): boolean {
-  return names.includes(',');
+function extractSectionsFromNavigation(): Array<{id: string, title: string}> {
+  const sections: Array<{id: string, title: string}> = [];
+  
+  function extractFromItems(items: NavItem[]) {
+    items.forEach(item => {
+      if (item.href && item.href.startsWith('#')) {
+        const id = item.href.substring(1); // Remover el #
+        sections.push({ id, title: item.label });
+      }
+      if (item.children) {
+        extractFromItems(item.children);
+      }
+    });
+  }
+  
+  extractFromItems(UAPA_CONFIG.navigation.menuItems);
+  return sections;
 }
 
 /**
- * Obtiene la configuración de una sección por su ID y calcula variante zebra
+ * Obtiene la configuración de una sección por su ID extrayendo de la navegación
+ * Calcula automáticamente la variante zebra basada en el orden en la navegación
  * @param sectionId ID de la sección
- * @param sections Array de configuración de secciones del UAPA_CONFIG
- * @returns Configuración de la sección con variante automática
+ * @returns Configuración de la sección con variante automática o null si no existe
  */
-export function getSectionConfig(sectionId: string, sections: any[]) {
-  const sectionIndex = sections.findIndex(section => section.id === sectionId);
+export function getSectionConfig(sectionId: string) {
+  const sections = extractSectionsFromNavigation();
+  const sectionIndex = sections.findIndex(s => s.id === sectionId);
   
   if (sectionIndex === -1) {
     return null;
   }
   
-  const sectionData = sections[sectionIndex];
-  
-  // Calcular variante zebra: par = claro, impar = oscuro
-  const variant = sectionIndex % 2 === 0 ? 'claro' : 'oscuro';
+  const section = sections[sectionIndex];
+  const variant = getZebraVariant(sectionIndex);
   
   return {
-    ...sectionData,
+    title: section.title,
     variant,
     index: sectionIndex
   };
@@ -71,4 +89,13 @@ export function getSectionConfig(sectionId: string, sections: any[]) {
  */
 export function getZebraVariant(index: number): 'claro' | 'oscuro' {
   return index % 2 === 0 ? 'claro' : 'oscuro';
+}
+
+/**
+ * Verifica si un string contiene múltiples nombres (tiene comas)
+ * @param names String de nombres
+ * @returns boolean
+ */
+export function hasMultipleNames(names: string): boolean {
+  return names.includes(',');
 }

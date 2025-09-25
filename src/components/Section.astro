@@ -1,5 +1,4 @@
 ---
-import { UAPA_CONFIG } from '../config/uapa-config.ts';
 import { getSectionConfig } from '../config/format-utils.ts';
 
 export interface Props {
@@ -16,8 +15,8 @@ const {
   class: className = ''
 } = Astro.props;
 
-// Obtener configuración de la sección desde el config con patrón zebra automático
-const sectionConfig = getSectionConfig(id, UAPA_CONFIG.sections);
+// Obtener configuración de la sección desde la navegación con patrón zebra automático
+const sectionConfig = getSectionConfig(id);
 
 // Usar título y variant del config/cálculo si no se proveen explícitamente
 const title = providedTitle || sectionConfig?.title || 'Sección Sin Título';
