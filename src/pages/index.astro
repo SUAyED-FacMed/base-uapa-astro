@@ -6,6 +6,7 @@ import Section from '../components/Section.astro';
 import Activity from '../components/Activity.astro';
 import SelfAssessment from '../components/SelfAssessment.astro';
 import References from '../components/References.astro';
+import Objetivo from '../components/Objetivo.astro';
 import { UAPA_CONFIG } from '../config/uapa-config.ts';
 import { formatAuthors } from '../config/format-utils.ts';
 import { ACTIVITIES_CONFIG, ASSESSMENTS_CONFIG } from '../config/activities-config.ts';
@@ -88,15 +89,9 @@ import { ACTIVITIES_CONFIG, ASSESSMENTS_CONFIG } from '../config/activities-conf
      </p>
   </div>
 
-  <div class="col-xs-12 col-sm-12 my-recursos mb-0 alert alert-info">
-    <h3 class="visually-hidden">Objetivo</h3>
-    <div data-aos="fade-left" data-aos-once="true" data-aos-duration="1500"
-      data-aos-anchor-placement="top-bottom" data-aos-offset="150" data-aos-easing="ease-in-out-back">
-      <p class="mb-0"><i class="icon-target icono me-2" aria-hidden="true"></i> Nunc tempor auctor sem, ut
-        posuere est dictum et. Suspendisse in accumsan mauris. Curabitur purus libero, auctor non purus eu,
-        tempor porta sem. Suspendisse dolor felis, suscipit in tellus fringilla, egestas finibus nisi. </p>
-    </div>
-  </div>
+  <Objetivo 
+    text="Nunc tempor auctor sem, ut posuere est dictum et. Suspendisse in accumsan mauris. Curabitur purus libero, auctor non purus eu, tempor porta sem. Suspendisse dolor felis, suscipit in tellus fringilla, egestas finibus nisi."
+  />
 </Section>
 
 <Section id="contenido1" title="Vestibulum sed sollicitudin elit" variant="oscuro">

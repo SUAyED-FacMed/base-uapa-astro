@@ -1,0 +1,48 @@
+---
+export interface Props {
+  title?: string;
+  text: string;
+  variant?: 'info' | 'primary' | 'success' | 'warning';
+  showIcon?: boolean;
+  showTitle?: boolean;
+}
+
+const {
+  title = "Objetivo",
+  text,
+  variant = 'info',
+  showIcon = true,
+  showTitle = false
+} = Astro.props;
+
+// Mapear variantes a clases de Bootstrap
+const alertClass = `alert-${variant}`;
+---
+
+<div class={`col-xs-12 col-sm-12 my-recursos mb-3 alert ${alertClass} d-flex align-items-start`}>
+  {showTitle && (
+    <h3 class="h5 me-3 mb-0 text-nowrap">{title}:</h3>
+  )}
+  
+  <div
+    class="flex-grow-1"
+    data-aos="fade-left"
+    data-aos-once="true"
+    data-aos-duration="1500"
+    data-aos-anchor-placement="top-bottom"
+    data-aos-offset="150"
+    data-aos-easing="ease-in-out-back"
+  >
+    <p class="mb-0 lh-base">
+      {showIcon && (
+        <i class="icon-target icono me-2" aria-hidden="true"></i>
+      )}
+      {text}
+    </p>
+  </div>
+  
+  <!-- Título para accesibilidad cuando no se muestra visualmente -->
+  {!showTitle && (
+    <h3 class="visually-hidden">{title}</h3>
+  )}
+</div>
