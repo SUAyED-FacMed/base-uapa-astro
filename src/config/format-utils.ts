@@ -38,3 +38,37 @@ export function formatNamesWithBreaks(names: string): string {
 export function hasMultipleNames(names: string): boolean {
   return names.includes(',');
 }
+
+/**
+ * Obtiene la configuración de una sección por su ID y calcula variante zebra
+ * @param sectionId ID de la sección
+ * @param sections Array de configuración de secciones del UAPA_CONFIG
+ * @returns Configuración de la sección con variante automática
+ */
+export function getSectionConfig(sectionId: string, sections: any[]) {
+  const sectionIndex = sections.findIndex(section => section.id === sectionId);
+  
+  if (sectionIndex === -1) {
+    return null;
+  }
+  
+  const sectionData = sections[sectionIndex];
+  
+  // Calcular variante zebra: par = claro, impar = oscuro
+  const variant = sectionIndex % 2 === 0 ? 'claro' : 'oscuro';
+  
+  return {
+    ...sectionData,
+    variant,
+    index: sectionIndex
+  };
+}
+
+/**
+ * Calcula la variante zebra basada en el índice
+ * @param index Índice de la sección (0, 1, 2, ...)
+ * @returns 'claro' para índices pares, 'oscuro' para impares
+ */
+export function getZebraVariant(index: number): 'claro' | 'oscuro' {
+  return index % 2 === 0 ? 'claro' : 'oscuro';
+}
