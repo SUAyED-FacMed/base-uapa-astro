@@ -24,7 +24,7 @@ const AVAILABLE_RESOURCES = {
   },
   'acordeon-vertical': {
     css: 'css/recursos/acordeon_vertical_rc04/',
-    js: 'css/recursos/acordeon_vertical_rc04/',
+    js: 'js/recursos/',
     files: {
       css: ['all.css', 'estilos-acordeon-vertical.css'],
       js: ['acordeon-vertical.js']
@@ -56,46 +56,46 @@ const AVAILABLE_RESOURCES = {
   },
   'fichero-vertical': {
     css: 'css/recursos/fichero_vertical_rc02/',
-    js: 'css/recursos/fichero_vertical_rc02/',
+    js: 'js/recursos/',
     files: {
       css: ['all.css', 'estilos-fichero-vert.css'],
-      js: ['fichero-vertical.js']
+      js: ['fichero-vert.js']
     }
   },
   
   // Contenidos
   'folder-contenidos': {
     css: 'css/recursos/folder_contenidos/css/',
-    js: 'css/recursos/folder_contenidos/js/',
+    js: null,
     files: {
       css: ['estilos-folder.css'],
-      js: ['folder.js']
+      js: []
     }
   },
   
   // Hojas
   'hoja-bloc': {
     css: 'css/recursos/hoja_bloc/css/',
-    js: 'css/recursos/hoja_bloc/js/',
+    js: null,
     files: {
       css: ['estilos-hoja-bloc.css'],
-      js: ['hoja-bloc.js']
+      js: []
     }
   },
   'hoja-espiral': {
     css: 'css/recursos/hoja_espiral/css/',
-    js: 'css/recursos/hoja_espiral/js/',
+    js: null,
     files: {
       css: ['estilos-hoja-espiral.css'],
-      js: ['hoja-espiral.js']
+      js: []
     }
   },
   'hojas-desordenadas': {
     css: 'css/recursos/hojas_desordenadas/css/',
-    js: 'css/recursos/hojas_desordenadas/js/',
+    js: null,
     files: {
       css: ['estilos-hojas-desordenadas.css'],
-      js: ['hojas-desordenadas.js']
+      js: []
     }
   },
   
@@ -104,8 +104,8 @@ const AVAILABLE_RESOURCES = {
     css: 'css/recursos/hotspot/css/',
     js: 'css/recursos/hotspot/js/',
     files: {
-      css: ['estilos-hot-spot.css'],
-      js: ['hotspot.js']
+      css: ['estilos-hot-spot.css', 'bootstrap.min.css'],
+      js: ['hotspot.js', 'bootstrap.bundle.min.js']
     }
   },
   
@@ -115,7 +115,7 @@ const AVAILABLE_RESOURCES = {
     js: 'css/recursos/linea_tiempo_horizontal/js/',
     files: {
       css: ['estilos-linea-tiempo-horizontal.css'],
-      js: ['linea-tiempo-horizontal.js']
+      js: ['timeline.min.js', 'linea_tiempo_hor.js']
     }
   },
   'linea-tiempo-vertical': {
@@ -123,61 +123,61 @@ const AVAILABLE_RESOURCES = {
     js: 'css/recursos/linea_tiempo_vertical/js/',
     files: {
       css: ['estilos-linea-tiempo-vertical.css'],
-      js: ['linea-tiempo-vertical.js']
+      js: ['timeline.min.js', 'linea_tiempo_vertical.js']
     }
   },
   
   // Listas
   'lista-desplegable': {
     css: 'css/recursos/lista_desplegable/css/',
-    js: 'css/recursos/lista_desplegable/js/',
+    js: null,
     files: {
-      css: ['estilos-lista_desplegable.css'],
-      js: ['lista-desplegable.js']
+      css: ['estilos-lista_desplegable.css', 'listaAnimacion.css'],
+      js: []
     }
   },
   
   // Notas
   'nota-cinta': {
     css: 'css/recursos/nota_cinta/css/',
-    js: 'css/recursos/nota_cinta/js/',
+    js: null,
     files: {
       css: ['estilos-nota-cinta.css'],
-      js: ['nota-cinta.js']
+      js: []
     }
   },
   'nota-pin': {
     css: 'css/recursos/nota_pin/css/',
-    js: 'css/recursos/nota_pin/js/',
+    js: null,
     files: {
       css: ['estilos-nota-pin.css'],
-      js: ['nota-pin.js']
+      js: []
     }
   },
   
   // Tarjetas
   'tarjeta-desplegable1': {
     css: 'css/recursos/tarjeta_desplegable1/css/',
-    js: 'css/recursos/tarjeta_desplegable1/js/',
+    js: null,
     files: {
-      css: ['estilos-tarjeta-desplegable-1.css'],
-      js: ['tarjeta-desplegable1.js']
+      css: ['all.css', 'fontawesome.min.css', 'font.css'],
+      js: []
     }
   },
   'tarjeta-desplegable2': {
     css: 'css/recursos/tarjeta_desplegable2/css/',
-    js: 'css/recursos/tarjeta_desplegable2/js/',
+    js: null,
     files: {
-      css: ['estilos-tarjeta-desplegable2.css'],
-      js: ['tarjeta-desplegable2.js']
+      css: ['estilos-tarjeta-desplegable2.css', 'all.css', 'fontawesome.min.css'],
+      js: []
     }
   },
   'tarjeta-giratoria': {
     css: 'css/recursos/tarjeta_giratoria/css/',
-    js: 'css/recursos/tarjeta_giratoria/js/',
+    js: null,
     files: {
-      css: ['estilos-tarjeta-giratoria.css'],
-      js: ['tarjeta-giratoria.js']
+      css: ['estilos-tarjeta-giratoria.css', 'all.css', 'fontawesome.min.css'],
+      js: []
     }
   },
   
@@ -187,8 +187,14 @@ const AVAILABLE_RESOURCES = {
     js: 'css/recursos/triptico/js/',
     files: {
       css: ['estilos-triptico.css'],
-      js: ['triptico.js']
-    }
+      js: ['jquery-3.6.0.min.js', 'jquery-ui-1.13.0.min.js', 'jquery.ui.touch-punch.min.js', 'triptico.js']
+    },
+    init: `
+      // Tríptico requiere inicialización específica
+      if (typeof $ !== 'undefined') {
+        // Inicializar tríptico después de cargar jQuery
+      }
+    `
   }
 } as const;
 
@@ -207,9 +213,13 @@ const requestedResources = resources.filter(resource => AVAILABLE_RESOURCES[reso
 <!-- Cargar JS de recursos solicitados -->
 {requestedResources.map(resource => {
   const resourceConfig = AVAILABLE_RESOURCES[resource as keyof typeof AVAILABLE_RESOURCES];
-  return resourceConfig.files.js.map(jsFile => (
-    <script src={`${resourceConfig.js}${jsFile}`} is:inline></script>
-  ));
+  // Solo cargar JS si el recurso tiene archivos JS y ruta válida
+  if (resourceConfig.js && resourceConfig.files.js.length > 0) {
+    return resourceConfig.files.js.map(jsFile => (
+      <script src={`${resourceConfig.js}${jsFile}`} is:inline></script>
+    ));
+  }
+  return [];
 })}
 
 <!-- Scripts de inicialización -->
