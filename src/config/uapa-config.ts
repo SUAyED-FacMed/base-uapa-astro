@@ -5,6 +5,12 @@ export interface NavItem {
   children?: NavItem[];
 }
 
+// Tipos para créditos
+export interface CreditItem {
+  role: string;
+  name: string;
+}
+
 // Configuración centralizada del proyecto UAPA
 export const UAPA_CONFIG = {
   // Información principal
@@ -51,5 +57,26 @@ export const UAPA_CONFIG = {
       { label: "Autoevaluación", href: "#autoevaluacion1" },
       { label: "Fuentes", href: "#fuentes-info" }
     ] as NavItem[]
+  },
+
+  // Footer y créditos
+  footer: {
+    showCuaedSection: true,
+    showToolsMenu: true,
+    showCreditsModal: true,
+    credits: [
+      { role: "Coordinación general", name: "Jorge León Martínez" },
+      { role: "Coordinación de desarrollo", name: "Edith Tapia Rangel" },
+      { role: "Coordinación académica", name: "" },
+      { role: "Elaboración del contenido", name: "" },
+      { role: "Administración del proyecto", name: "Juan Luis Becerril Gutiérrez" },
+      { role: "Coordinación de asesoría pedagógica", name: "Elisa Campero Malo" },
+      { role: "Asesoría pedagógica", name: "" },
+      { role: "Coordinación de corrección de estilo", name: "Brenda Gómez Sánchez" },
+      { role: "Corrección de estilo", name: "" },
+      { role: "Coordinación de diseño gráfico e integración", name: "Juan de Dios Fuentes Reyes" },
+      { role: "Diseño gráfico e integración", name: "" },
+      { role: "Coordinación de programación de recursos", name: "Juan Luis Becerril Gutiérrez" }
+    ]
   }
 };

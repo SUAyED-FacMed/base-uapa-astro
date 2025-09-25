@@ -1,4 +1,6 @@
 ---
+import { UAPA_CONFIG } from '../config/uapa-config';
+
 export interface Props {
   showCuaedSection?: boolean;
   showToolsMenu?: boolean;
@@ -8,12 +10,14 @@ export interface Props {
 }
 
 const { 
-  showCuaedSection = true,
-  showToolsMenu = true,
-  showCreditsModal = true,
-  uapaTitle = "Título de la UAPA",
-  authorName = "nombre del autor"
+  showCuaedSection = UAPA_CONFIG.footer.showCuaedSection,
+  showToolsMenu = UAPA_CONFIG.footer.showToolsMenu,
+  showCreditsModal = UAPA_CONFIG.footer.showCreditsModal,
+  uapaTitle = UAPA_CONFIG.title,
+  authorName = UAPA_CONFIG.authors.display
 } = Astro.props;
+
+const credits = UAPA_CONFIG.footer.credits;
 ---
 
 <!-- ************* INICIA FOOTER ************** -->
@@ -85,102 +89,16 @@ const {
                 </div>
                 <div class="modal-body">
                   <ul class="container-fluid">
-                    <li class="row">
-                      <div class="col-xs-12 col-sm-12 col-lg-6">
-                        <p class="mb-0">Coordinación general</p>
-                      </div>
-                      <div class="col-xs-12 col-sm-12 col-lg-6">
-                        <p class="mb-0">Jorge León Martínez</p>
-                      </div>
-                    </li>
-                    <li class="row">
-                      <div class="col-xs-12 col-sm-12 col-lg-6">
-                        <p class="mb-0">Coordinación de desarrollo</p>
-                      </div>
-                      <div class="col-xs-12 col-sm-12 col-lg-6">
-                        <p class="mb-0">Edith Tapia Rangel</p>
-                      </div>
-                    </li>
-                    <li class="row">
-                      <div class="col-xs-12 col-sm-12 col-lg-6">
-                        <p class="mb-0">Coordinación académica</p>
-                      </div>
-                      <div class="col-xs-12 col-sm-12 col-lg-6">
-                        <p class="mb-0"></p>
-                      </div>
-                    </li>
-                    <li class="row">
-                      <div class="col-xs-12 col-sm-12 col-lg-6">
-                        <p class="mb-0">Elaboración del contenido</p>
-                      </div>
-                      <div class="col-xs-12 col-sm-12 col-lg-6">
-                        <p class="mb-0"></p>
-                      </div>
-                    </li>
-                    <li class="row">
-                      <div class="col-xs-12 col-sm-12 col-lg-6">
-                        <p class="mb-0">Administración del proyecto</p>
-                      </div>
-                      <div class="col-xs-12 col-sm-12 col-lg-6">
-                        <p class="mb-0">Juan Luis Becerril Gutiérrez</p>
-                      </div>
-                    </li>
-                    <li class="row">
-                      <div class="col-xs-12 col-sm-12 col-lg-6 d-flex align-items-md-center">
-                        <p class="mb-0">Coordinación de asesoría pedagógica</p>
-                      </div>
-                      <div class="col-xs-12 col-sm-12 col-lg-6">
-                        <p class="mb-0">Elisa Campero Malo</p>
-                      </div>
-                    </li>
-                    <li class="row">
-                      <div class="col-xs-12 col-sm-12 col-lg-6 d-flex align-items-md-center">
-                        <p class="mb-0">Asesoría pedagógica</p>
-                      </div>
-                      <div class="col-xs-12 col-sm-12 col-lg-6">
-                        <p class="mb-0"></p>
-                      </div>
-                    </li>
-                    <li class="row">
-                      <div class="col-xs-12 col-sm-12 col-lg-6">
-                        <p class="mb-0">Coordinación de corrección de estilo</p>
-                      </div>
-                      <div class="col-xs-12 col-sm-12 col-lg-6">
-                        <p class="mb-0">Brenda Gómez Sánchez</p>
-                      </div>
-                    </li>
-                    <li class="row">
-                      <div class="col-xs-12 col-sm-12 col-lg-6">
-                        <p class="mb-0">Corrección de estilo</p>
-                      </div>
-                      <div class="col-xs-12 col-sm-12 col-lg-6">
-                        <p class="mb-0"></p>
-                      </div>
-                    </li>
-                    <li class="row">
-                      <div class="col-xs-12 col-sm-12 col-lg-6 d-flex align-items-md-center">
-                        <p class="mb-0">Coordinación de diseño gráfico e integración</p>
-                      </div>
-                      <div class="col-xs-12 col-sm-12 col-lg-6">
-                        <p class="mb-0">Juan de Dios Fuentes Reyes</p>
-                      </div>
-                    </li>
-                    <li class="row">
-                      <div class="col-xs-12 col-sm-12 col-lg-6 d-flex align-items-md-center">
-                        <p class="mb-0">Diseño gráfico e integración</p>
-                      </div>
-                      <div class="col-xs-12 col-sm-12 col-lg-6">
-                        <p class="mb-0"></p>
-                      </div>
-                    </li>
-                    <li class="row">
-                      <div class="col-xs-12 col-sm-12 col-lg-6">
-                        <p class="mb-0">Coordinación de programación de recursos</p>
-                      </div>
-                      <div class="col-xs-12 col-sm-12 col-lg-6">
-                        <p class="mb-0">Juan Luis Becerril Gutiérrez</p>
-                      </div>
-                    </li>
+                    {credits.map((credit) => (
+                      <li class="row">
+                        <div class="col-xs-12 col-sm-12 col-lg-6">
+                          <p class="mb-0">{credit.role}</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-lg-6">
+                          <p class="mb-0">{credit.name}</p>
+                        </div>
+                      </li>
+                    ))}
                   </ul>
                 </div>
                 <div class="modal-footer">
