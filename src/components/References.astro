@@ -1,11 +1,11 @@
 ---
 import { REFERENCES_CONFIG } from '../config/references-config.ts';
+import { UAPA_CONFIG } from '../config/uapa-config.ts';
+import { formatAuthors, formatAuthorsForCitation } from '../config/format-utils.ts';
 
 export interface Props {
   basicReferences?: string[];
   complementaryReferences?: string[];
-  showColorExamples?: boolean;
-  showDetailsExample?: boolean;
   uapaTitle?: string;
   uapaAuthors?: string;
   uapaUrl?: string;
@@ -14,10 +14,8 @@ export interface Props {
 const { 
   basicReferences = REFERENCES_CONFIG.basic,
   complementaryReferences = REFERENCES_CONFIG.complementary,
-  showColorExamples = REFERENCES_CONFIG.options.showColorExamples,
-  showDetailsExample = REFERENCES_CONFIG.options.showDetailsExample,
-  uapaTitle = "Título de la UAPA",
-  uapaAuthors = "nombre del autor",
+  uapaTitle = UAPA_CONFIG.title,
+  uapaAuthors = formatAuthorsForCitation(UAPA_CONFIG.authors), // Formato para citas
   uapaUrl = "(Vínculo)"
 } = Astro.props;
 ---
@@ -52,108 +50,11 @@ const {
           {complementaryReferences.map(ref => (
             <li set:html={ref}></li>
           ))}
-        </ul>
-
-        {showColorExamples && (
-          <Fragment>
-            <!-- no funcionan bien en firefox -->
-            <div class="scroll--bloque alert alert-danger">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis incidunt soluta nostrum maiores vel animi tempora eius nulla facere, necessitatibus voluptate odit sequi cum. Sunt, quia corporis? Laborum, est fugiat.
-            </div>
-            <div class="scroll--bloque alert alert-primary">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis incidunt soluta nostrum maiores vel animi tempora eius nulla facere, necessitatibus voluptate odit sequi cum. Sunt, quia corporis? Laborum, est fugiat.
-            </div>
-            <div class="scroll--bloque alert alert-dark">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis incidunt soluta nostrum maiores vel animi tempora eius nulla facere, necessitatibus voluptate odit sequi cum. Sunt, quia corporis? Laborum, est fugiat.
-            </div>
-            <div class="scroll--bloque alert alert-warning">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis incidunt soluta nostrum maiores vel animi tempora eius nulla facere, necessitatibus voluptate odit sequi cum. Sunt, quia corporis? Laborum, est fugiat.
-            </div>
-            <div class="scroll--bloque alert alert-success">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis incidunt soluta nostrum maiores vel animi tempora eius nulla facere, necessitatibus voluptate odit sequi cum. Sunt, quia corporis? Laborum, est fugiat.
-            </div>
-            <div class="scroll--bloque alert alert-info">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis incidunt soluta nostrum maiores vel animi tempora eius nulla facere, necessitatibus voluptate odit sequi cum. Sunt, quia corporis? Laborum, est fugiat.
-            </div>
-            <!-- animación entrada -->
-            <div class="muestra--1 alert alert-danger">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
-            </div>
-            <!-- clases de colores a usar  bg-primay bg-secondary bg-success bg-danger bg-warning bg-info bg-dark bg-light -->
-            <!-- color verde -->
-            <div class="muestra--1 bg-success mb-2 p-2 text-white rounded">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
-            </div>
-            <div class="muestra--1 bg-success mb-2 p-2 text-white bg-opacity-75 rounded">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
-            </div>
-            <div class="muestra--1 bg-success mb-2 p-2 bg-opacity-50 rounded">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
-            </div>
-            <div class="muestra--1 bg-success mb-2 p-2 bg-opacity-25 rounded">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
-            </div>
-            <div class="muestra--1 bg-success mb-2 p-2 bg-opacity-10 rounded">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
-            </div>
-            <!-- color amarillo -->
-            <div class="muestra--1 bg-warning mb-2 p-2 text-white rounded">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
-            </div>
-            <div class="muestra--1 bg-warning mb-2 p-2 text-white bg-opacity-75 rounded">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
-            </div>
-            <div class="muestra--1 bg-warning mb-2 p-2 bg-opacity-50 rounded">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
-            </div>
-            <div class="muestra--1 bg-warning mb-2 p-2 bg-opacity-25 rounded">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
-            </div>
-            <div class="muestra--1 bg-warning mb-2 p-2 bg-opacity-10 rounded">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
-            </div>
-            <!-- color azul -->
-            <div class="muestra--1 bg-primary mb-2 p-2 text-white rounded">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
-            </div>
-            <div class="muestra--1 bg-primary mb-2 p-2 text-white bg-opacity-75 rounded">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
-            </div>
-            <div class="muestra--1 bg-primary mb-2 p-2 bg-opacity-50 rounded">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
-            </div>
-            <div class="muestra--1 bg-primary mb-2 p-2 bg-opacity-25 rounded">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
-            </div>
-            <div class="muestra--1 bg-primary mb-2 p-2 bg-opacity-10 rounded">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit explicabo tempore repellat quam! Quasi aperiam quidem perspiciatis possimus non, ipsa illum temporibus nostrum in corporis quis, enim dignissimos iure rem.
-            </div>
-
-          </Fragment>
-        )}
-
-        {showDetailsExample && (
-          <!-- recurso html mostrar imagen o párrafo -->
-          <details>
-            <summary>Ejemplo de contenido expandible</summary>
-            <div class="alert alert-info mt-2">
-              <p class="mb-2"><strong>Información adicional:</strong></p>
-              <p class="mb-0">Este es un ejemplo de cómo se puede mostrar contenido adicional de forma expandible usando el elemento HTML <code>&lt;details&gt;</code>.</p>
-            </div>
-          </details>
-        )}
-
-        <!-- Nota sobre formato de citación -->
-        {REFERENCES_CONFIG.options.customCitation && (
-          <div class="alert alert-light border-start border-primary border-3 my-4">
-            <p class="mb-1"><strong>Formato de citación:</strong> {REFERENCES_CONFIG.options.customCitation.format}</p>
-            <p class="mb-0 text-muted small">{REFERENCES_CONFIG.options.customCitation.note}</p>
-          </div>
-        )}
+        </ul>      
 
         <!-- como citar -->
         <h3 class="envolv"><i class="icon-pen me-2" aria-hidden="true"></i><span>Cómo citar</span></h3>
-        <p>Apellido de autor, iniciales del nombre (Año). {uapaTitle}. <em>Unidades de Apoyo para el Aprendizaje</em>.
+        <p>{uapaAuthors} ({new Date().getFullYear()}). <em>{uapaTitle}</em>. Unidades de Apoyo para el Aprendizaje.
           CUAED/Facultad de Medicina-UNAM. {uapaUrl}</p>
 
         <!-- termina contenido -->

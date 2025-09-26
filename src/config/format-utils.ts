@@ -18,6 +18,51 @@ export function formatAuthors(authors: string[], type: 'display' | 'full'): stri
 }
 
 /**
+ * Formatea autores para citas académicas (formato APA adaptado para nombres mexicanos)
+ * Convierte "Nombre(s) ApellidoPaterno ApellidoMaterno" a "ApellidoPaterno, N."
+ * @param authors Array de nombres completos
+ * @returns String formateado para citas académicas
+ */
+export function formatAuthorsForCitation(authors: string[]): string {
+  if (!authors || authors.length === 0) {
+    return '';
+  }
+
+  const formattedAuthors = authors.map(author => {
+    const parts = author.trim().split(' ');
+    if (parts.length < 2) {
+      return author; // Si no tiene apellido, devolver como está
+    }
+    
+    // Para nombres mexicanos: "María Teresa Arredondo Garza"
+    // Asumimos que los últimos 2 elementos son apellidos (o solo 1 si hay pocos elementos)
+    // Los primeros son nombres
+    let firstNames: string[];
+    let lastNames: string[];
+    
+    if (parts.length >= 3) {
+      // Si hay 3 o más palabras, los primeros son nombres, los últimos 2 son apellidos
+      firstNames = parts.slice(0, -2);
+      lastNames = parts.slice(-2);
+    } else {
+      // Si hay solo 2 palabras, la primera es nombre, la segunda apellido
+      firstNames = parts.slice(0, -1);
+      lastNames = parts.slice(-1);
+    }
+    
+    // Crear iniciales de los nombres
+    const initials = firstNames.map(name => name.charAt(0).toUpperCase() + '.').join(' ');
+    
+    // Usar solo el primer apellido para la cita
+    const primaryLastName = lastNames[0];
+    
+    return `${primaryLastName}, ${initials}`;
+  });
+
+  return formattedAuthors.join(', ');
+}
+
+/**
  * Convierte nombres separados por comas a HTML con <br>
  * @param names String con nombres separados por comas
  * @returns String con <br> en lugar de comas
