@@ -47,13 +47,4 @@ export const REFERENCES_CONFIG = {
     "Organización Mundial de la Salud. (2023). <strong>Obesidad y sobrepeso</strong>. <em>Fichas descriptivas</em>. Recuperado de <a href='https://www.who.int/es/news-room/fact-sheets/detail/obesity-and-overweight' target='_blank' class='break'>https://www.who.int/es/news-room/fact-sheets/detail/obesity-and-overweight</a>"
   ],
   
-  // Configuración de elementos opcionales
-  options: {
-    showColorExamples: false, // Por defecto no mostrar ejemplos de colores
-    showDetailsExample: true, // Mostrar ejemplo de details/summary
-    customCitation: {
-      format: "APA 7ma edición", // Formato de citación usado
-      note: "Las referencias están formateadas según las normas APA 7ma edición y los estándares institucionales de la UNAM."
-    }
-  }
 };
