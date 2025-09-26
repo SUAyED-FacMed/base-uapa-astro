@@ -1,23 +1,44 @@
 ---
-import { REFERENCES_CONFIG } from '../config/references-config.ts';
+import { REFERENCES_CONFIG, type ReferenceCategory } from '../config/references-config.ts';
 import { UAPA_CONFIG } from '../config/uapa-config.ts';
 import { formatAuthors, formatAuthorsForCitation } from '../config/format-utils.ts';
 
 export interface Props {
+  // Nueva estructura flexible
+  basicSections?: ReferenceCategory[];
+  complementarySections?: ReferenceCategory[];
+  
+  // Compatibilidad hacia atrás
   basicReferences?: string[];
   complementaryReferences?: string[];
+  
+  // Configuración de cita
   uapaTitle?: string;
   uapaAuthors?: string;
   uapaUrl?: string;
 }
 
 const { 
-  basicReferences = REFERENCES_CONFIG.basic,
-  complementaryReferences = REFERENCES_CONFIG.complementary,
+  // Extraer props primero
+  basicSections: propBasicSections,
+  complementarySections: propComplementarySections,
+  basicReferences,
+  complementaryReferences,
   uapaTitle = UAPA_CONFIG.title,
-  uapaAuthors = formatAuthorsForCitation(UAPA_CONFIG.authors), // Formato para citas
+  uapaAuthors = formatAuthorsForCitation(UAPA_CONFIG.authors),
   uapaUrl = "(Vínculo)"
 } = Astro.props;
+
+// Determinar qué estructura usar (nueva estructura flexible vs legacy)
+const basicSections = propBasicSections || 
+  REFERENCES_CONFIG.basic?.sections || 
+  (basicReferences ? [{ title: "Bibliografía", references: basicReferences }] : 
+   [{ title: "Bibliografía", references: REFERENCES_CONFIG.basicLegacy || [] }]);
+   
+const complementarySections = propComplementarySections || 
+  REFERENCES_CONFIG.complementary?.sections || 
+  (complementaryReferences ? [{ title: "Bibliografía", references: complementaryReferences }] : 
+   [{ title: "Documentos electrónicos", references: REFERENCES_CONFIG.complementaryLegacy || [] }]);
 ---
 
 <!-- ************* INICIA REFERENCIAS ************** -->
@@ -34,23 +55,31 @@ const {
           Fuentes de información
         </h2>
 
+        <!-- Referencias Básicas -->
         <h3>Básicas</h3>
-        <h4>Bibliografía</h4>
+        {basicSections.map(section => (
+          <div class="reference-section">
+            <h4>{section.title}</h4>
+            <ul>
+              {section.references.map(ref => (
+                <li set:html={ref}></li>
+              ))}
+            </ul>
+          </div>
+        ))}
 
-        <ul>
-          {basicReferences.map(ref => (
-            <li set:html={ref}></li>
-          ))}
-        </ul>
-
+        <!-- Referencias Complementarias -->
         <h3>Complementarias</h3>
-        <h4>Bibliografía</h4>
-
-        <ul>
-          {complementaryReferences.map(ref => (
-            <li set:html={ref}></li>
-          ))}
-        </ul>      
+        {complementarySections.map(section => (
+          <div class="reference-section">
+            <h4>{section.title}</h4>
+            <ul>
+              {section.references.map(ref => (
+                <li set:html={ref}></li>
+              ))}
+            </ul>
+          </div>
+        ))}      
 
         <!-- como citar -->
         <h3 class="envolv"><i class="icon-pen me-2" aria-hidden="true"></i><span>Cómo citar</span></h3>
