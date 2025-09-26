@@ -84,3 +84,23 @@ export const UAPA_CONFIG = {
     ]
   }
 };
+
+// Funciones helper para formatear autores
+export const formatAuthors = {
+  // Para metadatos (separados por comas)
+  full: UAPA_CONFIG.authors.join(", "),
+  
+  // Para Hero (separados por " | ")
+  display: UAPA_CONFIG.authors.join(" | "),
+  
+  // Para Footer (con "y" antes del último)
+  withAnd: (authors: string[]) => {
+    if (authors.length === 0) return "";
+    if (authors.length === 1) return authors[0];
+    if (authors.length === 2) return authors.join(" y ");
+    
+    const lastAuthor = authors[authors.length - 1];
+    const otherAuthors = authors.slice(0, -1);
+    return otherAuthors.join(", ") + " y " + lastAuthor;
+  }
+};

@@ -29,7 +29,18 @@ Este es un template que permite crear UAPAs de manera eficiente mediante la comp
 └── docs/                  # Documentación y guías
 ```
 
-## 🛠️ Uso como Template
+## � Archivo de Ejemplo
+
+El template incluye `src/pages/index-ejemplo.astro` con:
+
+- ✅ Todos los componentes implementados y funcionando
+- ✅ Ejemplos de uso de recursos (acordeones, actividades, etc.)
+- ✅ Estructura completa de una UAPA
+- ✅ Configuración desde `uapa-config.ts`
+
+> **Nota**: No hay `index.astro` en el template para evitar conflictos al crear nuevos proyectos.
+
+## �🛠️ Uso como Template
 
 ### Crear nuevo proyecto UAPA
 
@@ -42,7 +53,11 @@ cd nueva-uapa
 npm install
 ```
 
-3. **Personalizar contenido** en `src/config/`
+3. **Crear archivo principal**:
+   - Renombrar `src/pages/index-ejemplo.astro` → `src/pages/index.astro`
+   - O usar como referencia para crear tu propio `index.astro`
+
+4. **Personalizar contenido** en `src/config/`
 
 ### Actualizar desde template base
 

@@ -1,8 +1,7 @@
 ---
 import ResourceLoader from "../components/ResourceLoader.astro";
 import Footer from "../components/Footer.astro";
-import { UAPA_CONFIG } from "../config/uapa-config.ts";
-import { formatAuthors } from "../config/format-utils.ts";
+import { UAPA_CONFIG, formatAuthors } from "../config/uapa-config.ts";
 
 export interface Props {
   title: string;
@@ -16,7 +15,7 @@ const {
   title,
   description = UAPA_CONFIG.description,
   keywords = UAPA_CONFIG.keywords,
-  author = formatAuthors(UAPA_CONFIG.authors, 'full'),
+  author = formatAuthors.full,
   resources = [],
 } = Astro.props;
 ---
@@ -122,7 +121,7 @@ const {
     <!-- Footer -->
     <Footer
       uapaTitle={UAPA_CONFIG.title}
-      authorName={formatAuthors(UAPA_CONFIG.authors, 'full')}
+      authorName={formatAuthors.withAnd(UAPA_CONFIG.authors)}
     />
   </body>
 </html>

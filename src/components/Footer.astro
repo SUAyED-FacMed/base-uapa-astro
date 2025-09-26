@@ -1,6 +1,5 @@
 ---
-import { UAPA_CONFIG } from '../config/uapa-config.ts';
-import { formatAuthors, formatNamesWithBreaks } from '../config/format-utils.ts';
+import { UAPA_CONFIG, formatAuthors } from '../config/uapa-config.ts';
 
 export interface Props {
   showCuaedSection?: boolean;
@@ -15,10 +14,17 @@ const {
   showToolsMenu = UAPA_CONFIG.footer.showToolsMenu,
   showCreditsModal = UAPA_CONFIG.footer.showCreditsModal,
   uapaTitle = UAPA_CONFIG.title,
-  authorName = formatAuthors(UAPA_CONFIG.authors, 'display')
+  authorName = formatAuthors.display
 } = Astro.props;
 
 const credits = UAPA_CONFIG.footer.credits;
+
+// Función para formatear nombres con "y" en los créditos
+const formatNamesWithAnd = (names: string) => {
+  if (!names || names.trim() === "") return "";
+  const nameArray = names.split(",").map(n => n.trim()).filter(n => n !== "");
+  return formatAuthors.withAnd(nameArray);
+};
 ---
 
 <!-- ************* INICIA FOOTER ************** -->
@@ -96,7 +102,7 @@ const credits = UAPA_CONFIG.footer.credits;
                           <p class="mb-0">{credit.role}</p>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-lg-6">
-                          <p class="mb-0" set:html={formatNamesWithBreaks(credit.name)}></p>
+                          <p class="mb-0">{formatNamesWithAnd(credit.name)}</p>
                         </div>
                       </li>
                     ))}

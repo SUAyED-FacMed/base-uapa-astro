@@ -8,8 +8,7 @@ import SelfAssessment from '../components/SelfAssessment.astro';
 import References from '../components/References.astro';
 import Objetivo from '../components/Objetivo.astro';
 import Figure from '../components/Figure.astro';
-import { UAPA_CONFIG } from '../config/uapa-config.ts';
-import { formatAuthors } from '../config/format-utils.ts';
+import { UAPA_CONFIG, formatAuthors } from '../config/uapa-config.ts';
 import { ACTIVITIES_CONFIG, ASSESSMENTS_CONFIG } from '../config/activities-config.ts';
 ---
 
@@ -17,14 +16,14 @@ import { ACTIVITIES_CONFIG, ASSESSMENTS_CONFIG } from '../config/activities-conf
   title={`UAPA. ${UAPA_CONFIG.title}`}
   description={UAPA_CONFIG.description}
   keywords={UAPA_CONFIG.keywords}
-  author={formatAuthors(UAPA_CONFIG.authors, 'full')}
+  author={formatAuthors.full}
   resources={['acordeon-vertical']}
 >
 
 <Hero 
   title={UAPA_CONFIG.title}
   subtitle={UAPA_CONFIG.subtitle}
-  authors={formatAuthors(UAPA_CONFIG.authors, 'display')}
+  authors={formatAuthors.display}
   imageCaption={UAPA_CONFIG.hero.imageCaption}
 />
 
@@ -268,7 +267,7 @@ import { ACTIVITIES_CONFIG, ASSESSMENTS_CONFIG } from '../config/activities-conf
 <!-- Referencias -->
 <References 
   uapaTitle={UAPA_CONFIG.title}
-  uapaAuthors={formatAuthors(UAPA_CONFIG.authors, 'full')}
+  uapaAuthors={formatAuthors.full}
 />
 
 </main>
