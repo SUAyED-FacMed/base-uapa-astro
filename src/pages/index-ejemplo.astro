@@ -17,7 +17,7 @@ import { ACTIVITIES_CONFIG, ASSESSMENTS_CONFIG } from '../config/activities-conf
   description={UAPA_CONFIG.description}
   keywords={UAPA_CONFIG.keywords}
   author={formatAuthors.full}
-  resources={['acordeon-vertical']}
+  resources={['acordeon-vertical', 'fichero-vertical']}
 >
 
 <Hero 
@@ -205,6 +205,105 @@ import { ACTIVITIES_CONFIG, ASSESSMENTS_CONFIG } from '../config/activities-conf
     dignissim eget hendrerit ipsum. Phasellus rhoncus odio eros, vulputate semper augue eleifend et. Cras eu
     mollis neque, sed tempor nunc. Aliquam vestibulum sapien ac velit blandit pretium. Sed imperdiet nibh
     magna, id consectetur nisi luctus venenatis.</p>
+
+  <!-- Fichero Vertical -->
+  <section class="fichero-vert" id="fichero-vert-1">
+    <section class="fichero-vert-tabs">
+      <button class="fichero-vert-tab fichero-vert-active" data-actab-group="0" data-actab-id="0">Definición</button>
+      <button class="fichero-vert-tab" data-actab-group="0" data-actab-id="1">Características</button>
+      <button class="fichero-vert-tab" data-actab-group="0" data-actab-id="2">Ventajas</button>
+      <button class="fichero-vert-tab" data-actab-group="0" data-actab-id="3">Desventajas</button>
+      <button class="fichero-vert-tab" data-actab-group="0" data-actab-id="4">Ejemplo</button>
+    </section>
+    <section class="fichero-vert-content">
+      <article class="fichero-vert-item fichero-vert-active" data-actab-group="0" data-actab-id="0">
+        <h4 class="fichero-vert-item__label">Definición del estudio transversal
+          <div class="icon">
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </h4>
+        <div class="fichero-vert-item__container">
+          <p>Un estudio de corte transversal es un tipo de estudio observacional que analiza datos de variables recopiladas en un periodo de tiempo sobre una población muestra o subconjunto predefinido.</p>
+          <ul>
+            <li>Los datos se recopilan en un solo momento temporal</li>
+            <li>Proporciona una "fotografía" de la situación en ese tiempo específico</li>
+            <li>Permite describir las características de una población</li>
+          </ul>
+        </div>
+      </article>
+      
+      <article class="fichero-vert-item" data-actab-group="0" data-actab-id="1">
+        <h4 class="fichero-vert-item__label">Características principales
+          <div class="icon">
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </h4>
+        <div class="fichero-vert-item__container">
+          <p>Los estudios transversales tienen características específicas que los distinguen de otros tipos de investigación:</p>
+          <ul>
+            <li><strong>Temporalidad:</strong> Medición en un momento específico</li>
+            <li><strong>Alcance:</strong> Descriptivo o analítico</li>
+            <li><strong>Población:</strong> Muestra representativa de la población objetivo</li>
+            <li><strong>Variables:</strong> Múltiples variables pueden ser medidas simultáneamente</li>
+          </ul>
+        </div>
+      </article>
+      
+      <article class="fichero-vert-item" data-actab-group="0" data-actab-id="2">
+        <h4 class="fichero-vert-item__label">Ventajas
+          <div class="icon">
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </h4>
+        <div class="fichero-vert-item__container">
+          <p>Las principales ventajas de los estudios transversales incluyen:</p>
+          <ul>
+            <li><strong>Rapidez:</strong> Los datos se recopilan en un momento específico</li>
+            <li><strong>Costo-efectivo:</strong> Requiere menos recursos que estudios longitudinales</li>
+            <li><strong>Útil para prevalencia:</strong> Ideal para medir la frecuencia de una condición</li>
+            <li><strong>No hay pérdida de seguimiento:</strong> Al ser un momento único, no se pierden participantes</li>
+            <li><strong>Múltiples variables:</strong> Se pueden estudiar varias variables a la vez</li>
+          </ul>
+        </div>
+      </article>
+      
+      <article class="fichero-vert-item" data-actab-group="0" data-actab-id="3">
+        <h4 class="fichero-vert-item__label">Desventajas
+          <div class="icon">
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </h4>
+        <div class="fichero-vert-item__container">
+          <p>También presentan algunas limitaciones importantes:</p>
+          <ul>
+            <li><strong>No establece causalidad:</strong> Solo muestra asociaciones en un momento dado</li>
+            <li><strong>Sesgo de supervivencia:</strong> Solo incluye casos prevalentes, no incidentes</li>
+            <li><strong>Información limitada:</strong> No proporciona información sobre la secuencia temporal</li>
+            <li><strong>Confusión temporal:</strong> Dificultad para establecer qué ocurrió primero</li>
+          </ul>
+        </div>
+      </article>
+      
+      <article class="fichero-vert-item" data-actab-group="0" data-actab-id="4">
+        <h4 class="fichero-vert-item__label">Ejemplo práctico
+          <div class="icon">
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </h4>
+        <div class="fichero-vert-item__container">
+          <p>Ejemplo de estudio transversal sobre prevalencia de diabetes en adultos mayores:</p>
+          <ul>
+            <li><strong>Población:</strong> Adultos mayores de 65 años en la Ciudad de México</li>
+            <li><strong>Muestra:</strong> 1,500 participantes seleccionados aleatoriamente</li>
+            <li><strong>Momento:</strong> Mediciones realizadas entre enero y marzo de 2024</li>
+            <li><strong>Variables:</strong> Glucemia en ayunas, HbA1c, IMC, presión arterial</li>
+            <li><strong>Resultado:</strong> Prevalencia de diabetes del 22.3% en la población estudiada</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+  </section>
+
 </Section>
 
 <!-- Contenido 3 -->

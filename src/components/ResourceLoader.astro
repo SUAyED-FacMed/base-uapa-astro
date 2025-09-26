@@ -17,9 +17,11 @@ const AVAILABLE_RESOURCES = {
       js: ['acordeon-hor.js']
     },
     init: `
-      acordeonHorizontal("acordeon-horizontal-1");
-      acordeonHorizontal("acordeon-horizontal-2");
-      acordeonHorizontal("acordeon-horizontal-3");
+      document.addEventListener('DOMContentLoaded', function() {
+        acordeonHorizontal("acordeon-horizontal-1");
+        acordeonHorizontal("acordeon-horizontal-2");
+        acordeonHorizontal("acordeon-horizontal-3");
+      });
     `
   },
   'acordeon-vertical': {
@@ -46,7 +48,21 @@ const AVAILABLE_RESOURCES = {
     files: {
       css: ['estilos-carrusel.css'],
       js: ['carrusel.js']
-    }
+    },
+    init: `
+      document.addEventListener('DOMContentLoaded', function() {
+        // Inicializar todos los carruseles encontrados
+        const carousels = document.querySelectorAll('.carrusel');
+        carousels.forEach((carousel, index) => {
+          if (!carousel.id) {
+            carousel.id = 'carrusel-' + (index + 1);
+          }
+          if (typeof iniciarCarrusel === 'function') {
+            iniciarCarrusel(carousel.id);
+          }
+        });
+      });
+    `
   },
   
   // Ficheros
@@ -58,8 +74,10 @@ const AVAILABLE_RESOURCES = {
       js: ['fichero-hor.js']
     },
     init: `
-      ficheroHorizontal("fichero-hor-1");
-      ficheroHorizontal("fichero-hor-2");
+      document.addEventListener('DOMContentLoaded', function() {
+        ficheroHorizontal("fichero-hor-1");
+        ficheroHorizontal("fichero-hor-2");
+      });
     `
   },
   'fichero-vertical': {
@@ -68,7 +86,14 @@ const AVAILABLE_RESOURCES = {
     files: {
       css: ['all.css', 'estilos-fichero-vert.css'],
       js: ['fichero-vert.js']
-    }
+    },
+    init: `
+      document.addEventListener('DOMContentLoaded', function() {
+        ficheroVertical('fichero-vert-1');
+        ficheroVertical('fichero-vert-2');
+        ficheroVertical('fichero-vert-3');
+      });
+    `
   },
   
   // Contenidos
@@ -114,7 +139,21 @@ const AVAILABLE_RESOURCES = {
     files: {
       css: ['estilos-hot-spot.css', 'bootstrap.min.css'],
       js: ['hotspot.js', 'bootstrap.bundle.min.js']
-    }
+    },
+    init: `
+      document.addEventListener('DOMContentLoaded', function() {
+        // Inicializar hotspots
+        const hotspots = document.querySelectorAll('.hotspot-container');
+        hotspots.forEach((hotspot, index) => {
+          if (!hotspot.id) {
+            hotspot.id = 'hotspot-' + (index + 1);
+          }
+          if (typeof initHotspot === 'function') {
+            initHotspot(hotspot.id);
+          }
+        });
+      });
+    `
   },
   
   // Líneas de tiempo
@@ -124,7 +163,21 @@ const AVAILABLE_RESOURCES = {
     files: {
       css: ['estilos-linea-tiempo-horizontal.css'],
       js: ['timeline.min.js', 'linea_tiempo_hor.js']
-    }
+    },
+    init: `
+      document.addEventListener('DOMContentLoaded', function() {
+        // Inicializar líneas de tiempo horizontales
+        const timelines = document.querySelectorAll('.timeline-horizontal, .linea-tiempo-hor');
+        timelines.forEach((timeline, index) => {
+          if (!timeline.id) {
+            timeline.id = 'timeline-hor-' + (index + 1);
+          }
+          if (typeof iniciarTimelineHorizontal === 'function') {
+            iniciarTimelineHorizontal(timeline.id);
+          }
+        });
+      });
+    `
   },
   'linea-tiempo-vertical': {
     css: 'css/recursos/linea_tiempo_vertical/css/',
@@ -132,7 +185,21 @@ const AVAILABLE_RESOURCES = {
     files: {
       css: ['estilos-linea-tiempo-vertical.css'],
       js: ['timeline.min.js', 'linea_tiempo_vertical.js']
-    }
+    },
+    init: `
+      document.addEventListener('DOMContentLoaded', function() {
+        // Inicializar líneas de tiempo verticales
+        const timelines = document.querySelectorAll('.timeline-vertical, .linea-tiempo-vert');
+        timelines.forEach((timeline, index) => {
+          if (!timeline.id) {
+            timeline.id = 'timeline-vert-' + (index + 1);
+          }
+          if (typeof iniciarTimelineVertical === 'function') {
+            iniciarTimelineVertical(timeline.id);
+          }
+        });
+      });
+    `
   },
   
   // Listas
@@ -198,10 +265,22 @@ const AVAILABLE_RESOURCES = {
       js: ['jquery-3.6.0.min.js', 'jquery-ui-1.13.0.min.js', 'jquery.ui.touch-punch.min.js', 'triptico.js']
     },
     init: `
-      // Tríptico requiere inicialización específica
-      if (typeof $ !== 'undefined') {
-        // Inicializar tríptico después de cargar jQuery
-      }
+      document.addEventListener('DOMContentLoaded', function() {
+        // Tríptico requiere jQuery
+        if (typeof $ !== 'undefined') {
+          const tripticos = document.querySelectorAll('.triptico');
+          tripticos.forEach((triptico, index) => {
+            if (!triptico.id) {
+              triptico.id = 'triptico-' + (index + 1);
+            }
+            if (typeof iniciarTriptico === 'function') {
+              iniciarTriptico(triptico.id);
+            }
+          });
+        } else {
+          console.warn('jQuery no está disponible para inicializar el tríptico');
+        }
+      });
     `
   }
 } as const;
