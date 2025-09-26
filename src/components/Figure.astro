@@ -1,10 +1,18 @@
 ---
 // Figure.astro - Componente para imágenes con AOS animations y caption opcional
+// 
+// Ejemplo de uso con HTML en caption:
+// <Figure 
+//   src="img/ejemplo.jpg" 
+//   alt="Ejemplo"
+//   caption="Texto con <em>cursiva</em> y <strong>negrita</strong>"
+// />
+//
 export interface Props {
   src: string;
   alt: string;
   title?: string;
-  caption?: string;
+  caption?: string;                                // Acepta HTML (se renderiza con set:html)
   width?: 'w-600' | 'w-650' | 'w-750' | 'w-900';  // Anchos predefinidos comunes
   class?: string;                                   // Clases adicionales
   aosType?: string;                                // Tipo de animación AOS
@@ -48,8 +56,7 @@ const figureClasses = `${width} mx-auto my-recursos ${className}`.trim();
     title={title || alt}
   />
   {caption && (
-    <figcaption class="text-center">
-      {caption}
+    <figcaption class="text-center" set:html={caption}>
     </figcaption>
   )}
 </figure>
