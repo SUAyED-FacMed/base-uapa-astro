@@ -11,10 +11,10 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   
   function handleScroll() {
-    var scrollableHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    var GOLDEN_RATIO = 0.02;
-  
-    if ((document.documentElement.scrollTop / scrollableHeight ) > GOLDEN_RATIO) {
+    // Mostrar el botón cuando se haya scrolleado más de 300px (aproximadamente después del hero)
+    var scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
+
+    if (scrollPosition > 300) {
       //show button
       if(!scrollToTopBtn.classList.contains("showScrollBtn"))
       scrollToTopBtn.classList.add("showScrollBtn")
@@ -23,9 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
       if(scrollToTopBtn.classList.contains("showScrollBtn"))
       scrollToTopBtn.classList.remove("showScrollBtn")
     }
-  }
-  
-  function scrollToTop() {
+  }  function scrollToTop() {
     window.scrollTo({
       top: 0,
       behavior: "smooth"
