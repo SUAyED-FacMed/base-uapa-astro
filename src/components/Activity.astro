@@ -2,7 +2,7 @@
 export interface Props {
   id: string;
   title: string;
-  description: string;
+  description: string;          // Acepta HTML (se renderiza con set:html)
   modalId: string;
   modalTitle: string;
   iframeSrc: string;
@@ -35,7 +35,7 @@ const {
 
           <div class="col-xs-12 col-ms-12 col-lg-10">
             <h2>{title}</h2>
-            <p>{description}</p>
+            <p set:html={description}></p>
           </div>
 
           <!-- Button trigger modal -->
