@@ -1,0 +1,53 @@
+---
+export interface Props {
+  videoId: string;
+  title?: string;
+  width?: string;
+  autoplay?: boolean;
+  allowFullscreen?: boolean;
+  className?: string;
+}
+
+const { 
+  videoId,
+  title = "YouTube video player",
+  width = "col-lg-10",
+  autoplay = false,
+  allowFullscreen = true,
+  className = ""
+} = Astro.props;
+
+// Construir URL con parámetros opcionales
+const baseUrl = `https://www.youtube.com/embed/${videoId}`;
+const params = new URLSearchParams();
+if (autoplay) params.set('autoplay', '1');
+
+const videoUrl = params.toString() ? `${baseUrl}?${params.toString()}` : baseUrl;
+
+// Permisos del iframe
+const permissions = [
+  "accelerometer",
+  "autoplay", 
+  "clipboard-write",
+  "encrypted-media",
+  "gyroscope",
+  "picture-in-picture",
+  "web-share"
+].join("; ");
+---
+
+<div class="row">
+  <div class={`${width} mx-auto ${className}`.trim()}>
+    <div class="ratio ratio-16x9">
+      <iframe
+        width="560"
+        height="315"
+        src={videoUrl}
+        title={title}
+        frameborder="0"
+        allow={permissions}
+        allowfullscreen={allowFullscreen}>
+      </iframe>
+    </div>
+  </div>
+</div>
