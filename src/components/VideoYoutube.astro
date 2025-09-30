@@ -1,4 +1,8 @@
 ---
+/**
+ * Componente de video de YouTube tradicional (iframe)
+ * Para mejor rendimiento, considera usar VideoYoutubeLite en su lugar
+ */
 export interface Props {
   videoId: string;
   title?: string;
@@ -6,6 +10,7 @@ export interface Props {
   autoplay?: boolean;
   allowFullscreen?: boolean;
   className?: string;
+  nocookie?: boolean;
 }
 
 const { 
@@ -14,11 +19,14 @@ const {
   width = "col-lg-10",
   autoplay = false,
   allowFullscreen = true,
-  className = ""
+  className = "",
+  nocookie = true
 } = Astro.props;
 
 // Construir URL con parámetros opcionales
-const baseUrl = `https://www.youtube.com/embed/${videoId}`;
+const baseUrl = nocookie 
+  ? `https://www.youtube-nocookie.com/embed/${videoId}`
+  : `https://www.youtube.com/embed/${videoId}`;
 const params = new URLSearchParams();
 if (autoplay) params.set('autoplay', '1');
 
