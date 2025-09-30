@@ -33,21 +33,23 @@ const formatNamesWithAnd = (names: string) => {
     <div class="row">
       <!-- contenido -->
       
-      {showCuaedSection && (
-        <div class="col-xs-12 col-sm-12 col-lg-3">
-          <!-- quitar para CUAED -->
-          <h2 class="text-center text-lg-start">Desarrollado por:</h2>
-          <a class="d-block link-cuaieed mx-auto mx-lg-0 mb-5 " href="https://cuaieed.unam.mx/" target="_blank"
-            title="CUAED" aria-label="CUAED"><img class="img-fluid" id="cuaieedlogo" src="img/logo_cuaed.png"
-              alt=""></a>
-          <!-- Termina quitar para CUAED -->    
-        </div>
-      )}
-
-      <div class="col-xs-12 col-sm-12 col-lg-6">
+      <div class="col-xs-12 col-sm-12 col-lg-3">
+        <!-- Solo mostrar en modo CUAED -->
         {showCuaedSection && (
           <Fragment>
-            <!-- quitar para CUAED -->
+            <h2 class="text-center text-lg-start">Desarrollado por:</h2>
+            <a class="d-block link-cuaieed mx-auto mx-lg-0 mb-5 " href="https://cuaed.unam.mx/" target="_blank"
+              title="CUAED" aria-label="CUAED"><img class="img-fluid" id="cuaieedlogo" src="img/logo_cuaed.png"
+                alt=""></a>
+          </Fragment>
+        )}
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-lg-6">
+
+        <!-- Solo mostrar en modo CUAED -->
+        {showCuaedSection && (
+          <Fragment>
             <h2 class="text-center text-lg-start">Aviso legal</h2>
             <p>Coordinación de Universidad Abierta y Educación Digital de la UNAM. ©Todos los
               derechos reservados 2025. Hecho en México. Este sitio puede ser reproducido con fines no lucrativos, siempre
@@ -62,21 +64,35 @@ const formatNamesWithAnd = (names: string) => {
             <p>Los REA podrán ser utilizados sin fines de lucro, citando invariablemente la fuente y sin alterar la obra,
               respetando los términos institucionales de uso y los derechos de propiedad intelectual de terceros. Si desea
               más información, escriba a proyectos@cuaed.unam.mx</p>
-            <!-- termina quitar para CUAED -->
           </Fragment>
         )}
 
-        <!--  ****** Creative Commons ****** -->
-        <div id="creative-commons">
-          <hr aria-hidden="true" class="my-4">
-          <a class="link-creative d-block mx-auto mx-lg-0" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
-            target="_blank" aria-hidden="true"> <img src="img/licencia_cc.svg" class="img-fluid w-100" alt=""></a>
-          <p class="mt-4">{uapaTitle} por {authorName} se distribuye bajo una <a
-              class="footer-link btn-link" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
-              target="_blank">Licencia Creative Commons
-              Atribución-NoComercial-SinDerivadas 4.0 Internacional.</a>
-          </p>      
-        </div>
+        <!-- Solo mostrar en modo CUAED -->
+        {showCuaedSection && (
+          <div id="creative-commons">
+            <hr aria-hidden="true" class="my-4">
+            <a class="link-creative d-block mx-auto mx-lg-0" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
+              target="_blank" aria-hidden="true"> <img src="img/licencia_cc.svg" class="img-fluid w-100" alt=""></a>
+            <p class="mt-4">{uapaTitle} por {authorName} se distribuye bajo una <a
+                class="footer-link btn-link" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
+                target="_blank">Licencia Creative Commons
+                Atribución-NoComercial-SinDerivadas 4.0 Internacional.</a>
+            </p>      
+          </div>
+        )}
+
+        <!-- Sección Universia - Solo cuando NO es CUAED -->
+        {!showCuaedSection && (
+          <div id="universia">
+            <hr aria-hidden="true" class="my-4">
+            <div class="d-flex justify-content-center align-items-center">
+              <a href="https://www.universia.net/mx/home.html" target="_blank">
+                <img id="universialogo" src="https://repositorio-uapa.cuaed.unam.mx/repositorio/uapa/img/universia.png" width="220px"
+                  height="auto">
+              </a>
+            </div>
+          </div>
+        )}
       </div>
 
       {showCreditsModal && (

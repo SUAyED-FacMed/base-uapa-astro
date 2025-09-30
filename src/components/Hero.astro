@@ -1,16 +1,20 @@
 ---
+import { UAPA_CONFIG } from '../config/uapa-config.ts';
+
 export interface Props {
   title: string;
   subtitle?: string;
   authors?: string;
   imageCaption?: string;
+  showCuaedSection?: boolean;
 }
 
 const { 
   title = "Título de la UAPA",
   subtitle = "Unidad de Apoyo para el Aprendizaje",
   authors = "Autor 1 | Autor 2 | Autor 3",
-  imageCaption = "Pie de portada. Tomada de https://suayed.facmed.unam.mx/"
+  imageCaption = "Pie de portada. Tomada de https://suayed.facmed.unam.mx/",
+  showCuaedSection = UAPA_CONFIG.footer.showCuaedSection
 } = Astro.props;
 ---
 
@@ -47,11 +51,14 @@ const {
               <h1>{title}</h1>
             </div>
             <p class="tagline">{subtitle}</p>
-            <!-- quitar para CUAED -->
-            <hr class="line">
-            <p class="autores text-center text-white">{authors}</p>
-            <br>
-            <!-- termina quitar para CUAED -->
+            <!-- Mostrar autores solo en modo CUAED -->
+            {showCuaedSection && (
+              <>
+                <hr class="line">
+                <p class="autores text-center text-white">{authors}</p>
+                <br>
+              </>
+            )}
             <a class="btn btn-secondary mb-4" href="#introduccion" role="button">Iniciar</a>
             
             <figcaption class="text-center pie-portada">{imageCaption}</figcaption>
