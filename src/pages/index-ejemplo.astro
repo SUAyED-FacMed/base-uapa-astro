@@ -11,6 +11,7 @@ import Figure from "../components/Figure.astro";
 import VideoYoutube from "../components/VideoYoutube.astro";
 import VideoYoutubeLite from "../components/VideoYoutubeLite.astro";
 import Hotspot from "../components/Hotspot.astro";
+import HojasDesordenadas from "../components/HojasDesordenadas.astro";
 import { UAPA_CONFIG, formatAuthors } from "../config/uapa-config.ts";
 import { ACTIVITIES_CONFIG, ASSESSMENTS_CONFIG } from "../config/activities-config.ts";
 ---
@@ -302,6 +303,51 @@ import { ACTIVITIES_CONFIG, ASSESSMENTS_CONFIG } from "../config/activities-conf
           <Figure src="img/cont/6_9.png" alt="Imagen 4" width="w-600" class="my-xl-0" />
         </div>
       </div>
+
+      <HojasDesordenadas hojas={[
+          {
+            color: 'verde',
+            content: `
+              <p>Contenido aquí...</p>
+            `
+          }
+        ]} />
+      <!-- Ejemplo de Hojas Desordenadas -->
+      <HojasDesordenadas hojas={[
+        {
+          color: 'amarillo',
+          content: `
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius laborum culpa consequuntur voluptas? Numquam ab architecto placeat magni ipsa eveniet.</p>
+            <p>Incidunt optio ex, fugit quaerat molestias sed accusamus laboriosam non culpa quia.</p>
+          `
+        },
+        {
+          color: 'rosa',
+          content: `
+            <div class="imagenPie">
+              <img src="img/cont/confusion.jpg" alt="Imagen ejemplo">
+              <p>Pie de imagen ilustrativa</p>
+            </div>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem tempora iste maxime veritatis aut neque.</p>
+          `
+        },
+        {
+          color: 'verde',
+          content: `
+            <ul>
+              <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi ad officia, praesentium tempore dolore dolorem ut eum!</li>
+              <li>Consequuntur ratione soluta veritatis voluptatibus reprehenderit, aliquid asperiores sequi repudiandae nisi sapiente.</li>
+            </ul>
+          `
+        },
+        {
+          color: 'azul',
+          content: `
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo deserunt itaque, cupiditate vitae provident dolorem corrupti.</p>
+            <p>Nulla perferendis veniam tempore exercitationem nesciunt distinctio officiis veritatis laborum porro quas.</p>
+          `
+        }
+      ]} />
 
       <p>
         Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aliquam erat volutpat. Sed malesuada ligula in sapien placerat porta efficitur in augue. Vivamus lectus
