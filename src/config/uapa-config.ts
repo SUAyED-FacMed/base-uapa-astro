@@ -68,6 +68,13 @@ export const UAPA_CONFIG = {
     showCuaedSection: true,
     showToolsMenu: true,
     showCreditsModal: true,
+    // URLs para el menú lateral de herramientas
+    toolsMenu: {
+      foroUrl: "http://ponteenlinea.facmed.unam.mx/mod/forum/view.php?id=1",
+      evaluaUrl: "http://ponteenlinea.facmed.unam.mx/",
+      ponteEnLineaUrl: "http://ponteenlinea.facmed.unam.mx/",
+      logoutUrl: "http://ponteenlinea.facmed.unam.mx/moodle/login/logout.php"
+    },
     credits: [
       { role: "Coordinación general", name: "Jorge León Martínez" },
       { role: "Coordinación de desarrollo", name: "Edith Tapia Rangel" },

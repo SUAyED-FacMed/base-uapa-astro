@@ -18,6 +18,7 @@ const {
 } = Astro.props;
 
 const credits = UAPA_CONFIG.footer.credits;
+const toolsMenu = UAPA_CONFIG.footer.toolsMenu;
 
 // Función para formatear nombres con "y" en los créditos
 const formatNamesWithAnd = (names: string) => {
@@ -148,8 +149,8 @@ const formatNamesWithAnd = (names: string) => {
       <a data-bs-toggle="modal" data-bs-target="#evalua"> <img src="img/evalua.svg" alt="evalua-la-uapa" width="50" height="50"
          data-toggle="tooltip" data-placement="top" title="¡Danos tu opinión!"></a> 
 
-      <a href="http://ponteenlinea.facmed.unam.mx/" target="_blank"> <img src="img/enlinea.svg" alt="ponte-en-linea" width="50" height="50" data-toggle="tooltip" data-placement="top" title="Ponte en líne@"></a> 
-      <a href="http://ponteenlinea.facmed.unam.mx/moodle/login/logout.php"> <img src="img/salir.svg" alt="cerrar-sesion" width="50" height="50" data-toggle="tooltip" data-placement="top" title="Cerrar sesión"></a> 
+      <a href={toolsMenu.ponteEnLineaUrl} target="_blank"> <img src="img/enlinea.svg" alt="ponte-en-linea" width="50" height="50" data-toggle="tooltip" data-placement="top" title="Ponte en líne@"></a> 
+      <a href={toolsMenu.logoutUrl}> <img src="img/salir.svg" alt="cerrar-sesion" width="50" height="50" data-toggle="tooltip" data-placement="top" title="Cerrar sesión"></a> 
     </div>
     <!-- fin tools -->
 
@@ -164,7 +165,7 @@ const formatNamesWithAnd = (names: string) => {
           </div>
           <div class="modal-body">
             <div class="embed-iframe-act">
-              <iframe src="evaluacion/comple_arras1/index.html"></iframe>
+              <iframe src={toolsMenu.foroUrl}></iframe>
             </div>
           </div>
           <div class="modal-footer">
@@ -184,7 +185,7 @@ const formatNamesWithAnd = (names: string) => {
           </div>
           <div class="modal-body">
             <div class="embed-iframe-act">
-              <iframe src="evaluacion/comple_arras1/index.html"></iframe>
+              <iframe src={toolsMenu.evaluaUrl}></iframe>
             </div>
           </div>
           <div class="modal-footer">
