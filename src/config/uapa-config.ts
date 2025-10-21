@@ -31,7 +31,7 @@ export const UAPA_CONFIG = {
   
   // Hero
   hero: {
-    imageCaption: "Pie de portada. Tomada de https://suayed.facmed.unam.mx/"
+    imageCaption: "Pie de portada. <em>Portada</em> tomada de https://suayed.facmed.unam.mx/"
   },
   
   // Navegación
