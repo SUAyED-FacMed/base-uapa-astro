@@ -12,6 +12,12 @@ export interface Props {
   basicReferences?: string[];
   complementaryReferences?: string[];
   
+  // Control de visualización
+  showBasic?: boolean;
+  showComplementary?: boolean;
+  basicSectionTitle?: string;
+  complementarySectionTitle?: string;
+  
   // Configuración de cita
   uapaTitle?: string;
   uapaAuthors?: string;
@@ -24,6 +30,10 @@ const {
   complementarySections: propComplementarySections,
   basicReferences,
   complementaryReferences,
+  showBasic = true,
+  showComplementary = true,
+  basicSectionTitle = "Básicas",
+  complementarySectionTitle = "Complementarias",
   uapaTitle = UAPA_CONFIG.title,
   uapaAuthors = formatAuthorsForCitation(UAPA_CONFIG.authors),
   uapaUrl = "[Vínculo]"
@@ -39,6 +49,10 @@ const complementarySections = propComplementarySections ||
   REFERENCES_CONFIG.complementary?.sections || 
   (complementaryReferences ? [{ title: "Bibliografía", references: complementaryReferences }] : 
    [{ title: "Documentos electrónicos", references: REFERENCES_CONFIG.complementaryLegacy || [] }]);
+
+// Verificar si hay contenido real
+const hasBasicContent = basicSections.some(section => section.references && section.references.length > 0);
+const hasComplementaryContent = complementarySections.some(section => section.references && section.references.length > 0);
 ---
 
 <!-- ************* INICIA REFERENCIAS ************** -->
@@ -56,30 +70,42 @@ const complementarySections = propComplementarySections ||
         </h2>
 
         <!-- Referencias Básicas -->
-        <h3>Básicas</h3>
-        {basicSections.map(section => (
-          <div class="reference-section">
-            <h4>{section.title}</h4>
-            <ul>
-              {section.references.map(ref => (
-                <li set:html={ref}></li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        {showBasic && hasBasicContent && (
+          <>
+            <h3>{basicSectionTitle}</h3>
+            {basicSections.map(section => (
+              section.references && section.references.length > 0 && (
+                <div class="reference-section">
+                  <h4>{section.title}</h4>
+                  <ul>
+                    {section.references.map(ref => (
+                      <li set:html={ref}></li>
+                    ))}
+                  </ul>
+                </div>
+              )
+            ))}
+          </>
+        )}
 
         <!-- Referencias Complementarias -->
-        <h3>Complementarias</h3>
-        {complementarySections.map(section => (
-          <div class="reference-section">
-            <h4>{section.title}</h4>
-            <ul>
-              {section.references.map(ref => (
-                <li set:html={ref}></li>
-              ))}
-            </ul>
-          </div>
-        ))}      
+        {showComplementary && hasComplementaryContent && (
+          <>
+            <h3>{complementarySectionTitle}</h3>
+            {complementarySections.map(section => (
+              section.references && section.references.length > 0 && (
+                <div class="reference-section">
+                  <h4>{section.title}</h4>
+                  <ul>
+                    {section.references.map(ref => (
+                      <li set:html={ref}></li>
+                    ))}
+                  </ul>
+                </div>
+              )
+            ))}
+          </>
+        )}      
 
         <!-- como citar -->
         <h3 class="envolv"><i class="icon-pen me-2" aria-hidden="true"></i><span>Cómo citar</span></h3>

@@ -48,3 +48,11 @@ export const REFERENCES_CONFIG = {
   ],
   
 };
+
+// Configuración vacía para proyectos sin referencias (útil para copiar)
+export const EMPTY_REFERENCES = {
+  basic: { sections: [] },
+  complementary: { sections: [] },
+  basicLegacy: [],
+  complementaryLegacy: []
+};
