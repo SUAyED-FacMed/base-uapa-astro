@@ -1,9 +1,30 @@
 ---
+// Hotspot.astro - Componente para mostrar recursos interactivos tipo hotspot
+// 
+// Ejemplos de uso:
+// 
+// Inline:
+// <Hotspot 
+//   iframeSrc="path/to/hotspot.html"
+//   iframeHeight="500px"
+//   title="Título opcional"
+// />
+//
+// En modal:
+// <Hotspot 
+//   iframeSrc="path/to/hotspot.html"
+//   iframeHeight="70vh"
+//   showInModal={true}
+//   modalTitle="Hotspot interactivo"
+//   buttonText="Abrir"
+// />
+
 export interface Props {
   id?: string;
   title?: string;
   description?: string;
   iframeSrc: string;
+  iframeHeight?: string;              // Altura del iframe (ej: "600px", "80vh")
   buttonText?: string;
   className?: string;
   showInModal?: boolean;
@@ -16,6 +37,7 @@ const {
   title,
   description,
   iframeSrc,
+  iframeHeight = "600px",              // Altura por defecto
   buttonText = "Ver hotspot",
   className = "",
   showInModal = false,
@@ -57,12 +79,9 @@ const {
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
           </div>
           <div class="modal-body">
-            <div class="embed-iframe-act">
-              <iframe src={iframeSrc}></iframe>
+            <div class="embed-iframe-hotspot">
+              <iframe src={iframeSrc} style={`height: ${iframeHeight};`}></iframe>
             </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
           </div>
         </div>
       </div>
@@ -74,8 +93,8 @@ const {
     {title && <h3>{title}</h3>}
     {description && <p set:html={description}></p>}
     
-    <div class="embed-iframe-act">
-      <iframe src={iframeSrc}></iframe>
+    <div class="embed-iframe-hotspot">
+      <iframe src={iframeSrc} style={`height: ${iframeHeight};`}></iframe>
     </div>
   </div>
 )}

@@ -166,6 +166,17 @@ main .wrapper-section {
 	/*height: 100vh;*/
 }
 
+.embed-iframe-hotspot {
+	width: 100%;
+	overflow: hidden;
+}
+
+.embed-iframe-hotspot iframe {
+	width: 100%;
+	border: none;
+	display: block;
+}
+
 .content-act {
 	padding: 3rem 5%;
 }
