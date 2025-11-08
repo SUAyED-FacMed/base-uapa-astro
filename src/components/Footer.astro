@@ -20,11 +20,12 @@ const {
 const credits = UAPA_CONFIG.footer.credits;
 const toolsMenu = UAPA_CONFIG.footer.toolsMenu;
 
-// Función para formatear nombres con "y" en los créditos
-const formatNamesWithAnd = (names: string) => {
+// Función para formatear nombres con saltos de línea en los créditos
+// Ejemplo: "Autor 1, Autor 2, Autor 3" → "Autor 1<br>Autor 2<br>Autor 3"
+const formatNamesWithBreaks = (names: string) => {
   if (!names || names.trim() === "") return "";
   const nameArray = names.split(",").map(n => n.trim()).filter(n => n !== "");
-  return formatAuthors.withAnd(nameArray);
+  return nameArray.join("<br>");
 };
 ---
 
@@ -119,7 +120,7 @@ const formatNamesWithAnd = (names: string) => {
                           <p class="mb-0">{credit.role}</p>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-lg-6">
-                          <p class="mb-0">{formatNamesWithAnd(credit.name)}</p>
+                          <p class="mb-0" set:html={formatNamesWithBreaks(credit.name)}></p>
                         </div>
                       </li>
                     ))}
