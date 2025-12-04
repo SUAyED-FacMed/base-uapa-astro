@@ -1,6 +1,6 @@
 ---
 export interface HojaContent {
-  color: 'amarillo' | 'rosa' | 'verde' | 'azul';
+  color: "amarillo" | "rosa" | "verde" | "azul";
   content: string; // HTML content
 }
 
@@ -9,187 +9,230 @@ export interface Props {
   className?: string;
 }
 
-const { 
-  hojas,
-  className = ""
-} = Astro.props;
+const { hojas, className = "" } = Astro.props;
 ---
 
 <section class={`contenedor-hojas-desordenadas ${className}`.trim()}>
-  {hojas.map((hoja) => (
-    <div class={`hojas ${hoja.color}`}>
-      <div class="contenido" set:html={hoja.content}></div>
-    </div>
-  ))}
+  {
+    hojas.map((hoja) => (
+      <div class={`hojas ${hoja.color}`}>
+        <div class="contenido" set:html={hoja.content} />
+      </div>
+    ))
+  }
 </section>
 
 <style>
-section.contenedor-hojas-desordenadas {
-	--amarillo: #f7e999;
-	--azul: #b9dcf4;
-	--rosa: #ffbda3;
-	--verde: #b4f799;
-	font-family: 'Open Sans', sans-serif;
-	box-sizing: border-box;
-	position: relative;
-	display: flex;
-	flex-wrap: wrap;
-	gap: 5em;
-	justify-content: space-around;
-	align-items: start;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: -moz-none;
-	-ms-user-select: none;
-	-o-user-select: none;
-	user-select: none;
-}
+  section.contenedor-hojas-desordenadas {
+    --amarillo: #f7e999;
+    --azul: #b9dcf4;
+    --rosa: #ffbda3;
+    --verde: #b4f799;
+    font-family: "Open Sans", sans-serif;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5em;
+    justify-content: space-around;
+    align-items: start;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+  }
 
-section.contenedor-hojas-desordenadas:hover {
-	transform: rotate(0deg);
-}
+  section.contenedor-hojas-desordenadas:hover {
+    transform: rotate(0deg);
+  }
 
-section.contenedor-hojas-desordenadas .hojas {
-	transition: .5s;
-	transform: rotate(10deg);
-	max-width: 350px;
-	width: 400px;
-	min-width: 300px;
-	background-color: #fafafa;
-	margin: 3em auto;
-	padding: 24px;
-	position: relative;
-}
+  section.contenedor-hojas-desordenadas .hojas {
+    transition: 0.5s;
+    transform: rotate(10deg);
+    max-width: 100%;
+    width: 350px;
+    min-width: 280px;
+    background-color: #fafafa;
+    margin: 3em auto;
+    padding: 24px;
+    position: relative;
+  }
 
-section.contenedor-hojas-desordenadas .hojas:hover {
-	transform: rotate(0deg);
-}
+  section.contenedor-hojas-desordenadas .hojas:hover {
+    transform: rotate(0deg);
+    z-index: 10;
+  }
 
-section.contenedor-hojas-desordenadas .hojas.amarillo>*,
-section.contenedor-hojas-desordenadas .hojas.rosa>*,
-section.contenedor-hojas-desordenadas .hojas.verde>*,
-section.contenedor-hojas-desordenadas .hojas.azul>* {
-	transition: .5s;
-	transform: rotate(10deg);
-}
+  section.contenedor-hojas-desordenadas .hojas.amarillo > *,
+  section.contenedor-hojas-desordenadas .hojas.rosa > *,
+  section.contenedor-hojas-desordenadas .hojas.verde > *,
+  section.contenedor-hojas-desordenadas .hojas.azul > * {
+    transition: 0.5s;
+    transform: rotate(10deg);
+  }
 
-section.contenedor-hojas-desordenadas .hojas:hover.amarillo>*,
-section.contenedor-hojas-desordenadas .hojas:hover.rosa>*,
-section.contenedor-hojas-desordenadas .hojas:hover.verde>*,
-section.contenedor-hojas-desordenadas .hojas:hover.azul>* {
-	transform: rotate(0deg);
-}
+  section.contenedor-hojas-desordenadas .hojas:hover.amarillo > *,
+  section.contenedor-hojas-desordenadas .hojas:hover.rosa > *,
+  section.contenedor-hojas-desordenadas .hojas:hover.verde > *,
+  section.contenedor-hojas-desordenadas .hojas:hover.azul > * {
+    transform: rotate(0deg);
+  }
 
-section.contenedor-hojas-desordenadas .hojas.amarillo:before,
-section.contenedor-hojas-desordenadas .hojas.amarillo {
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), 0 0 300px 25px var(--amarillo) inset;
-}
+  section.contenedor-hojas-desordenadas .hojas.amarillo:before,
+  section.contenedor-hojas-desordenadas .hojas.amarillo {
+    box-shadow:
+      0 0 10px rgba(0, 0, 0, 0.3),
+      0 0 300px 25px var(--amarillo) inset;
+  }
 
-section.contenedor-hojas-desordenadas .hojas.amarillo:after {
-	box-shadow: 0 0 8px rgba(0, 0, 0, 0.2), inset 0 0 300px var(--amarillo);
-}
+  section.contenedor-hojas-desordenadas .hojas.amarillo:after {
+    box-shadow:
+      0 0 8px rgba(0, 0, 0, 0.2),
+      inset 0 0 300px var(--amarillo);
+  }
 
-section.contenedor-hojas-desordenadas .hojas.verde {
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), 0 0 300px 25px var(--verde) inset;
-}
+  section.contenedor-hojas-desordenadas .hojas.verde {
+    box-shadow:
+      0 0 10px rgba(0, 0, 0, 0.3),
+      0 0 300px 25px var(--verde) inset;
+  }
 
-section.contenedor-hojas-desordenadas .hojas.verde:before,
-section.contenedor-hojas-desordenadas .hojas.verde:after {
-	box-shadow: 0 0 8px rgba(0, 0, 0, 0.2), inset 0 0 300px var(--verde);
-}
+  section.contenedor-hojas-desordenadas .hojas.verde:before,
+  section.contenedor-hojas-desordenadas .hojas.verde:after {
+    box-shadow:
+      0 0 8px rgba(0, 0, 0, 0.2),
+      inset 0 0 300px var(--verde);
+  }
 
-section.contenedor-hojas-desordenadas .hojas.rosa {
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), 0 0 300px 25px var(--rosa) inset;
-}
+  section.contenedor-hojas-desordenadas .hojas.rosa {
+    box-shadow:
+      0 0 10px rgba(0, 0, 0, 0.3),
+      0 0 300px 25px var(--rosa) inset;
+  }
 
-section.contenedor-hojas-desordenadas .hojas.rosa:before,
-section.contenedor-hojas-desordenadas .hojas.rosa:after {
-	box-shadow: 0 0 8px rgba(0, 0, 0, 0.2), inset 0 0 300px var(--rosa);
-}
+  section.contenedor-hojas-desordenadas .hojas.rosa:before,
+  section.contenedor-hojas-desordenadas .hojas.rosa:after {
+    box-shadow:
+      0 0 8px rgba(0, 0, 0, 0.2),
+      inset 0 0 300px var(--rosa);
+  }
 
-section.contenedor-hojas-desordenadas .hojas.azul {
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), 0 0 300px 25px var(--azul) inset;
-}
+  section.contenedor-hojas-desordenadas .hojas.azul {
+    box-shadow:
+      0 0 10px rgba(0, 0, 0, 0.3),
+      0 0 300px 25px var(--azul) inset;
+  }
 
-section.contenedor-hojas-desordenadas .hojas.azul:before,
-section.contenedor-hojas-desordenadas .hojas.azul:after {
-	box-shadow: 0 0 8px rgba(0, 0, 0, 0.2), inset 0 0 300px var(--azul);
-}
+  section.contenedor-hojas-desordenadas .hojas.azul:before,
+  section.contenedor-hojas-desordenadas .hojas.azul:after {
+    box-shadow:
+      0 0 8px rgba(0, 0, 0, 0.2),
+      inset 0 0 300px var(--azul);
+  }
 
-section.contenedor-hojas-desordenadas .hojas:before,
-section.contenedor-hojas-desordenadas .hojas:after {
-	content: "";
-	background-color: #fafafa;
-	height: 100%;
-	width: 100%;
-	position: absolute;
-	z-index: -2;
-	transition: .5s;
-}
+  section.contenedor-hojas-desordenadas .hojas:before,
+  section.contenedor-hojas-desordenadas .hojas:after {
+    content: "";
+    background-color: #fafafa;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: -2;
+    transition: 0.5s;
+  }
 
-section.contenedor-hojas-desordenadas .hojas:before {
-	left: -5px;
-	top: 2px;
-	transform: rotate(-4.5deg);
-}
+  section.contenedor-hojas-desordenadas .hojas:before {
+    left: -5px;
+    top: 2px;
+    transform: rotate(-4.5deg);
+  }
 
-section.contenedor-hojas-desordenadas .hojas:after {
-	right: -3px;
-	top: 0px;
-	transform: rotate(9.4deg);
-}
+  section.contenedor-hojas-desordenadas .hojas:after {
+    right: -3px;
+    top: 0px;
+    transform: rotate(9.4deg);
+  }
 
-section.contenedor-hojas-desordenadas .hojas:hover:before {
-	transform: rotate(0deg);
-	border: solid rgba(111, 99, 61, 0.4);
-	border-width: 0px 0px 0px 1px;
-	left: -6px;
-	top: -6px;
-}
+  section.contenedor-hojas-desordenadas .hojas:hover:before {
+    transform: rotate(0deg);
+    border: solid rgba(111, 99, 61, 0.4);
+    border-width: 0px 0px 0px 1px;
+    left: -6px;
+    top: -6px;
+  }
 
-section.contenedor-hojas-desordenadas .hojas:hover:after {
-	transform: rotate(0deg);
-	border: solid rgba(111, 99, 61, 0.4);
-	border-width: 0px 0px 0px 1px;
-	right: 3px;
-	top: -3px;
-}
+  section.contenedor-hojas-desordenadas .hojas:hover:after {
+    transform: rotate(0deg);
+    border: solid rgba(111, 99, 61, 0.4);
+    border-width: 0px 0px 0px 1px;
+    right: 3px;
+    top: -3px;
+  }
 
-section.contenedor-hojas-desordenadas .hojas :global(p) {
-	line-height: normal;
-}
+  section.contenedor-hojas-desordenadas .hojas :global(p) {
+    line-height: normal;
+  }
 
-section.contenedor-hojas-desordenadas .hojas :global(ul) {
-	line-height: normal;
-	padding-inline-start: 2em;
-}
+  section.contenedor-hojas-desordenadas .hojas :global(ul) {
+    line-height: normal;
+    padding-inline-start: 2em;
+  }
 
-section.contenedor-hojas-desordenadas .hojas :global(ul li) {
-	margin-bottom: 1em;
-}
+  section.contenedor-hojas-desordenadas .hojas :global(ul li) {
+    margin-bottom: 1em;
+  }
 
-section.contenedor-hojas-desordenadas .hojas :global(.imagenPie) {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	margin-bottom: 2em;
-}
+  section.contenedor-hojas-desordenadas .hojas :global(.imagenPie) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2em;
+  }
 
-section.contenedor-hojas-desordenadas .hojas :global(.imagenPie img) {
-	width: 80%;
-	max-width: 600px;
-}
+  section.contenedor-hojas-desordenadas .hojas :global(.imagenPie img) {
+    width: 80%;
+    max-width: 600px;
+  }
 
-section.contenedor-hojas-desordenadas .hojas :global(.imagenPie p) {
-	font-size: 0.75em;
-	text-align: center;
-	margin-top: 20px;
-	overflow-wrap: anywhere;
-}
+  section.contenedor-hojas-desordenadas .hojas :global(.imagenPie p) {
+    font-size: 0.75em;
+    text-align: center;
+    margin-top: 20px;
+    overflow-wrap: anywhere;
+  }
 
-@media (max-width: 767px) {
-	section.contenedor-hojas-desordenadas .hojas {
-		width: 80%;
-	}
-}
+  @media (max-width: 767px) {
+    section.contenedor-hojas-desordenadas {
+      gap: 2em;
+      padding: 0 10px;
+    }
+
+    section.contenedor-hojas-desordenadas .hojas {
+      width: 100%;
+      max-width: 100%;
+      min-width: auto;
+      transform: rotate(2deg); /* Menos rotación en móvil */
+      margin: 1.5em auto;
+    }
+
+    section.contenedor-hojas-desordenadas .hojas:before {
+      left: -2px;
+      transform: rotate(-2deg);
+    }
+
+    section.contenedor-hojas-desordenadas .hojas:after {
+      right: -2px;
+      transform: rotate(3deg);
+    }
+
+    /* Resetear rotación interna en móvil para mejor lectura */
+    section.contenedor-hojas-desordenadas .hojas.amarillo > *,
+    section.contenedor-hojas-desordenadas .hojas.rosa > *,
+    section.contenedor-hojas-desordenadas .hojas.verde > *,
+    section.contenedor-hojas-desordenadas .hojas.azul > * {
+      transform: rotate(0deg);
+    }
+  }
 </style>
