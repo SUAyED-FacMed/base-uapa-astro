@@ -65,9 +65,9 @@ export const UAPA_CONFIG = {
 
   // Footer y créditos
   footer: {
-    showCuaedSection: true,
-    showToolsMenu: true,
-    showCreditsModal: true,
+    showCuaedSection: false,
+    showToolsMenu: false,
+    showCreditsModal: false,
     // URLs para el menú lateral de herramientas
     toolsMenu: {
       foroUrl: "http://ponteenlinea.facmed.unam.mx/mod/forum/view.php?id=1",
