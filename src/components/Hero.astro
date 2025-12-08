@@ -1,20 +1,21 @@
 ---
 import { UAPA_CONFIG } from '../config/uapa-config.ts';
 
+// Usar isCuaed como fuente única de verdad
+const isCuaed = UAPA_CONFIG.isCuaed;
+
 export interface Props {
   title: string;
   subtitle?: string;
   authors?: string;
   imageCaption?: string;
-  showCuaedSection?: boolean;
 }
 
 const { 
   title = "Título de la UAPA",
   subtitle = "Unidad de Apoyo para el Aprendizaje",
   authors = "Autor 1 | Autor 2 | Autor 3",
-  imageCaption = "Pie de portada. Tomada de https://suayed.facmed.unam.mx/",
-  showCuaedSection = UAPA_CONFIG.footer.showCuaedSection
+  imageCaption = "Pie de portada. Tomada de https://suayed.facmed.unam.mx/"
 } = Astro.props;
 ---
 
@@ -51,8 +52,8 @@ const {
               <h1>{title}</h1>
             </div>
             <p class="tagline">{subtitle}</p>
-            <!-- Mostrar autores solo en modo CUAED -->
-            {showCuaedSection && (
+            <!-- Mostrar autores solo en modo SUAyED -->
+            {!isCuaed && (
               <>
                 <hr class="line">
                 <p class="autores text-center text-white">{authors}</p>

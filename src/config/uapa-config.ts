@@ -61,13 +61,13 @@ export const UAPA_CONFIG = {
     ] as NavItem[]
   },
 
-
+  // Modo de producción: true = CUAED, false = SUAyED
+  // CUAED: muestra sección CUAED en footer, NO muestra tools menu ni modal de créditos
+  // SUAyED: NO muestra sección CUAED, SÍ muestra tools menu y modal de créditos
+  isCuaed: true,
 
   // Footer y créditos
   footer: {
-    showCuaedSection: false,
-    showToolsMenu: false,
-    showCreditsModal: false,
     // URLs para el menú lateral de herramientas
     toolsMenu: {
       foroUrl: "http://ponteenlinea.facmed.unam.mx/mod/forum/view.php?id=1",

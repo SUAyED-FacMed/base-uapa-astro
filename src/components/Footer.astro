@@ -1,21 +1,25 @@
 ---
 import { UAPA_CONFIG, formatAuthors } from '../config/uapa-config.ts';
 
+// Usar isCuaed como fuente única de verdad
+const isCuaed = UAPA_CONFIG.isCuaed;
+
 export interface Props {
-  showCuaedSection?: boolean;
-  showToolsMenu?: boolean;
-  showCreditsModal?: boolean;
   uapaTitle?: string;
   authorName?: string;
 }
 
 const { 
-  showCuaedSection = UAPA_CONFIG.footer.showCuaedSection,
-  showToolsMenu = UAPA_CONFIG.footer.showToolsMenu,
-  showCreditsModal = UAPA_CONFIG.footer.showCreditsModal,
   uapaTitle = UAPA_CONFIG.title,
   authorName = formatAuthors.display
 } = Astro.props;
+
+// Derivar flags del modo
+// CUAED: muestra sección CUAED en footer
+// SUAyED: muestra tools menu y modal de créditos
+const showCuaedSection = isCuaed;
+const showToolsMenu = !isCuaed;
+const showCreditsModal = !isCuaed;
 
 const credits = UAPA_CONFIG.footer.credits;
 const toolsMenu = UAPA_CONFIG.footer.toolsMenu;
@@ -36,8 +40,8 @@ const formatNamesWithBreaks = (names: string) => {
       <!-- contenido -->
       
       <div class="col-xs-12 col-sm-12 col-lg-3">
-        <!-- Solo mostrar en modo CUAED -->
-        {showCuaedSection && (
+        <!-- Solo mostrar en modo SUAyED -->
+        {!showCuaedSection && (
           <Fragment>
             <h2 class="text-center text-lg-start">Desarrollado por:</h2>
             <a class="d-block link-cuaieed mx-auto mx-lg-0 mb-5 " href="https://cuaed.unam.mx/" target="_blank"
@@ -49,8 +53,8 @@ const formatNamesWithBreaks = (names: string) => {
 
       <div class="col-xs-12 col-sm-12 col-lg-6">
 
-        <!-- Solo mostrar en modo CUAED -->
-        {showCuaedSection && (
+        <!-- Solo mostrar en modo SUAyED -->
+        {!showCuaedSection && (
           <Fragment>
             <h2 class="text-center text-lg-start">Aviso legal</h2>
             <p>Coordinación de Universidad Abierta y Educación Digital de la UNAM. ©Todos los
@@ -69,8 +73,8 @@ const formatNamesWithBreaks = (names: string) => {
           </Fragment>
         )}
 
-        <!-- Solo mostrar en modo CUAED -->
-        {showCuaedSection && (
+        <!-- Solo mostrar en modo SUAyED -->
+        {!showCuaedSection && (
           <div id="creative-commons">
             <hr aria-hidden="true" class="my-4">
             <a class="link-creative d-block mx-auto mx-lg-0" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
@@ -83,25 +87,27 @@ const formatNamesWithBreaks = (names: string) => {
           </div>
         )}
 
-        <!-- Sección Universia - Solo cuando NO es CUAED -->
-        {!showCuaedSection && (
-          <div id="universia">
-            <hr aria-hidden="true" class="my-4">
-            <div class="d-flex justify-content-center align-items-center">
-              <a href="https://www.universia.net/mx/home.html" target="_blank">
-                <img id="universialogo" src="https://repositorio-uapa.cuaed.unam.mx/repositorio/uapa/img/universia.png" width="220px"
-                  height="auto">
-              </a>
+        <!-- Sección Universia + scripts CUAED - Solo cuando ES CUAED -->
+        {showCuaedSection && (
+          <Fragment>
+            <div id="universia">
+              <hr aria-hidden="true" class="my-4">
+              <div class="d-flex justify-content-center align-items-center">
+                <a href="https://www.universia.net/mx/home.html" target="_blank">
+                  <img id="universialogo" src="https://repositorio-uapa.cuaed.unam.mx/repositorio/uapa/img/universia.png" width="220px"
+                    height="auto">
+                </a>
+              </div>
             </div>
-          </div>
-          <!--Poner CUAED-->
-          <script is:inline src="https://repositorio-uapa.cuaed.unam.mx/repositorio/uapa/js/jquery-3.6.0.min.js"></script>
-          <script is:inline src="https://repositorio-uapa.cuaed.unam.mx/repositorio/uapa/js/footer2024.js"></script>
-          <script is:inline>
-            if (typeof textoFooter === 'function') {
-              textoFooter(false);
-            }
-          </script>
+            <!--Scripts CUAED-->
+            <script is:inline src="https://repositorio-uapa.cuaed.unam.mx/repositorio/uapa/js/jquery-3.6.0.min.js"></script>
+            <script is:inline src="https://repositorio-uapa.cuaed.unam.mx/repositorio/uapa/js/footer2024.js"></script>
+            <script is:inline>
+              if (typeof textoFooter === 'function') {
+                textoFooter(false);
+              }
+            </script>
+          </Fragment>
         )}
       </div>
 
