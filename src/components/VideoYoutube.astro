@@ -23,16 +23,31 @@ const {
   nocookie = true,
 } = Astro.props;
 
-// Construir URL con parámetros opcionales
-const baseUrl = nocookie
-  ? `https://www.youtube-nocookie.com/embed/${videoId}`
-  : `https://www.youtube.com/embed/${videoId}`;
-const params = new URLSearchParams();
-if (autoplay) params.set("autoplay", "1");
+const baseUrl = `https://www.youtube.com/embed/${videoId}`;
+const noCookieUrl = `https://www.youtube-nocookie.com/embed/${videoId}`;
 
-const videoUrl = params.toString()
-  ? `${baseUrl}?${params.toString()}`
-  : baseUrl;
+// Parámetros recomendados por YouTube para incrustaciones modernas
+const params = new URLSearchParams({
+  rel: "0",
+  modestbranding: "1",
+  playsinline: "1",
+});
+
+if (autoplay) {
+  params.set("autoplay", "1");
+  params.set("mute", "1"); // Autoplay móvil requiere mute
+}
+
+const queryString = params.toString();
+const standardVideoUrl = queryString ? `${baseUrl}?${queryString}` : baseUrl;
+const noCookieVideoUrl = queryString
+  ? `${noCookieUrl}?${queryString}`
+  : noCookieUrl;
+
+const videoUrl = nocookie ? noCookieVideoUrl : standardVideoUrl;
+const fallbackUrl = nocookie ? standardVideoUrl : undefined;
+const captionId = `yt-caption-${videoId}-${Math.random().toString(36).slice(2, 8)}`;
+const iframeId = `yt-iframe-${videoId}-${Math.random().toString(36).slice(2, 8)}`;
 
 // Permisos del iframe
 const permissions = [
@@ -50,6 +65,7 @@ const permissions = [
   <div class={`${width} mx-auto ${className}`.trim()}>
     <div class="ratio ratio-16x9">
       <iframe
+        id={iframeId}
         width="560"
         height="315"
         src={videoUrl}
@@ -57,11 +73,46 @@ const permissions = [
         frameborder="0"
         allow={permissions}
         allowfullscreen={allowFullscreen}
+        loading="lazy"
+        fetchpriority="low"
+        referrerpolicy="strict-origin-when-cross-origin"
+        data-fallback-src={fallbackUrl}
+        aria-describedby={captionId}
       >
       </iframe>
     </div>
     <div class="text-center mt-2">
-      <p class="text-muted small" set:html={title}></p>
+      <p id={captionId} class="figcap2" set:html={title}></p>
     </div>
   </div>
 </div>
+
+{nocookie && (
+  <script is:inline>
+    {`(() => {
+        const iframe = document.getElementById("${iframeId}");
+        if (!iframe) return;
+        const fallbackSrc = iframe.getAttribute("data-fallback-src");
+        if (!fallbackSrc) return;
+
+        const switchToFallback = () => {
+          if (iframe.dataset.fallbackApplied === "1") return;
+          iframe.dataset.fallbackApplied = "1";
+          iframe.src = fallbackSrc;
+        };
+
+        iframe.addEventListener("error", switchToFallback, { once: true });
+
+        const fallbackTimer = window.setTimeout(() => {
+          if (iframe.dataset.loaded !== "1") {
+            switchToFallback();
+          }
+        }, 4000);
+
+        iframe.addEventListener("load", () => {
+          iframe.dataset.loaded = "1";
+          window.clearTimeout(fallbackTimer);
+        });
+      })();`}
+  </script>
+)}
