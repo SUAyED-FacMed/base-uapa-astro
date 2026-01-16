@@ -21,6 +21,9 @@ export const UAPA_CONFIG = {
   description: "El sobrepeso y la obesidad son un problema creciente en México que afecta todos los sectores poblacionales debido a malos hábitos alimenticios, sedentarismo, predisposición genética, entre otros, es por eso que la unidad te brindara las herramientas para diagnosticar, estratificar y tratar la obesidad, las dislipidemias y el síndrome metabólico.",
   keywords: "Obesidad, dislipidemias, metabolismo, colesterol",
   
+  // Año de publicación (para el aviso legal y las citas)
+  year: "2025",
+  
   // Autores
   authors: [
     "María Teresa Arredondo Garza",
@@ -64,7 +67,7 @@ export const UAPA_CONFIG = {
   // Modo de producción: true = CUAED, false = SUAyED
   // CUAED: muestra sección CUAED en footer, NO muestra tools menu ni modal de créditos
   // SUAyED: NO muestra sección CUAED, SÍ muestra tools menu y modal de créditos
-  isCuaed: true,
+  isCuaed: false,
 
   // Footer y créditos
   footer: {
