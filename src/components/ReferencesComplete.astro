@@ -1,5 +1,6 @@
 ---
 import { REFERENCES_CONFIG } from '../config/references-config.ts';
+import { UAPA_CONFIG } from '../config/uapa-config.ts';
 
 export interface Props {
   basicReferences?: string[];
@@ -14,8 +15,8 @@ export interface Props {
 const { 
   basicReferences = REFERENCES_CONFIG.basic,
   complementaryReferences = REFERENCES_CONFIG.complementary,
-  showColorExamples = REFERENCES_CONFIG.options.showColorExamples,
-  showDetailsExample = REFERENCES_CONFIG.options.showDetailsExample,
+  showColorExamples = false,
+  showDetailsExample = false,
   uapaTitle = "Título de la UAPA",
   uapaAuthors = "nombre del autor",
   uapaUrl = "(Vínculo)"
@@ -40,7 +41,7 @@ const {
         <h4>Bibliografía</h4>
 
         <ul>
-          {basicReferences.map(ref => (
+          {Array.isArray(basicReferences) && basicReferences.map((ref: string) => (
             <li set:html={ref}></li>
           ))}
         </ul>
@@ -49,7 +50,7 @@ const {
         <h4>Bibliografía</h4>
 
         <ul>
-          {complementaryReferences.map(ref => (
+          {Array.isArray(complementaryReferences) && complementaryReferences.map((ref: string) => (
             <li set:html={ref}></li>
           ))}
         </ul>
@@ -141,14 +142,6 @@ const {
               <p class="mb-0">Este es un ejemplo de cómo se puede mostrar contenido adicional de forma expandible usando el elemento HTML <code>&lt;details&gt;</code>.</p>
             </div>
           </details>
-        )}
-
-        <!-- Nota sobre formato de citación -->
-        {REFERENCES_CONFIG.options.customCitation && (
-          <div class="alert alert-light border-start border-primary border-3 my-4">
-            <p class="mb-1"><strong>Formato de citación:</strong> {REFERENCES_CONFIG.options.customCitation.format}</p>
-            <p class="mb-0 text-muted small">{REFERENCES_CONFIG.options.customCitation.note}</p>
-          </div>
         )}
 
         <!-- como citar -->

@@ -141,19 +141,58 @@
 
 /*botones flotantes*/
 #tools {
-    /* display: none; */
     position: fixed;
-    top: 198px;
-    right: 0;
-    margin-right: 20px;
-    width: 46px;
-    height: 200px;
     z-index: 9999;
-    border-radius: 20px 0px 0px 20px;
     cursor: pointer !important;
     font-size: 10px !important;
-
 }
+
+/* Escritorio: menú vertical en el lado derecho */
+@media (min-width: 768px) {
+    #tools {
+        top: 198px;
+        right: 0;
+        margin-right: 20px;
+        width: 46px;
+        height: 200px;
+        border-radius: 20px 0px 0px 20px;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* Móvil: menú horizontal en la parte inferior */
+@media (max-width: 767px) {
+    #tools {
+        bottom: 0 !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: auto !important;
+        height: auto !important;
+        background-color: #010326 !important;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3) !important;
+        padding: 10px 20px !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 15px !important;
+        border-radius: 20px 20px 0 0 !important;
+        margin-right: 0 !important;
+    }
+    
+    #tools a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #tools a img {
+        width: 40px !important;
+        height: 40px !important;
+    }
+}
+
 #tools a:hover{
     opacity:0.90;
 }
