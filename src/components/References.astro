@@ -22,6 +22,9 @@ export interface Props {
   uapaTitle?: string;
   uapaAuthors?: string;
   uapaUrl?: string;
+  
+  // Override manual para casos complejos de cita
+  citationAuthors?: string;
 }
 
 const { 
@@ -36,8 +39,12 @@ const {
   complementarySectionTitle = "Complementarias",
   uapaTitle = UAPA_CONFIG.title,
   uapaAuthors = formatAuthorsForCitation(UAPA_CONFIG.authors),
-  uapaUrl = "(Vínculo)"
+  uapaUrl = "(Vínculo)",
+  citationAuthors
 } = Astro.props;
+
+// Usar citationAuthors manual si está disponible, sino usar el formato automático
+const finalAuthors = citationAuthors || uapaAuthors;
 
 // Determinar qué estructura usar (nueva estructura flexible vs legacy)
 const basicSections = propBasicSections || 
@@ -109,7 +116,7 @@ const hasComplementaryContent = complementarySections.some(section => section.re
 
         <!-- como citar -->
         <h3 class="envolv"><i class="icon-pen me-2" aria-hidden="true"></i><span>Cómo citar</span></h3>
-        <p>{uapaAuthors} ({UAPA_CONFIG.year}). {uapaTitle}. <em>Unidades de Apoyo para el Aprendizaje</em>.
+        <p>{finalAuthors} ({UAPA_CONFIG.year}). {uapaTitle}. <em>Unidades de Apoyo para el Aprendizaje</em>.
           CUAED/Facultad de Medicina-UNAM. {uapaUrl}</p>
 
         <!-- termina contenido -->

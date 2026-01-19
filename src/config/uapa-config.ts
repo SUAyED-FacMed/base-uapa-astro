@@ -24,13 +24,17 @@ export const UAPA_CONFIG = {
   // Año de publicación (para el aviso legal y las citas)
   year: "2025",
   
-  // Autores
+  // Autores (aparecen en Hero y en "Cómo citar")
   authors: [
     "María Teresa Arredondo Garza",
     "Eduardo Mercado Cruz", 
     "Domingo Francisco Javier Aguilar Medina", 
     "Gil Alfonso Magos Guerrero"
   ],
+  
+  // Colaboradores opcionales (solo aparecen en Hero, NO en "Cómo citar")
+  // Ejemplo: collaborators: ["Juan Pérez López", "Ana García Martínez"]
+  collaborators: [] as string[],
   
   // Hero
   hero: {
@@ -97,11 +101,17 @@ export const UAPA_CONFIG = {
 
 // Funciones helper para formatear autores
 export const formatAuthors = {
-  // Para metadatos (separados por comas)
+  // Para metadatos (separados por comas) - SOLO autores
   full: UAPA_CONFIG.authors.join(", "),
   
-  // Para Hero (separados por " | ")
-  display: UAPA_CONFIG.authors.join(" | "),
+  // Para Hero (separados por " | ") - autores + colaboradores si existen
+  display: (() => {
+    const allContributors = [...UAPA_CONFIG.authors];
+    if (UAPA_CONFIG.collaborators && UAPA_CONFIG.collaborators.length > 0) {
+      allContributors.push(...UAPA_CONFIG.collaborators);
+    }
+    return allContributors.join(" | ");
+  })(),
   
   // Para Footer (con "y" antes del último)
   withAnd: (authors: string[]) => {

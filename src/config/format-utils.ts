@@ -21,6 +21,7 @@ export function formatAuthors(authors: string[], type: 'display' | 'full'): stri
  * Formatea autores para citas académicas (formato APA en español)
  * Convierte nombres mexicanos y los ordena alfabéticamente por apellido
  * Maneja correctamente la conjunción "y" según número de autores
+ * Detecta partículas en apellidos compuestos (de, de la, del, van, von, etc.)
  * @param authors Array de nombres completos
  * @returns String formateado para citas académicas APA en español
  */
@@ -29,6 +30,9 @@ export function formatAuthorsForCitation(authors: string[]): string {
     return '';
   }
 
+  // Partículas comunes en apellidos españoles/mexicanos
+  const particulas = ['de', 'del', 'de la', 'de los', 'de las', 'van', 'von', 'da', 'dos', 'das'];
+
   // Formatear cada autor individual
   const formattedAuthors = authors.map(author => {
     const parts = author.trim().split(' ');
@@ -36,16 +40,44 @@ export function formatAuthorsForCitation(authors: string[]): string {
       return { formatted: author, sortKey: author }; // Si no tiene apellido, devolver como está
     }
     
-    // Para nombres mexicanos: "María Teresa Arredondo Garza"
+    // Detectar dónde terminan los nombres y empiezan los apellidos
+    // buscando partículas que indican apellido compuesto
+    let firstNameCount = 0;
+    let foundParticle = false;
+    
+    // Buscar la primera partícula para identificar inicio del apellido compuesto
+    for (let i = 0; i < parts.length - 1; i++) {
+      const word = parts[i].toLowerCase();
+      const nextWord = parts[i + 1]?.toLowerCase();
+      const twoWords = `${word} ${nextWord}`;
+      
+      // Verificar si es una partícula de dos palabras
+      if (particulas.includes(twoWords)) {
+        firstNameCount = i;
+        foundParticle = true;
+        break;
+      }
+      // Verificar si es una partícula de una palabra
+      if (particulas.includes(word)) {
+        firstNameCount = i;
+        foundParticle = true;
+        break;
+      }
+    }
+    
     let firstNames: string[];
     let lastNames: string[];
     
-    if (parts.length >= 3) {
-      // Si hay 3 o más palabras, los primeros son nombres, los últimos 2 son apellidos
+    if (foundParticle) {
+      // Si encontramos partícula, todo desde ahí es apellido
+      firstNames = parts.slice(0, firstNameCount);
+      lastNames = parts.slice(firstNameCount);
+    } else if (parts.length >= 3) {
+      // Sin partícula: comportamiento tradicional (últimos 2 son apellidos)
       firstNames = parts.slice(0, -2);
       lastNames = parts.slice(-2);
     } else {
-      // Si hay solo 2 palabras, la primera es nombre, la segunda apellido
+      // Solo 2 palabras: primera es nombre, segunda apellido
       firstNames = parts.slice(0, -1);
       lastNames = parts.slice(-1);
     }
@@ -53,13 +85,13 @@ export function formatAuthorsForCitation(authors: string[]): string {
     // Crear iniciales de los nombres
     const initials = firstNames.map(name => name.charAt(0).toUpperCase() + '.').join(' ');
     
-    // Usar solo el primer apellido para la cita
-    const primaryLastName = lastNames[0];
+    // Usar solo el primer apellido (o apellido compuesto completo si tiene partícula)
+    const primaryLastName = foundParticle ? lastNames.join(' ') : lastNames[0];
     const formattedAuthor = `${primaryLastName}, ${initials}`;
     
     return {
       formatted: formattedAuthor,
-      sortKey: primaryLastName.toLowerCase() // Para ordenamiento alfabético
+      sortKey: lastNames[0].toLowerCase() // Ordenar por primer palabra del apellido
     };
   });
 
