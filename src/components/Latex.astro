@@ -2,6 +2,7 @@
 /**
  * Componente para renderizar ecuaciones LaTeX/KaTeX en Astro
  * Soluciona el conflicto entre las llaves {} de LaTeX y las expresiones JavaScript de Astro
+ * Incluye manejo responsivo con scroll automático para ecuaciones largas
  * 
  * @param formula - La ecuación LaTeX (sin delimitadores)
  * @param display - Si true, muestra la ecuación en bloque (centrada), si false en línea
@@ -24,4 +25,41 @@ const wrappedFormula = display
   : `\\(${formula}\\)`;
 ---
 
-<span set:html={wrappedFormula}></span>
+{display ? (
+  <div class="katex-display-wrapper">
+    <div set:html={wrappedFormula}></div>
+  </div>
+) : (
+  <span class="katex-inline-wrapper" set:html={wrappedFormula}></span>
+)}
+
+<script>
+  // Detectar si las ecuaciones display tienen scroll
+  document.addEventListener('DOMContentLoaded', () => {
+    const displayWrappers = document.querySelectorAll('.katex-display-wrapper');
+    
+    displayWrappers.forEach(wrapper => {
+      // Verificar si el contenido es más ancho que el contenedor
+      if (wrapper.scrollWidth > wrapper.clientWidth) {
+        wrapper.classList.add('has-scroll');
+      }
+    });
+    
+    // Observar cambios de tamaño de ventana
+    const resizeObserver = new ResizeObserver(entries => {
+      entries.forEach(entry => {
+        const wrapper = entry.target;
+        if (wrapper.scrollWidth > wrapper.clientWidth) {
+          wrapper.classList.add('has-scroll');
+        } else {
+          wrapper.classList.remove('has-scroll');
+        }
+      });
+    });
+    
+    displayWrappers.forEach(wrapper => {
+      resizeObserver.observe(wrapper);
+    });
+  });
+</script>
+

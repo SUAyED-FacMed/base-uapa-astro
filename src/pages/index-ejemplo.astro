@@ -384,6 +384,19 @@ import { ACTIVITIES_CONFIG, ASSESSMENTS_CONFIG } from "../config/activities-conf
       <p>Una matriz:</p>
       <Latex formula="\begin{pmatrix} a & b \\ c & d \end{pmatrix}" display={true} />
 
+      <h4>Ecuación larga con scroll automático</h4>
+      <p>Ejemplo de una ecuación muy larga que activará el scroll horizontal en pantallas pequeñas:</p>
+      <Latex 
+        formula="f(x) = a_0 + a_1x + a_2x^2 + a_3x^3 + a_4x^4 + a_5x^5 + a_6x^6 + a_7x^7 + a_8x^8 + a_9x^9 + a_{10}x^{10}" 
+        display={true} 
+      />
+
+      <p>Serie de Taylor expandida:</p>
+      <Latex 
+        formula="e^x = 1 + \frac{x}{1!} + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + \frac{x^5}{5!} + \frac{x^6}{6!} + \cdots + \frac{x^n}{n!} + \cdots" 
+        display={true} 
+      />
+
       <hr class="my-4" />
 
       <p>

@@ -181,6 +181,54 @@ renderMathInElement(document.body, {
 - [Funciones soportadas](https://katex.org/docs/supported.html)
 - [Tabla de símbolos](https://katex.org/docs/support_table.html)
 
+## 📱 Comportamiento responsivo
+
+El componente `<Latex>` es completamente responsivo:
+
+### Ecuaciones en línea (inline)
+- Se ajustan al flujo del texto
+- En caso de ser muy largas, tienen scroll horizontal automático
+- No rompen el diseño del párrafo
+
+### Ecuaciones en bloque (display)
+- Se centran automáticamente
+- **Scroll horizontal automático** cuando la ecuación es más ancha que la pantalla
+- Indicador visual sutil en móviles cuando hay scroll disponible
+- Scrollbar personalizada y discreta
+
+### Ejemplo de ecuación larga
+
+```astro
+<Latex 
+  formula="f(x) = a_0 + a_1x + a_2x^2 + a_3x^3 + a_4x^4 + a_5x^5 + a_6x^6 + a_7x^7 + \cdots" 
+  display={true} 
+/>
+```
+
+En pantallas pequeñas, esta ecuación tendrá scroll horizontal automático sin romper el diseño.
+
+### Personalización de estilos
+
+Los estilos responsivos están definidos en [public/css/personalizado.css](public/css/personalizado.css):
+
+```css
+.katex-display-wrapper {
+    overflow-x: auto;
+    max-width: 100%;
+    padding: 1rem 0;
+}
+```
+
+Puedes personalizar el tamaño de fuente para móviles si es necesario:
+
+```css
+@media (max-width: 768px) {
+    .katex-display-wrapper {
+        font-size: 0.9em;
+    }
+}
+```
+
 ## ⚠️ Notas importantes
 
 1. **Conflicto con sintaxis de Astro**: No uses `$...$` directamente en archivos `.astro` porque las llaves `{}` dentro de las fórmulas LaTeX conflictúan con las expresiones JavaScript de Astro. Siempre usa el componente `<Latex>`.

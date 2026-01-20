@@ -89,6 +89,30 @@ import Latex from "../components/Latex.astro";
 
 ✅ **Backslashes simples** en el prop `formula` (no dobles)
 
+✅ **Responsivo automático** - Las ecuaciones largas tienen scroll horizontal
+
+## 📱 Comportamiento responsivo
+
+### Display (bloque)
+- Scroll horizontal automático si la ecuación es más ancha que la pantalla
+- Indicador visual en móviles cuando hay scroll
+- No rompe el diseño
+
+### Inline (en línea)
+- Se ajusta al flujo del texto
+- Scroll horizontal si es necesario
+- No afecta el line-height del párrafo
+
+### Ejemplo de ecuación larga
+
+```astro
+<!-- Esta ecuación será scrolleable en móviles -->
+<Latex 
+  formula="f(x) = a_0 + a_1x + a_2x^2 + a_3x^3 + a_4x^4 + a_5x^5 + \cdots + a_nx^n" 
+  display={true} 
+/>
+```
+
 ## Ver también
 
 - [LaTeX-KaTeX-Guide.md](LaTeX-KaTeX-Guide.md) - Guía completa
