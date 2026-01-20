@@ -45,35 +45,53 @@ const recursos = ['katex']; // Cargar KaTeX solo en esta página
 
 ## ✍️ Cómo escribir ecuaciones
 
-KaTeX soporta varios delimitadores para ecuaciones:
+Debido a que Astro usa llaves `{}` para expresiones JavaScript, **no podemos usar la sintaxis tradicional `$...$`** directamente en el HTML. En su lugar, usa el componente `<Latex>`:
 
-### Ecuaciones en línea (inline)
+### Método recomendado: Componente `<Latex>`
 
-```markdown
-La fórmula de Einstein es $E = mc^2$.
+Importa el componente en tu página:
+
+```astro
+---
+import Latex from "../components/Latex.astro";
+---
 ```
 
-Resultado: La fórmula de Einstein es $E = mc^2$.
+#### Ecuaciones en línea (inline)
 
-### Ecuaciones en bloque (display)
+```astro
+<p>
+  La fórmula de Einstein es <Latex formula="E = mc^2" />.
+</p>
+```
 
-```markdown
-$$
-\int_{a}^{b} f(x) dx = F(b) - F(a)
-$$
+Resultado: La fórmula de Einstein es \(E = mc^2\).
+
+#### Ecuaciones en bloque (display)
+
+```astro
+<p>La integral definida:</p>
+<Latex formula="\int_{a}^{b} f(x) dx = F(b) - F(a)" display={true} />
 ```
 
 Resultado:
-$$
-\int_{a}^{b} f(x) dx = F(b) - F(a)
-$$
+\[\int_{a}^{b} f(x) dx = F(b) - F(a)\]
 
-### Sintaxis alternativa con paréntesis/corchetes
+### Método alternativo: Sintaxis LaTeX estándar con `set:html`
 
-También puedes usar la sintaxis de LaTeX estándar:
+Si prefieres escribir LaTeX directamente en texto, usa `set:html`:
 
-- Inline: `\( E = mc^2 \)`
-- Display: `\[ \int_{a}^{b} f(x) dx \]`
+```astro
+<p set:html="La ecuación es \\(E = mc^2\\) donde..."></p>
+```
+
+O para bloques:
+
+```astro
+<div set:html="\\[\int_{a}^{b} f(x) dx = F(b) - F(a)\\]"></div>
+```
+
+**Nota:** Usa **doble backslash** `\\(` y `\\)` (o `\\[` y `\\]`) como delimitadores.
 
 ## 📚 Ejemplos de uso
 
@@ -81,48 +99,48 @@ También puedes usar la sintaxis de LaTeX estándar:
 
 ```astro
 <p>
-  La solución de la ecuación cuadrática $ax^2 + bx + c = 0$ es:
+  La solución de la ecuación cuadrática <Latex formula="ax^2 + bx + c = 0" /> es:
 </p>
-$$
-x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
-$$
+<Latex formula="x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}" display={true} />
 ```
 
 ### Ejemplo 2: Matrices
 
 ```astro
-$$
-\begin{pmatrix}
-a & b \\
-c & d
-\end{pmatrix}
-$$
+<Latex formula="\begin{pmatrix} a & b \\ c & d \end{pmatrix}" display={true} />
 ```
 
 ### Ejemplo 3: Sistemas de ecuaciones
 
 ```astro
-$$
-\begin{cases}
-x + y = 5 \\
-2x - y = 1
-\end{cases}
-$$
+<Latex formula="\begin{cases} x + y = 5 \\ 2x - y = 1 \end{cases}" display={true} />
 ```
 
-### Ejemplo 4: Fracciones y raíces
+### Ejemplo 4: Fracciones y raíces en texto
 
 ```astro
 <p>
-  El área de un círculo es $A = \pi r^2$ y su circunferencia es $C = 2\pi r$.
+  El área de un círculo es <Latex formula="A = \pi r^2" /> y su circunferencia 
+  es <Latex formula="C = 2\pi r" />.
 </p>
 
-<p>
-  La desviación estándar se calcula como:
-</p>
-$$
-\sigma = \sqrt{\frac{1}{N}\sum_{i=1}^{N}(x_i - \mu)^2}
-$$
+<p>La desviación estándar se calcula como:</p>
+<Latex formula="\sigma = \sqrt{\frac{1}{N}\sum_{i=1}^{N}(x_i - \mu)^2}" display={true} />
+```
+
+### Ejemplo 5: Uso en tablas
+
+```astro
+<table>
+  <tr>
+    <td>Fórmula</td>
+    <td><Latex formula="E = mc^2" /></td>
+  </tr>
+  <tr>
+    <td>Variable</td>
+    <td><Latex formula="c \approx 3 \times 10^8 \, m/s" /></td>
+  </tr>
+</table>
 ```
 
 ## 🎨 Características disponibles
@@ -148,14 +166,14 @@ La configuración de KaTeX está en [src/components/ResourceLoader.astro](src/co
 ```javascript
 renderMathInElement(document.body, {
   delimiters: [
-    {left: '$$', right: '$$', display: true},    // Bloques
-    {left: '$', right: '$', display: false},     // Inline
-    {left: '\\(', right: '\\)', display: false}, // Inline alternativo
-    {left: '\\[', right: '\\]', display: true}   // Bloque alternativo
+    {left: '\\[', right: '\\]', display: true},   // Bloques: \[ ... \]
+    {left: '\\(', right: '\\)', display: false}   // Inline: \( ... \)
   ],
   throwOnError: false  // No rompe si hay errores de sintaxis
 });
 ```
+
+**Nota importante:** Se eliminaron los delimitadores `$...$` y `$$...$$` porque causan conflictos con la sintaxis de Astro (que usa `{}` para expresiones JavaScript). Por eso usamos el componente `<Latex>` que maneja esto automáticamente.
 
 ## 📖 Recursos adicionales
 
@@ -165,29 +183,49 @@ renderMathInElement(document.body, {
 
 ## ⚠️ Notas importantes
 
-1. **Rendimiento**: KaTeX se carga desde CDN (Content Delivery Network) para estar siempre actualizado y aprovechar el caché del navegador.
+1. **Conflicto con sintaxis de Astro**: No uses `$...$` directamente en archivos `.astro` porque las llaves `{}` dentro de las fórmulas LaTeX conflictúan con las expresiones JavaScript de Astro. Siempre usa el componente `<Latex>`.
 
-2. **Versión**: Actualmente se usa KaTeX v0.16.9. Puedes actualizar la versión en [ResourceLoader.astro](src/components/ResourceLoader.astro#L297-L301).
+2. **Rendimiento**: KaTeX se carga desde CDN (Content Delivery Network) para estar siempre actualizado y aprovechar el caché del navegador.
 
-3. **Compatibilidad**: KaTeX es compatible con todos los navegadores modernos.
+3. **Versión**: Actualmente se usa KaTeX v0.16.9. Puedes actualizar la versión en [ResourceLoader.astro](src/components/ResourceLoader.astro#L297-L301).
 
-4. **Escapado**: Si necesitas mostrar símbolos `$` literales sin renderizar, escápalos: `\$`.
+4. **Compatibilidad**: KaTeX es compatible con todos los navegadores modernos.
+
+5. **Backslashes**: En el componente `<Latex>`, usa backslashes simples `\`. Si usas `set:html`, usa dobles backslashes `\\`.
 
 ## 🐛 Solución de problemas
 
 ### Las ecuaciones no se renderizan
 
-1. Verifica que `enableLatex: true` en [uapa-config.ts](src/config/uapa-config.ts)
-2. Abre la consola del navegador (F12) y busca errores
-3. Verifica que KaTeX se haya cargado (debe aparecer en Console: "KaTeX inicializado correctamente")
+1. Verifica que `enableLatex: true` en [uapa-config.ts](src/config/uapa-config.ts) o que hayas añadido `"katex"` al array `resources` en el Layout
+2. Asegúrate de haber importado el componente: `import Latex from "../components/Latex.astro";`
+3. Abre la consola del navegador (F12) y busca errores
+4. Verifica que KaTeX se haya cargado (debe aparecer en Console: "KaTeX inicializado correctamente")
 
 ### Error de sintaxis en una ecuación
 
-- KaTeX tiene `throwOnError: false`, así que mostrará el LaTeX sin renderizar
+- KaTeX tiene `throwOnError: false`, así que mostrará el LaTeX sin renderizar si hay errores
 - Verifica la sintaxis en la [documentación de KaTeX](https://katex.org/docs/supported.html)
-- Asegúrate de escapar correctamente los backslashes en strings de JavaScript
+- Asegúrate de usar backslashes simples en el componente `<Latex>`
+- Verifica que las llaves `{}` estén balanceadas en la fórmula
 
-### El símbolo `$` aparece en el texto
+### Errores de compilación de Astro
 
-- Si quieres usar `$` como símbolo de moneda, escápalo: `\$100`
-- O usa los delimitadores alternativos `\(` y `\)` para las ecuaciones
+- Si ves errores como "Unexpected token" o problemas con `{}`, asegúrate de estar usando el componente `<Latex>` en lugar de escribir ecuaciones directamente
+- No uses `$...$` directamente en archivos `.astro`
+
+### Ejemplos que no funcionan ❌
+
+```astro
+<!-- ❌ NO HACER - causa errores -->
+<p>La fórmula es $E = mc^2$</p>
+<p>$$\frac{a}{b}$$</p>
+```
+
+### Ejemplos correctos ✅
+
+```astro
+<!-- ✅ CORRECTO - usa el componente -->
+<p>La fórmula es <Latex formula="E = mc^2" /></p>
+<Latex formula="\frac{a}{b}" display={true} />
+```

@@ -1,0 +1,27 @@
+---
+/**
+ * Componente para renderizar ecuaciones LaTeX/KaTeX en Astro
+ * Soluciona el conflicto entre las llaves {} de LaTeX y las expresiones JavaScript de Astro
+ * 
+ * @param formula - La ecuación LaTeX (sin delimitadores)
+ * @param display - Si true, muestra la ecuación en bloque (centrada), si false en línea
+ * 
+ * Ejemplos:
+ * <Latex formula="E = mc^2" />
+ * <Latex formula="\frac{a}{b}" display={true} />
+ */
+
+export interface Props {
+  formula: string;
+  display?: boolean;
+}
+
+const { formula, display = false } = Astro.props;
+
+// Usar los delimitadores que KaTeX reconoce y que no conflictúan con Astro
+const wrappedFormula = display 
+  ? `\\[${formula}\\]`
+  : `\\(${formula}\\)`;
+---
+
+<span set:html={wrappedFormula}></span>

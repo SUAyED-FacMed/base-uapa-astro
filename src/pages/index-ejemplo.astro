@@ -12,11 +12,12 @@ import VideoYoutube from "../components/VideoYoutube.astro";
 import VideoYoutubeLite from "../components/VideoYoutubeLite.astro";
 import Hotspot from "../components/Hotspot.astro";
 import HojasDesordenadas from "../components/HojasDesordenadas.astro";
+import Latex from "../components/Latex.astro";
 import { UAPA_CONFIG, formatAuthors } from "../config/uapa-config.ts";
 import { ACTIVITIES_CONFIG, ASSESSMENTS_CONFIG } from "../config/activities-config.ts";
 ---
 
-<Layout title={`UAPA. ${UAPA_CONFIG.title}`} description={UAPA_CONFIG.description} keywords={UAPA_CONFIG.keywords} author={formatAuthors.full} resources={["acordeon-vertical", "fichero-vertical"]}>
+<Layout title={`UAPA. ${UAPA_CONFIG.title}`} description={UAPA_CONFIG.description} keywords={UAPA_CONFIG.keywords} author={formatAuthors.full} resources={["acordeon-vertical", "fichero-vertical", "katex"]}>
   <Hero title={UAPA_CONFIG.title} subtitle={UAPA_CONFIG.subtitle} authors={formatAuthors.display} imageCaption={UAPA_CONFIG.hero.imageCaption} />
 
   <Navigation menuItems={UAPA_CONFIG.navigation.menuItems} showTitle={UAPA_CONFIG.navigation.showTitle} title={UAPA_CONFIG.navigation.title} />
@@ -360,6 +361,31 @@ import { ACTIVITIES_CONFIG, ASSESSMENTS_CONFIG } from "../config/activities-conf
 
     <!-- Contenido 4 -->
     <Section id="contenido4">
+      <h3>Ejemplos de ecuaciones LaTeX</h3>
+      
+      <h4>Ecuaciones en línea (inline)</h4>
+      <p>
+        La desviación estándar se calcula como <Latex formula="s = \frac{\sqrt{\sum (x - \bar{x})^2}}{n - 1}" />, donde 
+        <Latex formula="n" /> es el tamaño de la muestra y <Latex formula="\bar{x}" /> es la media.
+      </p>
+      
+      <p>
+        La famosa ecuación de Einstein es <Latex formula="E = mc^2" />, donde <Latex formula="E" /> es la energía, 
+        <Latex formula="m" /> es la masa y <Latex formula="c" /> es la velocidad de la luz.
+      </p>
+
+      <h4>Ecuaciones en bloque (display)</h4>
+      <p>La fórmula cuadrática:</p>
+      <Latex formula="x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}" display={true} />
+
+      <p>La integral definida:</p>
+      <Latex formula="\int_{a}^{b} f(x) \, dx = F(b) - F(a)" display={true} />
+
+      <p>Una matriz:</p>
+      <Latex formula="\begin{pmatrix} a & b \\ c & d \end{pmatrix}" display={true} />
+
+      <hr class="my-4" />
+
       <p>
         Duis ut velit mattis sem finibus consectetur ac vel arcu. Cras sit amet hendrerit ex, ut ornare felis. Pellentesque tristique elit sit amet neque maximus, sed feugiat urna blandit. Suspendisse
         malesuada velit ut tempor mattis. Cras imperdiet euismod porttitor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin risus justo, fringilla quis

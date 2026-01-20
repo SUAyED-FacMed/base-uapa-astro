@@ -304,10 +304,8 @@ const AVAILABLE_RESOURCES = {
         document.addEventListener('DOMContentLoaded', function() {
           renderMathInElement(document.body, {
             delimiters: [
-              {left: '$$', right: '$$', display: true},
-              {left: '$', right: '$', display: false},
-              {left: '\\\\(', right: '\\\\)', display: false},
-              {left: '\\\\[', right: '\\\\]', display: true}
+              {left: '\\\\[', right: '\\\\]', display: true},   // Para bloques: \\[ ... \\]
+              {left: '\\\\(', right: '\\\\)', display: false}   // Para inline: \\( ... \\)
             ],
             throwOnError: false
           });
