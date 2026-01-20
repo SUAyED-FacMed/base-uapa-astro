@@ -12,6 +12,9 @@
  * <Latex formula="\frac{a}{b}" display={true} />
  */
 
+// Importar estilos CSS (Astro los procesará automáticamente)
+import '../styles/latex.css';
+
 export interface Props {
   formula: string;
   display?: boolean;
@@ -34,15 +37,31 @@ const wrappedFormula = display
 )}
 
 <script>
-  // Detectar si las ecuaciones display tienen scroll
+  // Detectar si las ecuaciones display tienen scroll y manejar eventos
   document.addEventListener('DOMContentLoaded', () => {
     const displayWrappers = document.querySelectorAll('.katex-display-wrapper');
     
     displayWrappers.forEach(wrapper => {
       // Verificar si el contenido es más ancho que el contenedor
-      if (wrapper.scrollWidth > wrapper.clientWidth) {
-        wrapper.classList.add('has-scroll');
-      }
+      const checkScroll = () => {
+        if (wrapper.scrollWidth > wrapper.clientWidth) {
+          wrapper.classList.add('has-scroll');
+        } else {
+          wrapper.classList.remove('has-scroll');
+        }
+      };
+      
+      checkScroll();
+      
+      // Detectar cuando scrollea hasta el final
+      wrapper.addEventListener('scroll', () => {
+        const isAtEnd = wrapper.scrollLeft + wrapper.clientWidth >= wrapper.scrollWidth - 5;
+        if (isAtEnd) {
+          wrapper.classList.add('scrolled-end');
+        } else {
+          wrapper.classList.remove('scrolled-end');
+        }
+      });
     });
     
     // Observar cambios de tamaño de ventana
@@ -53,6 +72,7 @@ const wrappedFormula = display
           wrapper.classList.add('has-scroll');
         } else {
           wrapper.classList.remove('has-scroll');
+          wrapper.classList.remove('scrolled-end');
         }
       });
     });

@@ -209,7 +209,7 @@ En pantallas pequeñas, esta ecuación tendrá scroll horizontal automático sin
 
 ### Personalización de estilos
 
-Los estilos responsivos están definidos en [public/css/personalizado.css](public/css/personalizado.css):
+Los estilos responsivos están definidos en [src/styles/latex.css](src/styles/latex.css) y son procesados automáticamente por Astro:
 
 ```css
 .katex-display-wrapper {
@@ -219,27 +219,23 @@ Los estilos responsivos están definidos en [public/css/personalizado.css](publi
 }
 ```
 
-Puedes personalizar el tamaño de fuente para móviles si es necesario:
-
-```css
-@media (max-width: 768px) {
-    .katex-display-wrapper {
-        font-size: 0.9em;
-    }
-}
-```
+Puedes personalizar el tamaño de fuente para móviles si es necesario modificando directamente ese archivo.
 
 ## ⚠️ Notas importantes
 
 1. **Conflicto con sintaxis de Astro**: No uses `$...$` directamente en archivos `.astro` porque las llaves `{}` dentro de las fórmulas LaTeX conflictúan con las expresiones JavaScript de Astro. Siempre usa el componente `<Latex>`.
 
-2. **Rendimiento**: KaTeX se carga desde CDN (Content Delivery Network) para estar siempre actualizado y aprovechar el caché del navegador.
+2. **Estilos procesados por Astro**: Los estilos CSS del componente están en [src/styles/latex.css](src/styles/latex.css) y son procesados automáticamente por Astro (no en `public/css/`), lo que permite optimización y tree-shaking.
 
-3. **Versión**: Actualmente se usa KaTeX v0.16.9. Puedes actualizar la versión en [ResourceLoader.astro](src/components/ResourceLoader.astro#L297-L301).
+3. **No interfiere con otros estilos**: Los estilos usan clases específicas (`.katex-display-wrapper`, `.katex-inline-wrapper`) que no conflictúan con blockquotes, citas u otros elementos del diseño.
 
-4. **Compatibilidad**: KaTeX es compatible con todos los navegadores modernos.
+4. **Rendimiento**: KaTeX se carga desde CDN (Content Delivery Network) para estar siempre actualizado y aprovechar el caché del navegador.
 
-5. **Backslashes**: En el componente `<Latex>`, usa backslashes simples `\`. Si usas `set:html`, usa dobles backslashes `\\`.
+5. **Versión**: Actualmente se usa KaTeX v0.16.9. Puedes actualizar la versión en [ResourceLoader.astro](src/components/ResourceLoader.astro#L297-L301).
+
+6. **Compatibilidad**: KaTeX es compatible con todos los navegadores modernos.
+
+7. **Backslashes**: En el componente `<Latex>`, usa backslashes simples `\`. Si usas `set:html`, usa dobles backslashes `\\`.
 
 ## 🐛 Solución de problemas
 

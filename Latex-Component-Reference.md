@@ -117,3 +117,4 @@ import Latex from "../components/Latex.astro";
 
 - [LaTeX-KaTeX-Guide.md](LaTeX-KaTeX-Guide.md) - Guía completa
 - [Documentación de KaTeX](https://katex.org/docs/supported.html) - Funciones soportadas
+- [src/styles/latex.css](src/styles/latex.css) - Estilos CSS del componente (procesados por Astro)

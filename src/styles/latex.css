@@ -1,0 +1,148 @@
+/* 
+ * Estilos para ecuaciones LaTeX/KaTeX
+ * Manejo responsivo con scroll automático para ecuaciones largas
+ */
+
+/* Contenedor para ecuaciones en bloque (display) */
+.katex-display-wrapper {
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-width: 100%;
+    padding: 1rem 0;
+    margin: 1rem 0;
+    /* Scroll suave en dispositivos táctiles */
+    -webkit-overflow-scrolling: touch;
+    /* Scrollbar delgada */
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+    /* Evitar que rompa el diseño */
+    position: relative;
+}
+
+/* Estilos para el scrollbar en navegadores webkit */
+.katex-display-wrapper::-webkit-scrollbar {
+    height: 8px;
+}
+
+.katex-display-wrapper::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.katex-display-wrapper::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.katex-display-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Asegurar que las ecuaciones display no se desborden */
+.katex-display-wrapper .katex-display {
+    margin: 0;
+    text-align: center;
+    /* Evitar word-wrap en ecuaciones */
+    white-space: nowrap;
+}
+
+/* Ecuaciones inline responsivas */
+.katex-inline-wrapper {
+    display: inline-block;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    vertical-align: middle;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #888 transparent;
+}
+
+/* Scrollbar más discreto para inline */
+.katex-inline-wrapper::-webkit-scrollbar {
+    height: 4px;
+}
+
+.katex-inline-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.katex-inline-wrapper::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 2px;
+}
+
+.katex-inline-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+
+/* Asegurar que inline no rompa el line-height */
+.katex-inline-wrapper .katex {
+    white-space: nowrap;
+}
+
+/* Ajustes para móvil */
+@media (max-width: 768px) {
+    .katex-display-wrapper {
+        font-size: 0.9em;
+        /* Más padding para facilitar el scroll */
+        padding: 1.5rem 0;
+    }
+    
+    /* Indicador visual sutil de que hay scroll disponible */
+    .katex-display-wrapper.has-scroll::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 30px;
+        background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.8));
+        pointer-events: none;
+        opacity: 1;
+        transition: opacity 0.3s;
+    }
+    
+    /* Ocultar indicador cuando el usuario scrollea hasta el final */
+    .katex-display-wrapper.scrolled-end::after {
+        opacity: 0;
+    }
+}
+
+/* Ajustes de tamaño de fuente para mejor legibilidad */
+.katex {
+    font-size: 1.1em;
+}
+
+.katex-display {
+    font-size: 1.2em;
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .katex-display-wrapper {
+        font-size: 0.85em;
+    }
+    
+    .katex {
+        font-size: 1em;
+    }
+    
+    .katex-display {
+        font-size: 1.1em;
+    }
+}
+
+/* Asegurar que las ecuaciones no interfieran con otros elementos */
+.katex-display-wrapper,
+.katex-inline-wrapper {
+    /* Evitar que z-index alto interfiera con modales, tooltips, etc */
+    z-index: 1;
+}
+
+/* Mejorar la accesibilidad del scroll */
+.katex-display-wrapper:focus,
+.katex-inline-wrapper:focus {
+    outline: 2px solid #0066cc;
+    outline-offset: 2px;
+}
