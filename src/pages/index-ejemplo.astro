@@ -365,8 +365,8 @@ import { ACTIVITIES_CONFIG, ASSESSMENTS_CONFIG } from "../config/activities-conf
       
       <h4>Ecuaciones en línea (inline)</h4>
       <p>
-        La desviación estándar se calcula como <Latex formula="s = \frac{\sqrt{\sum (x - \bar{x})^2}}{n - 1}" />, donde 
-        <Latex formula="n" /> es el tamaño de la muestra y <Latex formula="\bar{x}" /> es la media.
+        La desviación estándar se calcula como <Latex formula="s = \\frac{\\sqrt{\\sum (x - \\bar{x})^2}}{n - 1}" />, donde 
+        <Latex formula="n" /> es el tamaño de la muestra y <Latex formula="\\bar{x}" /> es la media.
       </p>
       
       <p>
@@ -376,13 +376,13 @@ import { ACTIVITIES_CONFIG, ASSESSMENTS_CONFIG } from "../config/activities-conf
 
       <h4>Ecuaciones en bloque (display)</h4>
       <p>La fórmula cuadrática:</p>
-      <Latex formula="x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}" display={true} />
+      <Latex formula="x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}" display={true} />
 
       <p>La integral definida:</p>
-      <Latex formula="\int_{a}^{b} f(x) \, dx = F(b) - F(a)" display={true} />
+      <Latex formula="\\int_{a}^{b} f(x) \\, dx = F(b) - F(a)" display={true} />
 
       <p>Una matriz:</p>
-      <Latex formula="\begin{pmatrix} a & b \\ c & d \end{pmatrix}" display={true} />
+      <Latex formula="\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}" display={true} />
 
       <h4>Ecuación larga con scroll automático</h4>
       <p>Ejemplo de una ecuación muy larga que activará el scroll horizontal en pantallas pequeñas:</p>
@@ -393,7 +393,7 @@ import { ACTIVITIES_CONFIG, ASSESSMENTS_CONFIG } from "../config/activities-conf
 
       <p>Serie de Taylor expandida:</p>
       <Latex 
-        formula="e^x = 1 + \frac{x}{1!} + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + \frac{x^5}{5!} + \frac{x^6}{6!} + \cdots + \frac{x^n}{n!} + \cdots" 
+        formula="e^x = 1 + \\frac{x}{1!} + \\frac{x^2}{2!} + \\frac{x^3}{3!} + \\frac{x^4}{4!} + \\frac{x^5}{5!} + \\frac{x^6}{6!} + \\cdots + \\frac{x^n}{n!} + \cdots" 
         display={true} 
       />
 

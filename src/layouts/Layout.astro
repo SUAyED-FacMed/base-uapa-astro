@@ -3,6 +3,9 @@ import ResourceLoader from "../components/ResourceLoader.astro";
 import Footer from "../components/Footer.astro";
 import { UAPA_CONFIG, formatAuthors } from "../config/uapa-config.ts";
 
+// Importar estilos personalizados (procesados por Astro)
+import '../styles/personalizado.css';
+
 export interface Props {
   title: string;
   description?: string;
@@ -68,7 +71,7 @@ const finalResources = UAPA_CONFIG.enableLatex && !resources.includes('katex')
 
     <!-- ESTILOS DE CONTENIDO -->
     <link rel="stylesheet" href="./css/main.css" />
-    <link rel="stylesheet" href="./css/personalizado.css" />
+    <!-- Los estilos personalizados ahora se importan en el script (procesados por Astro) -->
 
     <!-- RECURSOS DINÁMICOS -->
     <ResourceLoader resources={finalResources} />

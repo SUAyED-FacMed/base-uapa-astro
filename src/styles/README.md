@@ -4,6 +4,20 @@ Esta carpeta contiene archivos CSS que son procesados automáticamente por Astro
 
 ## Archivos
 
+### `personalizado.css`
+
+Estilos personalizados específicos de este proyecto UAPA. Incluye:
+- Animaciones personalizadas
+- Estilos para botones flotantes (tools menu)
+- Alturas responsivas de iframes (actividades y autoevaluaciones)
+- Tooltips personalizados
+- Otros estilos específicos del proyecto
+
+**Uso:**
+Se importa automáticamente en `src/layouts/Layout.astro`.
+
+**Nota:** Reemplaza el archivo deprecado `public/css/personalizado.css`.
+
 ### `latex.css`
 
 Estilos para el componente `<Latex>` que renderiza ecuaciones matemáticas con KaTeX.
@@ -26,5 +40,6 @@ Los archivos en `public/` se sirven tal cual, sin procesamiento. Los archivos en
 ✅ Se optimizan y minimizan en producción
 ✅ Se pueden importar directamente en componentes
 ✅ Soportan tree-shaking (eliminación de código no usado)
+✅ Mejor rendimiento general
 
-Los archivos en `public/css/` son archivos legacy de la plantilla UAPA que deben mantenerse para compatibilidad.
+Los archivos en `public/css/` son archivos legacy de la plantilla UAPA que deben mantenerse para compatibilidad con recursos externos (acordeones, hotspots, etc).
