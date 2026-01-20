@@ -18,6 +18,11 @@ const {
   author = formatAuthors.full,
   resources = [],
 } = Astro.props;
+
+// Añadir KaTeX a los recursos si está habilitado en la configuración
+const finalResources = UAPA_CONFIG.enableLatex && !resources.includes('katex') 
+  ? [...resources, 'katex'] 
+  : resources;
 ---
 
 <!doctype html>
@@ -66,7 +71,7 @@ const {
     <link rel="stylesheet" href="./css/personalizado.css" />
 
     <!-- RECURSOS DINÁMICOS -->
-    <ResourceLoader resources={resources} />
+    <ResourceLoader resources={finalResources} />
   </head>
 
   <body id="contenido">

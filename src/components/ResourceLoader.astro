@@ -282,6 +282,39 @@ const AVAILABLE_RESOURCES = {
         }
       });
     `
+  },
+  
+  // LaTeX/KaTeX - Renderizado de ecuaciones matemáticas
+  'katex': {
+    css: null,
+    js: null,
+    files: {
+      css: [],
+      js: []
+    },
+    // KaTeX se carga desde CDN para estar siempre actualizado
+    cdn: {
+      css: 'https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css',
+      js: 'https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js',
+      autoRender: 'https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js'
+    },
+    init: `
+      // Esperar a que KaTeX y auto-render estén cargados
+      if (typeof renderMathInElement !== 'undefined') {
+        document.addEventListener('DOMContentLoaded', function() {
+          renderMathInElement(document.body, {
+            delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\\\(', right: '\\\\)', display: false},
+              {left: '\\\\[', right: '\\\\]', display: true}
+            ],
+            throwOnError: false
+          });
+          console.log('KaTeX inicializado correctamente');
+        });
+      }
+    `
   }
 } as const;
 
@@ -292,6 +325,11 @@ const requestedResources = resources.filter(resource => AVAILABLE_RESOURCES[reso
 <!-- Cargar CSS de recursos solicitados -->
 {requestedResources.map(resource => {
   const resourceConfig = AVAILABLE_RESOURCES[resource as keyof typeof AVAILABLE_RESOURCES];
+  // Cargar CSS desde CDN si está disponible
+  if ('cdn' in resourceConfig && resourceConfig.cdn && 'css' in resourceConfig.cdn) {
+    return <link rel="stylesheet" href={resourceConfig.cdn.css} />;
+  }
+  // Cargar CSS locales
   return resourceConfig.files.css.map(cssFile => (
     <link rel="stylesheet" href={`${resourceConfig.css}${cssFile}`} />
   ));
@@ -300,7 +338,18 @@ const requestedResources = resources.filter(resource => AVAILABLE_RESOURCES[reso
 <!-- Cargar JS de recursos solicitados -->
 {requestedResources.map(resource => {
   const resourceConfig = AVAILABLE_RESOURCES[resource as keyof typeof AVAILABLE_RESOURCES];
-  // Solo cargar JS si el recurso tiene archivos JS y ruta válida
+  // Cargar JS desde CDN si está disponible
+  if ('cdn' in resourceConfig && resourceConfig.cdn && 'js' in resourceConfig.cdn) {
+    const scripts = [];
+    if (resourceConfig.cdn.js) {
+      scripts.push(<script src={resourceConfig.cdn.js} is:inline></script>);
+    }
+    if ('autoRender' in resourceConfig.cdn && resourceConfig.cdn.autoRender) {
+      scripts.push(<script src={resourceConfig.cdn.autoRender} is:inline></script>);
+    }
+    return scripts;
+  }
+  // Cargar JS locales si el recurso tiene archivos JS y ruta válida
   if (resourceConfig.js && resourceConfig.files.js.length > 0) {
     return resourceConfig.files.js.map(jsFile => (
       <script src={`${resourceConfig.js}${jsFile}`} is:inline></script>

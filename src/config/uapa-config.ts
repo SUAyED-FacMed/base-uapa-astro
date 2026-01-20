@@ -73,6 +73,9 @@ export const UAPA_CONFIG = {
   // SUAyED: NO muestra sección CUAED, SÍ muestra tools menu y modal de créditos
   isCuaed: false,
 
+  // Funcionalidades opcionales
+  enableLatex: false, // Si true, carga KaTeX para renderizar ecuaciones LaTeX
+
   // Footer y créditos
   footer: {
     // URLs para el menú lateral de herramientas
