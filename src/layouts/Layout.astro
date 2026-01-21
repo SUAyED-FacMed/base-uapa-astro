@@ -3,8 +3,8 @@ import ResourceLoader from "../components/ResourceLoader.astro";
 import Footer from "../components/Footer.astro";
 import { UAPA_CONFIG, formatAuthors } from "../config/uapa-config.ts";
 
-// Importar estilos personalizados (procesados por Astro)
-import '../styles/personalizado.css';
+// Importar estilos personalizados como URL para asegurar que sea un archivo separado
+import personalizadoUrl from "../styles/personalizado.css?url";
 
 export interface Props {
   title: string;
@@ -23,9 +23,10 @@ const {
 } = Astro.props;
 
 // Añadir KaTeX a los recursos si está habilitado en la configuración
-const finalResources = UAPA_CONFIG.enableLatex && !resources.includes('katex') 
-  ? [...resources, 'katex'] 
-  : resources;
+const finalResources =
+  UAPA_CONFIG.enableLatex && !resources.includes("katex")
+    ? [...resources, "katex"]
+    : resources;
 ---
 
 <!doctype html>
@@ -71,7 +72,7 @@ const finalResources = UAPA_CONFIG.enableLatex && !resources.includes('katex')
 
     <!-- ESTILOS DE CONTENIDO -->
     <link rel="stylesheet" href="./css/main.css" />
-    <!-- Los estilos personalizados ahora se importan en el script (procesados por Astro) -->
+    <link rel="stylesheet" href={personalizadoUrl.replace(/^\//, "")} />
 
     <!-- RECURSOS DINÁMICOS -->
     <ResourceLoader resources={finalResources} />
@@ -97,14 +98,14 @@ const finalResources = UAPA_CONFIG.enableLatex && !resources.includes('katex')
     <!-- Los scripts de recursos se cargan dinámicamente via ResourceLoader -->
 
     <script is:inline>
-      document.addEventListener("DOMContentLoaded", function() {
+      document.addEventListener("DOMContentLoaded", function () {
         // Bootstrap tooltips initialization
-        if (typeof bootstrap !== 'undefined') {
+        if (typeof bootstrap !== "undefined") {
           const tooltipTriggerList = document.querySelectorAll(
-            '[data-bs-toggle="tooltip"]'
+            '[data-bs-toggle="tooltip"]',
           );
           const tooltipList = [...tooltipTriggerList].map(
-            (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
+            (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl),
           );
         }
 
