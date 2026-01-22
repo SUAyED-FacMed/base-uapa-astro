@@ -1,0 +1,455 @@
+---
+// HotspotV2.astro - Componente hotspot completamente integrado y responsivo
+// SIN dependencias de Bootstrap - Completamente independiente
+//
+// Ejemplo de uso:
+// <HotspotV2
+//   imageSrc="/img/esquema.png"
+//   imageAlt="Descripción de la imagen"
+//   hotspots={[
+//     {
+//       x: 20,  // Porcentaje de posición X (0-100)
+//       y: 30,  // Porcentaje de posición Y (0-100)
+//       title: "Punto 1",
+//       content: "<p>Descripción del punto 1</p>"
+//     },
+//     {
+//       x: 80,
+//       y: 50,
+//       title: "Punto 2",
+//       content: "<ul><li>Item 1</li><li>Item 2</li></ul>"
+//     }
+//   ]}
+//   title="Título opcional"
+//   description="Descripción opcional"
+//   maxWidth="650px"
+//   sonarColor="#f01b18"
+// />
+
+import type { HotspotV2Props } from './types/hotspot-v2.types';
+
+export type Props = HotspotV2Props;
+
+const {
+  id = `hotspot-${Math.random().toString(36).substr(2, 9)}`,
+  imageSrc,
+  imageAlt = "Imagen con puntos interactivos",
+  hotspots = [],
+  title,
+  description,
+  maxWidth = "650px",
+  containerWidth = "80%",
+  sonarColor = "#f01b18",
+  sonarSize = "15px",
+  className = ""
+} = Astro.props;
+---
+
+<section 
+  class={`hotspot-v2 ${className}`.trim()} 
+  id={id}
+  style={`--color-sonar: ${sonarColor}; --tam-sonar: ${sonarSize}; --max-width: ${maxWidth}; --container-width: ${containerWidth};`}
+>
+  {(title || description) && (
+    <div class="hotspot-v2-header">
+      {title && <h3>{title}</h3>}
+      {description && <p set:html={description}></p>}
+    </div>
+  )}
+  
+  <div class="hotspot-v2-container">
+    <img src={imageSrc} alt={imageAlt} />
+    <div class="hotspot-v2-overlay">
+      {hotspots.map((hotspot, index) => (
+        <div 
+          class="hotspot-v2-point-wrapper"
+          style={`top: ${hotspot.y}%; left: ${hotspot.x}%;`}
+        >
+          <button 
+            type="button"
+            tabindex={index + 1}
+            class="hotspot-v2-pin" 
+            data-placement={hotspot.placement || 'top'}
+            aria-label={hotspot.title}
+          >
+            <span class="sr-only">{hotspot.title}</span>
+          </button>
+          <div class="hotspot-v2-tooltip" data-placement={hotspot.placement || 'top'}>
+            <div class="hotspot-v2-tooltip-content">
+              <h1 set:html={hotspot.title}></h1>
+              <div set:html={hotspot.content}></div>
+            </div>
+            <div class="hotspot-v2-tooltip-arrow"></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Variables CSS */
+  .hotspot-v2 {
+    --color-cita: #eee;
+    --color-sonar: #f01b18;
+    --tam-sonar: 15px;
+    --max-width: 650px;
+    --container-width: 80%;
+    
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: var(--container-width);
+    max-width: var(--max-width);
+    margin: 2em auto;
+  }
+
+  .hotspot-v2-header {
+    margin-bottom: 1.5em;
+    text-align: center;
+  }
+
+  .hotspot-v2-header h3 {
+    margin-bottom: 0.5em;
+  }
+
+  .hotspot-v2-container {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0 0 0 10px #fff, 0 15px 50px rgba(0, 0, 0, 0.3);
+  }
+
+  .hotspot-v2-container img {
+    display: block;
+    height: auto;
+    width: 100%;
+  }
+
+  .hotspot-v2-overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+  }
+
+  .hotspot-v2-point-wrapper {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    pointer-events: all;
+  }
+
+  .hotspot-v2-pin {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: var(--tam-sonar);
+    width: var(--tam-sonar);
+    background-color: var(--color-sonar);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: block;
+  }
+
+  .hotspot-v2-pin:focus {
+    outline: 2px solid var(--color-sonar);
+    outline-offset: 3px;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .hotspot-v2-pin:before,
+  .hotspot-v2-pin:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--color-sonar);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .hotspot-v2-pin:before {
+    animation: efecto-sonar 1s ease-out infinite;
+  }
+
+  .hotspot-v2-pin:after {
+    animation: efecto-sonar 1s 0.5s ease-out infinite;
+  }
+
+  @keyframes efecto-sonar {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(3);
+      opacity: 0;
+    }
+  }
+
+  /* Tooltips personalizados (sin Bootstrap) */
+  .hotspot-v2-tooltip {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1000;
+    min-width: 250px;
+    max-width: 500px;
+  }
+
+  .hotspot-v2-tooltip-content {
+    background-color: #eee;
+    color: #444444;
+    padding: 1rem;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1em;
+    text-align: left;
+  }
+
+  .hotspot-v2-tooltip-content h1 {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin: 0 0 0.5em 0;
+    color: #444444;
+  }
+
+  .hotspot-v2-tooltip-content :global(p),
+  .hotspot-v2-tooltip-content :global(ul),
+  .hotspot-v2-tooltip-content :global(ol) {
+    margin: 0 0 0.5em 0;
+    color: #444444;
+    line-height: 1.5;
+  }
+
+  .hotspot-v2-tooltip-content :global(p:last-child),
+  .hotspot-v2-tooltip-content :global(ul:last-child),
+  .hotspot-v2-tooltip-content :global(ol:last-child) {
+    margin-bottom: 0;
+  }
+
+  .hotspot-v2-tooltip-content :global(li) {
+    margin-bottom: 0.25em;
+  }
+
+  .hotspot-v2-tooltip-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+  }
+
+  /* Placement: top (default) */
+  .hotspot-v2-tooltip[data-placement="top"] {
+    bottom: calc(100% + 15px);
+  }
+
+  .hotspot-v2-tooltip[data-placement="top"] .hotspot-v2-tooltip-arrow {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 8px 8px 0 8px;
+    border-color: #eee transparent transparent transparent;
+  }
+
+  /* Placement: bottom */
+  .hotspot-v2-tooltip[data-placement="bottom"] {
+    top: calc(100% + 15px);
+  }
+
+  .hotspot-v2-tooltip[data-placement="bottom"] .hotspot-v2-tooltip-arrow {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 0 8px 8px 8px;
+    border-color: transparent transparent #eee transparent;
+  }
+
+  /* Placement: left */
+  .hotspot-v2-tooltip[data-placement="left"] {
+    right: calc(100% + 15px);
+    left: auto;
+    transform: translateX(0);
+    top: 50%;
+    margin-top: calc(var(--tam-sonar) / -2);
+  }
+
+  .hotspot-v2-tooltip[data-placement="left"] .hotspot-v2-tooltip-arrow {
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 8px 0 8px 8px;
+    border-color: transparent transparent transparent #eee;
+  }
+
+  /* Placement: right */
+  .hotspot-v2-tooltip[data-placement="right"] {
+    left: calc(100% + 15px);
+    transform: translateX(0);
+    top: 50%;
+    margin-top: calc(var(--tam-sonar) / -2);
+  }
+
+  .hotspot-v2-tooltip[data-placement="right"] .hotspot-v2-tooltip-arrow {
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 8px 8px 8px 0;
+    border-color: transparent #eee transparent transparent;
+  }
+
+  /* Mostrar tooltip al hacer hover o focus */
+  .hotspot-v2-pin:hover + .hotspot-v2-tooltip,
+  .hotspot-v2-pin:focus + .hotspot-v2-tooltip,
+  .hotspot-v2-point-wrapper:hover .hotspot-v2-tooltip {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Permitir interacción con el tooltip */
+  .hotspot-v2-tooltip:hover {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+  }
+
+  /* Responsividad */
+  @media (max-width: 768px) {
+    .hotspot-v2 {
+      --container-width: 95%;
+    }
+
+    .hotspot-v2-tooltip {
+      min-width: 200px;
+      max-width: 85vw;
+    }
+
+    .hotspot-v2-tooltip-content {
+      font-size: 0.95em;
+    }
+
+    .hotspot-v2-tooltip-content h1 {
+      font-size: 1.3em;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hotspot-v2 {
+      --tam-sonar: 12px;
+    }
+
+    .hotspot-v2-tooltip {
+      min-width: 180px;
+      max-width: 80vw;
+    }
+
+    .hotspot-v2-tooltip-content {
+      font-size: 0.9em;
+      padding: 0.75rem;
+    }
+
+    .hotspot-v2-tooltip-content h1 {
+      font-size: 1.2em;
+    }
+  }
+</style>
+
+<script>
+  // Script completamente independiente, SIN dependencias de Bootstrap
+  function initHotspotV2() {
+    const hotspots = document.querySelectorAll('.hotspot-v2');
+    
+    hotspots.forEach(hotspot => {
+      const pins = hotspot.querySelectorAll('.hotspot-v2-pin');
+      
+      pins.forEach(pin => {
+        // Mejorar accesibilidad: cerrar tooltip con Escape
+        pin.addEventListener('keydown', ((e: KeyboardEvent) => {
+          if (e.key === 'Escape') {
+            (pin as HTMLElement).blur();
+          }
+        }) as EventListener);
+        
+        // En móvil, permitir tap para mostrar/ocultar
+        let touchTimeout: number;
+        pin.addEventListener('touchstart', (e) => {
+          e.preventDefault();
+          
+          const wrapper = pin.closest('.hotspot-v2-point-wrapper');
+          const tooltip = wrapper?.querySelector('.hotspot-v2-tooltip') as HTMLElement;
+          
+          if (tooltip) {
+            // Toggle visibility
+            const isVisible = tooltip.style.opacity === '1';
+            
+            // Cerrar todos los otros tooltips
+            document.querySelectorAll('.hotspot-v2-tooltip').forEach(t => {
+              (t as HTMLElement).style.opacity = '0';
+              (t as HTMLElement).style.visibility = 'hidden';
+            });
+            
+            // Toggle este tooltip
+            if (!isVisible) {
+              tooltip.style.opacity = '1';
+              tooltip.style.visibility = 'visible';
+              
+              // Auto-cerrar después de 5 segundos
+              clearTimeout(touchTimeout);
+              touchTimeout = window.setTimeout(() => {
+                tooltip.style.opacity = '0';
+                tooltip.style.visibility = 'hidden';
+              }, 5000);
+            }
+          }
+        });
+      });
+    });
+    
+    // Cerrar tooltips al hacer clic fuera
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('.hotspot-v2-point-wrapper')) {
+        document.querySelectorAll('.hotspot-v2-tooltip').forEach(tooltip => {
+          (tooltip as HTMLElement).style.opacity = '0';
+          (tooltip as HTMLElement).style.visibility = 'hidden';
+        });
+      }
+    });
+  }
+
+  // Inicializar cuando el DOM esté listo
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHotspotV2);
+  } else {
+    initHotspotV2();
+  }
+
+  // Reinicializar cuando Astro hace navegación del lado del cliente
+  document.addEventListener('astro:page-load', initHotspotV2);
+</script>
