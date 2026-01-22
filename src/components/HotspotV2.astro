@@ -144,10 +144,12 @@ const {
     transform: translate(-50%, -50%);
     pointer-events: all;
     z-index: 100;
+    isolation: isolate; /* Crear un nuevo stacking context limpio */
   }
 
-  /* Cuando el wrapper está activo (hover), aumentar z-index */
-  .hotspot-v2-point-wrapper:hover {
+  /* Cuando el wrapper está activo (hover/tiene tooltip visible), aumentar z-index */
+  .hotspot-v2-point-wrapper:hover,
+  .hotspot-v2-point-wrapper:focus-within {
     z-index: 3000;
   }
 
@@ -161,7 +163,7 @@ const {
     border: none;
     border-radius: 50%;
     cursor: pointer;
-    z-index: 1;
+    z-index: 10; /* Subir el pin para que esté sobre la animación */
     display: block;
   }
 
@@ -193,6 +195,7 @@ const {
     background-color: var(--color-sonar);
     border-radius: 50%;
     pointer-events: none;
+    z-index: -1; /* Mantener la animación detrás del pin y del tooltip */
   }
 
   .hotspot-v2-pin:before {
