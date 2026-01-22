@@ -143,6 +143,12 @@ const {
     position: absolute;
     transform: translate(-50%, -50%);
     pointer-events: all;
+    z-index: 100;
+  }
+
+  /* Cuando el wrapper está activo (hover), aumentar z-index */
+  .hotspot-v2-point-wrapper:hover {
+    z-index: 3000;
   }
 
   .hotspot-v2-pin {
@@ -155,7 +161,7 @@ const {
     border: none;
     border-radius: 50%;
     cursor: pointer;
-    z-index: 10;
+    z-index: 1;
     display: block;
   }
 
@@ -217,7 +223,7 @@ const {
     visibility: hidden;
     pointer-events: none;
     transition: opacity 0.3s ease, visibility 0.3s ease;
-    z-index: 1000;
+    z-index: 2000;
     min-width: 250px;
     max-width: 500px;
   }
@@ -396,7 +402,41 @@ const {
           }
         }) as EventListener);
         
-        // En móvil, permitir tap para mostrar/ocultar
+        // Toggle en desktop/móvil con click
+        pin.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          const wrapper = pin.closest('.hotspot-v2-point-wrapper');
+          const tooltip = wrapper?.querySelector('.hotspot-v2-tooltip') as HTMLElement;
+          
+          if (tooltip) {
+            // Toggle visibility
+            const isVisible = tooltip.style.opacity === '1';
+            
+            // Cerrar todos los otros tooltips primero
+            document.querySelectorAll('.hotspot-v2-tooltip').forEach(t => {
+              if (t !== tooltip) {
+                (t as HTMLElement).style.opacity = '0';
+                (t as HTMLElement).style.visibility = 'hidden';
+                (t as HTMLElement).style.pointerEvents = 'none';
+              }
+            });
+            
+            // Toggle este tooltip
+            if (!isVisible) {
+              tooltip.style.opacity = '1';
+              tooltip.style.visibility = 'visible';
+              tooltip.style.pointerEvents = 'all';
+            } else {
+              tooltip.style.opacity = '0';
+              tooltip.style.visibility = 'hidden';
+              tooltip.style.pointerEvents = 'none';
+            }
+          }
+        });
+        
+        // En móvil, también soportar touchstart
         let touchTimeout: number;
         pin.addEventListener('touchstart', (e) => {
           e.preventDefault();
@@ -410,34 +450,45 @@ const {
             
             // Cerrar todos los otros tooltips
             document.querySelectorAll('.hotspot-v2-tooltip').forEach(t => {
-              (t as HTMLElement).style.opacity = '0';
-              (t as HTMLElement).style.visibility = 'hidden';
+              if (t !== tooltip) {
+                (t as HTMLElement).style.opacity = '0';
+                (t as HTMLElement).style.visibility = 'hidden';
+                (t as HTMLElement).style.pointerEvents = 'none';
+              }
             });
             
             // Toggle este tooltip
             if (!isVisible) {
               tooltip.style.opacity = '1';
               tooltip.style.visibility = 'visible';
+              tooltip.style.pointerEvents = 'all';
               
               // Auto-cerrar después de 5 segundos
               clearTimeout(touchTimeout);
               touchTimeout = window.setTimeout(() => {
                 tooltip.style.opacity = '0';
                 tooltip.style.visibility = 'hidden';
+                tooltip.style.pointerEvents = 'none';
               }, 5000);
+            } else {
+              tooltip.style.opacity = '0';
+              tooltip.style.visibility = 'hidden';
+              tooltip.style.pointerEvents = 'none';
             }
           }
         });
       });
     });
     
-    // Cerrar tooltips al hacer clic fuera
+    // Cerrar tooltips al hacer clic fuera (pero NO en los pins o tooltips)
     document.addEventListener('click', (e) => {
       const target = e.target as HTMLElement;
-      if (!target.closest('.hotspot-v2-point-wrapper')) {
+      // Solo cerrar si el clic NO es en un wrapper de hotspot
+      if (!target.closest('.hotspot-v2-point-wrapper') && !target.closest('.hotspot-v2-tooltip')) {
         document.querySelectorAll('.hotspot-v2-tooltip').forEach(tooltip => {
           (tooltip as HTMLElement).style.opacity = '0';
           (tooltip as HTMLElement).style.visibility = 'hidden';
+          (tooltip as HTMLElement).style.pointerEvents = 'none';
         });
       }
     });
