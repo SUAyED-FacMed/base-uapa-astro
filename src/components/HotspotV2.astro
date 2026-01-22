@@ -77,7 +77,7 @@ const {
           <div class="hotspot-v2-tooltip" data-placement={hotspot.placement || 'top'}>
             <div class="hotspot-v2-tooltip-content">
               <h1 set:html={hotspot.title}></h1>
-              <div set:html={hotspot.content}></div>
+              {hotspot.content && <div set:html={hotspot.content}></div>}
             </div>
             <div class="hotspot-v2-tooltip-arrow"></div>
           </div>

@@ -33,8 +33,9 @@ export interface HotspotPoint {
   /**
    * Contenido HTML que se muestra en el tooltip
    * Puede incluir listas, párrafos, negritas, etc.
+   * @optional Si no se proporciona, solo se mostrará el título
    */
-  content: string;
+  content?: string;
   
   /**
    * Posición preferida del tooltip relativa al punto
