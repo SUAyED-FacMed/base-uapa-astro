@@ -73,12 +73,12 @@ else
         git status --porcelain | grep "^UU\|^AA\|^DD" | cut -c4-
         echo ""
         echo "🔧 Para resolver conflictos:"
-        echo "   1. Edita los archivos en conflicto"
-        echo "   2. git add .                      # Marcar como resueltos"
-        echo "   3. git commit -m 'feat: update from template $(date +%Y-%m-%d)'"
-        echo "   4. git checkout main              # Volver a main"
-        echo "   5. git merge $TEMP_BRANCH         # Aplicar cambios"
-        echo "   6. git branch -d $TEMP_BRANCH     # Limpiar branch temporal"
+        echo "   Edita los archivos en conflicto"
+        echo "   git add .                      # Marcar como resueltos"
+        echo "   git commit -m 'feat: update from template $(date +%Y-%m-%d)'"
+        echo "   git checkout main              # Volver a main"
+        echo "   git merge $TEMP_BRANCH         # Aplicar cambios"
+        echo "   git branch -d $TEMP_BRANCH     # Limpiar branch temporal"
         echo ""
         echo "Para abortar: git merge --abort && git checkout main && git branch -D $TEMP_BRANCH"
     else
