@@ -167,14 +167,19 @@ main .wrapper-section {
 }
 
 .embed-iframe-hotspot {
+	position: relative;
 	width: 100%;
 	overflow: hidden;
+	/* Aspect ratio responsivo por defecto */
+	min-height: 400px;
 }
 
 .embed-iframe-hotspot iframe {
 	width: 100%;
 	border: none;
 	display: block;
+	/* Asegura que el iframe ocupe el espacio completo */
+	min-height: inherit;
 }
 
 .content-act {

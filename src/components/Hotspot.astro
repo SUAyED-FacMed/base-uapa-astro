@@ -24,7 +24,7 @@ export interface Props {
   title?: string;
   description?: string;
   iframeSrc: string;
-  iframeHeight?: string;              // Altura del iframe (ej: "600px", "80vh")
+  iframeHeight?: string;              // Altura del iframe (ej: "600px", "80vh", "clamp(400px, 60vh, 800px)")
   buttonText?: string;
   className?: string;
   showInModal?: boolean;
@@ -37,7 +37,7 @@ const {
   title,
   description,
   iframeSrc,
-  iframeHeight = "600px",              // Altura por defecto
+  iframeHeight = "clamp(400px, 60vh, 800px)",  // Altura responsiva por defecto
   buttonText = "Ver hotspot",
   className = "",
   showInModal = false,
