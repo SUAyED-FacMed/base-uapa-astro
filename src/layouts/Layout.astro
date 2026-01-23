@@ -72,7 +72,7 @@ const finalResources =
 
     <!-- ESTILOS DE CONTENIDO -->
     <link rel="stylesheet" href="./css/main.css" />
-    <link rel="stylesheet" href={personalizadoUrl.replace(/^\//, "")} />
+    <link rel="stylesheet" href={personalizadoUrl.startsWith('/') ? '.' + personalizadoUrl : personalizadoUrl} />
 
     <!-- RECURSOS DINÁMICOS -->
     <ResourceLoader resources={finalResources} />

@@ -5,7 +5,8 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   output: 'static',
   build: {
-    assets: 'assets',
+    assets: '_astro',
+    assetsPrefix: '.',
     inlineStylesheets: 'never',
     format: 'preserve'
   },

@@ -11,6 +11,7 @@ import Figure from "../components/Figure.astro";
 import VideoYoutube from "../components/VideoYoutube.astro";
 import VideoYoutubeLite from "../components/VideoYoutubeLite.astro";
 import Hotspot from "../components/Hotspot.astro";
+import HotspotV2 from "../components/HotspotV2.astro";
 import HojasDesordenadas from "../components/HojasDesordenadas.astro";
 import Latex from "../components/Latex.astro";
 import { UAPA_CONFIG, formatAuthors } from "../config/uapa-config.ts";
@@ -418,7 +419,40 @@ import {
         </div>
       </section>
 
-      <!-- Ejemplo de Hotspot inline -->
+      <!-- Ejemplo de HotspotV2 - Componente moderno sin dependencias -->
+      <HotspotV2
+        imageSrc="/img/cont/esquema_estudio_transversal.png"
+        imageAlt="Diagrama interactivo del sistema"
+        title="Exploración interactiva (HotspotV2)"
+        description="Haz clic en los puntos para ver información detallada"
+        hotspots={[
+          {
+            x: 25,
+            y: 30,
+            title: "Punto 1",
+            content: "<p>Este es el primer punto de interés con información importante.</p>",
+            placement: "top"
+          },
+          {
+            x: 75,
+            y: 50,
+            title: "Punto 2",
+            content: "<ul><li>Item importante 1</li><li>Item importante 2</li></ul>",
+            placement: "left"
+          },
+          {
+            x: 50,
+            y: 80,
+            title: "Punto 3",
+            content: "<p>Información adicional sobre este elemento del diagrama.</p>",
+            placement: "bottom"
+          }
+        ]}
+        maxWidth="800px"
+        sonarColor="#f01b18"
+      />
+
+      <!-- Ejemplo de Hotspot inline (versión antigua) -->
       <Hotspot
         iframeSrc="css/recursos/hotspot/index.html"
         iframeHeight="500px"

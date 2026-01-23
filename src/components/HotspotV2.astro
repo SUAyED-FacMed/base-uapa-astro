@@ -43,6 +43,9 @@ const {
   sonarSize = "15px",
   className = ""
 } = Astro.props;
+
+// Normalizar la ruta de la imagen para usar rutas relativas
+const normalizedImageSrc = imageSrc.startsWith('/') ? '.' + imageSrc : imageSrc;
 ---
 
 <section 
@@ -58,7 +61,7 @@ const {
   )}
   
   <div class="hotspot-v2-container">
-    <img src={imageSrc} alt={imageAlt} />
+    <img src={normalizedImageSrc} alt={imageAlt} />
     <div class="hotspot-v2-overlay">
       {hotspots.map((hotspot, index) => (
         <div 
