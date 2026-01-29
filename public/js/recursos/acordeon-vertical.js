@@ -10,7 +10,10 @@ function acordeonVertical(idAcordeon) {
 			accordionItemHeader.classList.toggle('active');
 			const accordionItemBody = accordionItemHeader.nextElementSibling;
 			if (accordionItemHeader.classList.contains('active')) {
-				accordionItemBody.style.maxHeight = accordionItemBody.scrollHeight + 'px';
+				// Usar setTimeout para permitir que el contenido se renderice completamente
+				setTimeout(() => {
+					accordionItemBody.style.maxHeight = accordionItemBody.scrollHeight + 'px';
+				}, 10);
 			}
 			else {
 				accordionItemBody.style.maxHeight = 0;
