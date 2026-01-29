@@ -419,6 +419,77 @@ import {
         </div>
       </section>
 
+      <div class="my-5">
+        <section class="accordion" id="acordeon-vert-mediana" style="width: 100%; max-width: 100%;">
+          <div class="accordion-item">
+            <div class="accordion-item-header">
+              Cálculo
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-item-body">
+              <div class="accordion-item-body-content">
+                <p>
+                  Se debe ordenar la serie de menor a mayor y localizar el valor central que la divide en dos partes de igual tamaño.
+                </p>
+              </div>
+            </div>
+          </div>
+    
+          <div class="accordion-item">
+            <div class="accordion-item-header">
+              Ejemplo e interpretación
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-item-body">
+              <div class="accordion-item-body-content">
+              <p>Se presenta el número de dosis aplicadas de vacunas en lactantes de seis meses en un centro de salud rural en 2023:</p>
+              <div class="tabla-mediana-container">
+                <table class="tabla-mediana">
+                  <tr>
+                    <td>9.0</td>
+                    <td>8.0</td>
+                    <td>9.0</td>
+                    <td>8.0</td>
+                    <td>8.0</td>
+                    <td>7.0</td>
+                    <td>9.0</td>
+                    <td>9.0</td>
+                    <td>10.0</td>
+                  </tr>
+                </table>
+              </div>
+              <p>
+                Si queremos calcular la mediana, hay que ordenar la serie de menor a mayor y localizar el valor que divida en dos partes de igual tamaño, de forma que en una parte esté el 50 % de los datos y el 50 % restante en la otra parte.
+              </p>
+              <div class="tabla-mediana-container">
+                <div class="escala-header">
+                  <div class="escala-label menor">Menor</div>
+                  <div class="escala-label mayor">Mayor</div>
+                </div>
+                <table class="tabla-mediana">
+                  <tr>
+                    <td>7.0</td>
+                    <td>8.0</td>
+                    <td>8.0</td>
+                    <td>8.0</td>
+                    <td class="mediana-highlight">9.0</td>
+                    <td>9.0</td>
+                    <td>9.0</td>
+                    <td>9.0</td>
+                    <td>10.0</td>
+                  </tr>
+                </table>
+                <div class="mediana-mensaje">
+                  En este caso, el valor de la mediana es 9.0.
+                </div>
+              </div>
+              <p><strong>Interpretación</strong>: La mitad de lactantes de seis meses tuvo nueve dosis aplicadas de vacunas o menos, mientras que la otra mitad tuvo nueve dosis aplicadas de vacunas o más.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
       <!-- Ejemplo de HotspotV2 - Componente moderno sin dependencias -->
       <HotspotV2
         imageSrc="/img/cont/esquema_estudio_transversal.png"
