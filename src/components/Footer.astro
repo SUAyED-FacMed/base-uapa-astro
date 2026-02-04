@@ -15,11 +15,11 @@ const {
 } = Astro.props;
 
 // Derivar flags del modo
-// CUAED: muestra sección CUAED en footer
-// SUAyED: muestra tools menu y modal de créditos
+// CUAED: muestra sección CUAED en footer y modal de créditos
+// SUAyED: muestra tools menu
 const showCuaedSection = isCuaed;
 const showToolsMenu = !isCuaed;
-const showCreditsModal = !isCuaed;
+const showCreditsModal = isCuaed;
 
 const credits = UAPA_CONFIG.footer.credits;
 const toolsMenu = UAPA_CONFIG.footer.toolsMenu;
