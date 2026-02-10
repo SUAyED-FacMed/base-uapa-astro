@@ -15,6 +15,8 @@ export interface Props {
   // Control de visualización
   showBasic?: boolean;
   showComplementary?: boolean;
+  showBasicTitle?: boolean;
+  showComplementaryTitle?: boolean;
   basicSectionTitle?: string;
   complementarySectionTitle?: string;
   
@@ -35,6 +37,8 @@ const {
   complementaryReferences,
   showBasic = true,
   showComplementary = true,
+  showBasicTitle = REFERENCES_CONFIG.showBasicTitle ?? true,
+  showComplementaryTitle = REFERENCES_CONFIG.showComplementaryTitle ?? true,
   basicSectionTitle = "Básicas",
   complementarySectionTitle = "Complementaria",
   uapaTitle = UAPA_CONFIG.title,
@@ -79,7 +83,7 @@ const hasComplementaryContent = complementarySections.some(section => section.re
         <!-- Referencias Básicas -->
         {showBasic && hasBasicContent && (
           <>
-            <h3>{basicSectionTitle}</h3>
+            {showBasicTitle && <h3>{basicSectionTitle}</h3>}
             {basicSections.map(section => (
               section.references && section.references.length > 0 && (
                 <div class="reference-section">
@@ -98,7 +102,7 @@ const hasComplementaryContent = complementarySections.some(section => section.re
         <!-- Referencias Complementarias -->
         {showComplementary && hasComplementaryContent && (
           <>
-            <h3>{complementarySectionTitle}</h3>
+            {showComplementaryTitle && <h3>{complementarySectionTitle}</h3>}
             {complementarySections.map(section => (
               section.references && section.references.length > 0 && (
                 <div class="reference-section">

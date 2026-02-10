@@ -6,6 +6,10 @@ export interface ReferenceCategory {
 
 // Configuración flexible de referencias por tipo de fuente
 export const REFERENCES_CONFIG = {
+  // Control de visualización de títulos
+  showBasicTitle: true,       // Mostrar título "Básicas"
+  showComplementaryTitle: true, // Mostrar título "Complementarias"
+  
   // Estructura flexible que permite diferentes tipos de fuentes
   basic: {
     sections: [
@@ -51,6 +55,8 @@ export const REFERENCES_CONFIG = {
 
 // Configuración vacía para proyectos sin referencias (útil para copiar)
 export const EMPTY_REFERENCES = {
+  showBasicTitle: true,
+  showComplementaryTitle: true,
   basic: { sections: [] },
   complementary: { sections: [] },
   basicLegacy: [],

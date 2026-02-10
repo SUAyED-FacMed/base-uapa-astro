@@ -24,6 +24,8 @@ El componente `References.astro` gestiona las fuentes de información y referenc
 ```typescript
 showBasic?: boolean;              // Mostrar sección "Básicas" (default: true)
 showComplementary?: boolean;      // Mostrar sección "Complementarias" (default: true)
+showBasicTitle?: boolean;         // Mostrar título "Básicas" (default: true)
+showComplementaryTitle?: boolean; // Mostrar título "Complementarias" (default: true)
 basicSectionTitle?: string;       // Título personalizado para básicas (default: "Básicas")
 complementarySectionTitle?: string; // Título personalizado para complementarias (default: "Complementarias")
 ```
@@ -99,12 +101,27 @@ Esto usará automáticamente la configuración definida en `references-config.ts
 />
 ```
 
+### 6. Sin títulos de sección (solo "Fuentes de información")
+
+```astro
+<References 
+  showBasicTitle={false}
+  showComplementaryTitle={false}
+/>
+```
+
+Esto mostrará solo "Fuentes de información" como título principal, sin los subtítulos "Básicas" o "Complementarias". Útil cuando solo tienes un tipo de referencias o quieres una presentación más simple.
+
 ## Configuración Centralizada
 
 ### Estructura Recomendada (references-config.ts)
 
 ```typescript
 export const REFERENCES_CONFIG = {
+  // Control de visualización de títulos (opcional)
+  showBasicTitle: true,       // Mostrar título "Básicas" (default: true)
+  showComplementaryTitle: true, // Mostrar título "Complementarias" (default: true)
+  
   basic: {
     sections: [
       {
@@ -152,6 +169,8 @@ Si tu proyecto no tiene referencias definidas aún:
 
 ```typescript
 export const REFERENCES_CONFIG = {
+  showBasicTitle: true,
+  showComplementaryTitle: true,
   basic: { sections: [] },
   complementary: { sections: [] },
   basicLegacy: [],
@@ -165,6 +184,36 @@ O usa el helper incluido:
 import { EMPTY_REFERENCES } from '../config/references-config.ts';
 
 export const REFERENCES_CONFIG = EMPTY_REFERENCES;
+```
+
+### Ocultar títulos de sección globalmente
+
+Si quieres que TODAS las páginas del proyecto solo muestren "Fuentes de información" sin los subtítulos "Básicas" o "Complementarias", configúralo una vez en `references-config.ts`:
+
+```typescript
+export const REFERENCES_CONFIG = {
+  // Ocultar títulos de categorías - solo se mostrará "Fuentes de información"
+  showBasicTitle: false,
+  showComplementaryTitle: false,
+  
+  basic: {
+    sections: [
+      {
+        title: "Bibliografía",
+        references: [
+          "Autor, A. (2024). <em>Título del libro</em>. Editorial."
+        ]
+      }
+    ]
+  },
+  // ... resto de la configuración
+};
+```
+
+Ahora todas las páginas que usen `<References />` sin props aplicarán esta configuración automáticamente. Si en alguna página específica quieres mostrar el título, puedes sobrescribirlo:
+
+```astro
+<References showBasicTitle={true} />
 ```
 
 ## Ejemplos de Uso Avanzado
