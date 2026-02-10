@@ -167,13 +167,13 @@ const AVAILABLE_RESOURCES = {
     init: `
       document.addEventListener('DOMContentLoaded', function() {
         // Inicializar líneas de tiempo horizontales
-        const timelines = document.querySelectorAll('.timeline-horizontal, .linea-tiempo-hor');
+        const timelines = document.querySelectorAll('.linea-tiempo-horizontal');
         timelines.forEach((timeline, index) => {
           if (!timeline.id) {
-            timeline.id = 'timeline-hor-' + (index + 1);
+            timeline.id = 'lthor' + (index + 1);
           }
-          if (typeof iniciarTimelineHorizontal === 'function') {
-            iniciarTimelineHorizontal(timeline.id);
+          if (typeof lineaTiempoHorizontal === 'function') {
+            lineaTiempoHorizontal(timeline.id);
           }
         });
       });
