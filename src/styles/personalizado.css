@@ -13,6 +13,137 @@
  ESTILOS PERSONALIZADOS PARA INDEX
 ================================================== */
 
+/* ===== TABLA COMPARATIVA REUTILIZABLE ===== */
+.tabla-comparativa-container {
+    margin: 2.5rem auto;
+    max-width: 1200px;
+    width: 100%;
+    overflow-x: auto;
+    padding: 0 1rem;
+}
+
+.tabla-comparativa {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.tabla-comparativa thead {
+    background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+    color: #ffffff;
+}
+
+.tabla-comparativa thead th {
+    padding: 1rem 0.75rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tabla-comparativa thead th:last-child {
+    border-right: none;
+}
+
+.tabla-comparativa thead th:first-child {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.tabla-comparativa tbody tr {
+    border-bottom: 1px solid #e9ecef;
+    transition: background-color 0.2s ease;
+}
+
+.tabla-comparativa tbody tr:nth-child(odd) {
+    background-color: #f8f9fa;
+}
+
+.tabla-comparativa tbody tr:hover {
+    background-color: #e7f1ff;
+}
+
+.tabla-comparativa tbody td {
+    padding: 0.9rem 0.75rem;
+    text-align: left;
+    vertical-align: top;
+    border-right: 1px solid #dee2e6;
+    line-height: 1.6;
+}
+
+.tabla-comparativa tbody td:last-child {
+    border-right: none;
+}
+
+.tabla-comparativa tbody td.caracteristica {
+    font-weight: 600;
+    background-color: #e9ecef;
+    text-align: left;
+    color: #495057;
+    width: 18%;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.tabla-comparativa tbody tr:hover td.caracteristica {
+    background-color: #d3d9df;
+}
+
+.tabla-caption {
+    text-align: center;
+    font-style: italic;
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-top: 0.75rem;
+}
+
+/* Responsividad */
+@media (max-width: 992px) {
+    .tabla-comparativa {
+        font-size: 0.85rem;
+    }
+    
+    .tabla-comparativa thead th,
+    .tabla-comparativa tbody td {
+        padding: 0.7rem 0.5rem;
+    }
+    
+    .tabla-comparativa thead th {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .tabla-comparativa-container {
+        padding: 0 0.5rem;
+    }
+    
+    .tabla-comparativa {
+        font-size: 0.8rem;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    .tabla-comparativa thead th,
+    .tabla-comparativa tbody td {
+        padding: 0.6rem 0.4rem;
+        min-width: 120px;
+    }
+    
+    .tabla-comparativa tbody td.caracteristica {
+        min-width: 140px;
+        position: sticky;
+        left: 0;
+        z-index: 1;
+    }
+}
+
 /* Lista de pasos del método estadístico */
 .lista-pasos-metodo {
     list-style: none;
@@ -893,4 +1024,57 @@
 .custom-tooltip>.tooltip-inner>h1 {
     font-size: 1em;
     font-weight: 300;
+}
+
+/* Cuadro de definición/concepto */
+.cuadro-definicion {
+    background: #fff8e1;
+    border-left: 8px solid #ffc107;
+    border-radius: 4px;
+    padding: 25px 30px;
+    margin: 30px auto;
+    max-width: 900px;
+    box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.15);
+    position: relative;
+}
+
+.cuadro-definicion::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    width: 60px;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 2px;
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.12),
+        inset 0 -1px 2px rgba(0, 0, 0, 0.05);
+    transform: rotate(-2deg);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.cuadro-definicion p {
+    margin: 0 0 15px 0;
+    line-height: 1.7;
+    color: #333;
+    font-size: 1rem;
+}
+
+.cuadro-definicion p:last-child {
+    margin-bottom: 0;
+}
+
+.cuadro-definicion h5 {
+    margin: 0 0 15px 0;
+    color: #f57c00;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+@media (max-width: 767px) {
+    .cuadro-definicion {
+        padding: 20px 15px;
+        margin: 20px 10px;
+    }
 }
