@@ -10,7 +10,7 @@
 //
 export interface Props {
   src: string;
-  alt: string;
+  alt?: string; // Opcional si no viene en guion instruccional
   title?: string;
   caption?: string; // Acepta HTML (se renderiza con set:html)
   width?: "w-600" | "w-650" | "w-750" | "w-900" | "w-100"; // Anchos predefinidos comunes
@@ -52,8 +52,8 @@ const figureClasses = `${width} mx-auto my-recursos ${className}`.trim();
   <img
     class="img-fluid rounded d-block w-100"
     src={src}
-    alt={alt}
-    title={title || alt}
+    alt={alt || ""}
+    title={title || alt || ""}
   />
   {caption && <figcaption class="text-center" set:html={caption}></figcaption>}
 </figure>
