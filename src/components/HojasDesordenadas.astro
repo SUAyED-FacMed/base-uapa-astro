@@ -7,12 +7,32 @@ export interface HojaContent {
 export interface Props {
   hojas: HojaContent[];
   className?: string;
+  grid?: boolean;
+  layout?: "desordenado" | "grid";
+  columnas?: 2 | 3;
 }
 
-const { hojas, className = "" } = Astro.props;
+const {
+  hojas,
+  className = "",
+  grid = false,
+  layout = "desordenado",
+  columnas = 2,
+} = Astro.props;
+
+const usarGrid = grid || layout === "grid";
+const columnasGrid = columnas === 3 ? 3 : 2;
+const containerClass = [
+  "contenedor-hojas-desordenadas",
+  usarGrid && "hojas-grid",
+  usarGrid && `hojas-grid-${columnasGrid}`,
+  className,
+]
+  .filter(Boolean)
+  .join(" ");
 ---
 
-<section class={`contenedor-hojas-desordenadas ${className}`.trim()}>
+<section class={containerClass}>
   {
     hojas.map((hoja) => (
       <div class={`hojas ${hoja.color}`}>
@@ -44,6 +64,21 @@ const { hojas, className = "" } = Astro.props;
     user-select: none;
   }
 
+  section.contenedor-hojas-desordenadas.hojas-grid {
+    display: grid;
+    gap: clamp(2.5em, 5vw, 5em);
+    justify-content: center;
+    align-items: stretch;
+  }
+
+  section.contenedor-hojas-desordenadas.hojas-grid-2 {
+    grid-template-columns: repeat(2, minmax(0, 350px));
+  }
+
+  section.contenedor-hojas-desordenadas.hojas-grid-3 {
+    grid-template-columns: repeat(3, minmax(0, 350px));
+  }
+
   section.contenedor-hojas-desordenadas:hover {
     transform: rotate(0deg);
   }
@@ -58,6 +93,12 @@ const { hojas, className = "" } = Astro.props;
     margin: 3em auto;
     padding: 24px;
     position: relative;
+  }
+
+  section.contenedor-hojas-desordenadas.hojas-grid .hojas {
+    width: 100%;
+    min-width: 0;
+    margin: 1.5em 0;
   }
 
   section.contenedor-hojas-desordenadas .hojas:hover {
@@ -203,6 +244,12 @@ const { hojas, className = "" } = Astro.props;
     overflow-wrap: anywhere;
   }
 
+  @media (max-width: 1199px) {
+    section.contenedor-hojas-desordenadas.hojas-grid-3 {
+      grid-template-columns: repeat(2, minmax(0, 350px));
+    }
+  }
+
   @media (max-width: 767px) {
     section.contenedor-hojas-desordenadas {
       gap: 2em;
@@ -214,6 +261,14 @@ const { hojas, className = "" } = Astro.props;
       max-width: 100%;
       min-width: auto;
       transform: rotate(2deg); /* Menos rotación en móvil */
+      margin: 1.5em auto;
+    }
+
+    section.contenedor-hojas-desordenadas.hojas-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    section.contenedor-hojas-desordenadas.hojas-grid .hojas {
       margin: 1.5em auto;
     }
 
