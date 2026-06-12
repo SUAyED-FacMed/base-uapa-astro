@@ -38,6 +38,7 @@ export const UAPA_CONFIG = {
   
   // Hero
   hero: {
+    imageSrc: "img/portada.jpg",
     imageCaption: "Pie de portada. <em>Portada</em> tomada de https://suayed.facmed.unam.mx/"
   },
   

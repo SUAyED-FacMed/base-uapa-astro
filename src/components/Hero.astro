@@ -8,6 +8,7 @@ export interface Props {
   title: string;
   subtitle?: string;
   authors?: string;
+  imageSrc?: string;
   imageCaption?: string;
 }
 
@@ -15,13 +16,16 @@ const {
   title = "Título de la UAPA",
   subtitle = "Unidad de Apoyo para el Aprendizaje",
   authors = "Autor 1 | Autor 2 | Autor 3",
+  imageSrc = "img/portada.jpg",
   imageCaption = "Pie de portada. Tomada de https://suayed.facmed.unam.mx/"
 } = Astro.props;
+
+const heroBackgroundStyle = `--hero-bg-image: url("${imageSrc.replace(/"/g, '\\"')}")`;
 ---
 
 <!-- ************* INICIA HERO ************** -->
 <header>
-  <div class="cover-index">
+  <div class="cover-index" style={heroBackgroundStyle}>
     <div class="hero">
       <div class="container-fluid py-5 py-md-0">
         <div class="row align-items-center text-center">

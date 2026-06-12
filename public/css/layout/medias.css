@@ -58,7 +58,7 @@
 
 @media (min-width: 768px) {
 	.cover-index {
-		background-image: url(../../img/portada.jpg);
+		background-image: var(--hero-bg-image, url(../../img/portada.jpg));
 		background-color: transparent;
 		background-position: center center;
 		background-size: cover;
@@ -118,4 +118,3 @@
 		padding-right: 0.7rem;
 	}
 }
-
