@@ -66,7 +66,8 @@ const containerClass = [
 
   section.contenedor-hojas-desordenadas.hojas-grid {
     display: grid;
-    gap: clamp(2.5em, 5vw, 5em);
+    row-gap: clamp(4rem, 8vw, 7rem);
+    column-gap: clamp(3.5rem, 5vw, 5.5rem);
     justify-content: center;
     align-items: stretch;
   }
@@ -98,7 +99,7 @@ const containerClass = [
   section.contenedor-hojas-desordenadas.hojas-grid .hojas {
     width: 100%;
     min-width: 0;
-    margin: 1.5em 0;
+    margin: 0;
   }
 
   section.contenedor-hojas-desordenadas .hojas:hover {
@@ -265,6 +266,8 @@ const containerClass = [
     }
 
     section.contenedor-hojas-desordenadas.hojas-grid {
+      row-gap: 3rem;
+      column-gap: 0;
       grid-template-columns: minmax(0, 1fr);
     }
 
