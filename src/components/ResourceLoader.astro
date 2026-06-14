@@ -37,6 +37,9 @@ const AVAILABLE_RESOURCES = {
         acordeonVertical("acordeon-vert-2");
         acordeonVertical("acordeon-vert-3");
         acordeonVertical("acordeon-vert-4");
+        acordeonVertical("acordeon-vert-mediana");
+        acordeonVertical("acordeon-vert-percentiles");
+        acordeonVertical("acordeon-vert-curva-normal");
       });
     `
   },
@@ -75,8 +78,14 @@ const AVAILABLE_RESOURCES = {
     },
     init: `
       document.addEventListener('DOMContentLoaded', function() {
-        ficheroHorizontal("fichero-hor-1");
-        ficheroHorizontal("fichero-hor-2");
+        if (typeof ficheroHorizontal !== 'undefined') {
+          // Inicializar solo los ficheros que existen en la página
+          ['fichero-hor-1', 'fichero-hor-2', 'fichero-hor-desviacion'].forEach(function(id) {
+            if (document.querySelector('section.fichero-hor#' + id)) {
+              ficheroHorizontal(id);
+            }
+          });
+        }
       });
     `
   },
@@ -92,6 +101,11 @@ const AVAILABLE_RESOURCES = {
         ficheroVertical('fichero-vert-1');
         ficheroVertical('fichero-vert-2');
         ficheroVertical('fichero-vert-3');
+        ficheroVertical('fichero-vert-4');
+        ficheroVertical('fichero-vert-5');
+        ficheroVertical('fichero-vert-6');
+        ficheroVertical('fichero-vert-7');
+        ficheroVertical('fichero-vert-8');
       });
     `
   },
