@@ -20,7 +20,7 @@ const {
   imageCaption = "Pie de portada. Tomada de https://suayed.facmed.unam.mx/"
 } = Astro.props;
 
-const heroBackgroundStyle = `--hero-bg-image: url("${imageSrc.replace(/"/g, '\\"')}")`;
+const heroBackgroundStyle = `background-image: url("${imageSrc.replace(/"/g, '\\"')}")`;
 ---
 
 <!-- ************* INICIA HERO ************** -->
