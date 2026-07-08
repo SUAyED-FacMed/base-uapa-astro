@@ -94,11 +94,17 @@
     background-color: #d3d9df;
 }
 
-.tabla-caption {
-    text-align: center;
+main figcaption,
+.figcap2,
+.tabla-caption,
+.tabla-informativa-caption {
     color: #585c60;
-    font-size: 0.9rem;
-    margin-top: 0.75rem;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 300;
+    line-height: 1.1rem;
+    margin-top: 0.5rem;
+    text-align: center;
 }
 
 /* Responsividad */
@@ -140,6 +146,151 @@
         position: sticky;
         left: 0;
         z-index: 1;
+    }
+}
+
+/* Tabla informativa reutilizable */
+.tabla-informativa-figure {
+    margin: 2.75rem auto 2.25rem;
+    max-width: 1120px;
+    width: 100%;
+}
+
+.tabla-informativa-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid #c8d7d9;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 10px 24px rgba(25, 55, 62, 0.08);
+}
+
+.tabla-informativa {
+    width: 100%;
+    min-width: 980px;
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin: 0;
+    color: #212529;
+    font-size: 0.95rem;
+    line-height: 1.45;
+}
+
+.tabla-informativa-caption {
+    margin-bottom: 0;
+}
+
+.tabla-informativa th,
+.tabla-informativa td {
+    padding: 0.9rem 0.85rem;
+    border: 1px solid #c8d7d9;
+    vertical-align: top;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+.tabla-informativa thead th {
+    background: #d8e8ea;
+    color: #14272b;
+    font-family: 'Raleway', Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.tabla-informativa tbody th {
+    width: 15%;
+    background: #f3f7f8;
+    color: #172b31;
+    font-weight: 700;
+    text-align: left;
+}
+
+.tabla-informativa tbody td {
+    background: #fff;
+}
+
+.tabla-informativa tbody tr:nth-child(even) td {
+    background: #fbfdfd;
+}
+
+@media (max-width: 991px) {
+    .tabla-informativa-figure {
+        margin: 2.25rem 0;
+    }
+
+    .tabla-informativa {
+        min-width: 900px;
+        font-size: 0.9rem;
+    }
+
+    .tabla-informativa th,
+    .tabla-informativa td {
+        padding: 0.75rem 0.7rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .tabla-informativa-scroll {
+        border-radius: 6px;
+    }
+
+    .tabla-informativa {
+        min-width: 820px;
+        font-size: 0.86rem;
+    }
+
+    .tabla-informativa thead th:first-child,
+    .tabla-informativa tbody th {
+        position: sticky;
+        left: 0;
+        z-index: 2;
+        box-shadow: 1px 0 0 #c8d7d9;
+    }
+
+    .tabla-informativa thead th:first-child {
+        z-index: 3;
+    }
+}
+
+/* Listas de contenido con marcador refinado */
+.lista-ol,
+.lista-ul {
+    max-width: 980px;
+    margin: 1.2rem auto 1.6rem;
+    padding-left: 1.35rem;
+}
+
+.lista-ol li,
+.lista-ul li {
+    margin-bottom: 0.7rem;
+    padding-left: 0.35rem;
+    color: #263234;
+}
+
+.lista-ol li::marker,
+.lista-ul li::marker {
+    color: #47777f;
+    font-family: 'Raleway', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 1.28em;
+}
+
+.lista-ul li::marker {
+    content: "•  ";
+}
+
+@media (max-width: 767px) {
+    .lista-ol,
+    .lista-ul {
+        margin: 1rem 0 1.4rem;
+        padding-left: 1.25rem;
+    }
+
+    .lista-ol li,
+    .lista-ul li {
+        padding-left: 0.25rem;
     }
 }
 
@@ -230,6 +381,177 @@
         height: 28px;
         left: 12px;
         font-size: 0.9rem;
+    }
+}
+
+/* Tríptico de enzimas pancreáticas */
+section.contenedor-triptico.triptico-pancreatico {
+    --color-recurso: #47777f;
+    --triptico-acento: #9bc7cd;
+    margin: 2.4rem auto 3rem;
+    width: min(94%, 1080px);
+}
+
+section.contenedor-triptico.triptico-pancreatico .triptico {
+    position: relative;
+    min-height: 520px;
+}
+
+section.contenedor-triptico.triptico-pancreatico .triptico .izquierda,
+section.contenedor-triptico.triptico-pancreatico .triptico .centro,
+section.contenedor-triptico.triptico-pancreatico .triptico .derecha {
+    min-height: 520px;
+    border: 1px solid #7aa5ad;
+}
+
+section.contenedor-triptico.triptico-pancreatico .triptico .contenido {
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.45rem;
+    padding: clamp(1rem, 2.1vw, 1.45rem);
+    background:
+        linear-gradient(145deg, rgba(216, 232, 234, 0.82), rgba(255, 255, 255, 0.96) 42%),
+        radial-gradient(circle at top right, rgba(155, 199, 205, 0.32), transparent 42%);
+}
+
+section.contenedor-triptico.triptico-pancreatico .triptico .contenido h1 {
+    margin: 0;
+    padding-top: 0;
+    color: #1c3540;
+    font-family: 'Raleway', Helvetica, Arial, sans-serif;
+    font-size: clamp(1.2rem, 2.2vw, 1.65rem);
+    font-weight: 700;
+    line-height: 1.16;
+    overflow-wrap: anywhere;
+}
+
+section.contenedor-triptico.triptico-pancreatico .triptico .contenido hr {
+    margin: 0.15rem 0 0.35rem;
+    width: 100%;
+    height: 4px;
+    border: 0;
+    background: linear-gradient(90deg, #47777f 0%, #9bc7cd 62%, transparent 100%);
+}
+
+section.contenedor-triptico.triptico-pancreatico .triptico .contenido p {
+    margin: 0;
+    max-height: none;
+    color: #263234;
+    font-size: clamp(0.9rem, 1.35vw, 1rem);
+    line-height: 1.55;
+}
+
+section.contenedor-triptico.triptico-pancreatico .triptico .contenido strong {
+    color: #1c3540;
+    font-weight: 700;
+}
+
+.triptico-pancreatico__etiqueta {
+    display: inline-flex;
+    width: fit-content;
+    padding: 0.24rem 0.55rem;
+    border-radius: 999px;
+    background: #1c3540;
+    color: #f3f7f8;
+    font-family: 'Raleway', Helvetica, Arial, sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+section.contenedor-triptico.triptico-pancreatico .triptico .contenido .mostrar {
+    right: 1.15rem;
+    bottom: 1.15rem;
+    border: 0;
+    border-radius: 999px;
+    background: #1c3540;
+    color: #fff;
+    font-family: 'Raleway', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+}
+
+section.contenedor-triptico.triptico-pancreatico .triptico .contenido .mostrar:hover,
+section.contenedor-triptico.triptico-pancreatico .triptico .cerrar#vert:hover {
+    background: #47777f;
+}
+
+section.contenedor-triptico.triptico-pancreatico .triptico .cerrar#vert,
+section.contenedor-triptico.triptico-pancreatico .triptico .cerrar#horiz {
+    border-color: #47777f;
+    color: #1c3540;
+}
+
+@media (max-width: 767px) {
+    section.contenedor-triptico.triptico-pancreatico[id^='triptico'] {
+        width: 100%;
+        overflow: visible;
+        transform: none;
+    }
+
+    section.contenedor-triptico.triptico-pancreatico[id^='triptico'] .triptico {
+        display: grid;
+        gap: 0.85rem;
+        width: min(100%, 360px);
+        min-height: 0;
+        perspective: none;
+    }
+
+    section.contenedor-triptico.triptico-pancreatico[id^='triptico'] .triptico .izquierda,
+    section.contenedor-triptico.triptico-pancreatico[id^='triptico'] .triptico .centro,
+    section.contenedor-triptico.triptico-pancreatico[id^='triptico'] .triptico .derecha {
+        position: relative;
+        inset: auto;
+        width: 100%;
+        min-height: 0;
+        height: auto;
+        transform: none;
+        box-shadow: 0 8px 18px rgba(25, 55, 62, 0.12);
+    }
+
+    section.contenedor-triptico.triptico-pancreatico[id^='triptico'].abierto {
+        margin-bottom: 3rem;
+        transform: none;
+    }
+
+    section.contenedor-triptico.triptico-pancreatico[id^='triptico'] .triptico .contenido {
+        min-height: 14rem;
+        padding: 1rem;
+        overflow: visible;
+    }
+
+    section.contenedor-triptico.triptico-pancreatico[id^='triptico'] .triptico .adelante,
+    section.contenedor-triptico.triptico-pancreatico[id^='triptico'] .triptico .atras {
+        position: relative;
+        transform: none;
+    }
+
+    section.contenedor-triptico.triptico-pancreatico[id^='triptico'] .triptico .atras,
+    section.contenedor-triptico.triptico-pancreatico[id^='triptico'] .triptico .derecha {
+        display: block;
+        visibility: visible;
+    }
+
+    section.contenedor-triptico.triptico-pancreatico[id^='triptico'] .triptico .adelante {
+        display: none;
+    }
+
+    section.contenedor-triptico.triptico-pancreatico[id^='triptico'] .triptico .atras.ver {
+        transform: none;
+    }
+
+    section.contenedor-triptico.triptico-pancreatico[id^='triptico'] .triptico .derecha .contenido {
+        transform: none;
+    }
+
+    section.contenedor-triptico.triptico-pancreatico[id^='triptico'] .triptico .contenido p {
+        max-height: none;
+        overflow-y: visible;
+    }
+
+    section.contenedor-triptico.triptico-pancreatico[id^='triptico'] .triptico .mostrar,
+    section.contenedor-triptico.triptico-pancreatico[id^='triptico'] .triptico .cerrar {
+        display: none;
     }
 }
 

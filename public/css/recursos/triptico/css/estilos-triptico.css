@@ -259,3 +259,104 @@ section.contenedor-triptico[id^='triptico'] .triptico .cerrar#vert:hover {
 		font-size: 1em;
 	}
 }
+
+section.contenedor-triptico.triptico-pancreatico .triptico .contenido .mostrar {
+	border: 0;
+	border-radius: 999px;
+	background-color: #1c3540;
+	color: #fff;
+	box-shadow: 0 8px 18px rgba(28, 53, 64, 0.2);
+	font-weight: 700;
+}
+
+section.contenedor-triptico.triptico-pancreatico .triptico .contenido .mostrar:hover,
+section.contenedor-triptico.triptico-pancreatico .triptico .contenido .mostrar:focus-visible {
+	background-color: #47777f;
+	color: #fff;
+	outline: 3px solid rgba(71, 119, 127, 0.25);
+	outline-offset: 3px;
+}
+
+@media (max-width: 767px) {
+	section.contenedor-triptico.triptico-pancreatico[id^='triptico'] {
+		display: block;
+		width: 100%;
+		margin: 2rem auto;
+		font-size: 1rem;
+		overflow: visible;
+		transform: none;
+	}
+
+	section.contenedor-triptico.triptico-pancreatico[id^='triptico'].abierto {
+		margin-bottom: 2rem;
+		transform: none;
+	}
+
+	section.contenedor-triptico.triptico-pancreatico[id^='triptico'] .triptico {
+		display: grid;
+		gap: 0.85rem;
+		width: min(100%, 360px);
+		margin: 0 auto;
+		perspective: none;
+	}
+
+	section.contenedor-triptico.triptico-pancreatico[id^='triptico'] .triptico .izquierda,
+	section.contenedor-triptico.triptico-pancreatico[id^='triptico'] .triptico .centro,
+	section.contenedor-triptico.triptico-pancreatico[id^='triptico'] .triptico .derecha {
+		position: relative;
+		inset: auto;
+		width: 100%;
+		min-height: 0;
+		height: auto;
+		visibility: visible;
+		transform: none;
+		transition: none;
+		box-shadow: 0 8px 18px rgba(25, 55, 62, 0.12);
+	}
+
+	section.contenedor-triptico.triptico-pancreatico[id^='triptico'] .triptico .centro {
+		order: 1;
+	}
+
+	section.contenedor-triptico.triptico-pancreatico[id^='triptico'] .triptico .izquierda {
+		order: 2;
+	}
+
+	section.contenedor-triptico.triptico-pancreatico[id^='triptico'] .triptico .derecha {
+		order: 3;
+	}
+
+	section.contenedor-triptico.triptico-pancreatico[id^='triptico'] .triptico .adelante {
+		display: none;
+	}
+
+	section.contenedor-triptico.triptico-pancreatico[id^='triptico'] .triptico .atras {
+		display: block;
+		position: relative;
+		height: auto;
+		visibility: visible;
+		transform: none;
+	}
+
+	section.contenedor-triptico.triptico-pancreatico[id^='triptico'] .triptico .atras.ver {
+		transform: none;
+	}
+
+	section.contenedor-triptico.triptico-pancreatico[id^='triptico'] .triptico .contenido,
+	section.contenedor-triptico.triptico-pancreatico[id^='triptico'] .triptico .derecha .contenido {
+		min-height: 0;
+		padding: 1rem;
+		overflow: visible;
+		transform: none;
+	}
+
+	section.contenedor-triptico.triptico-pancreatico[id^='triptico'] .triptico .contenido p {
+		max-height: none;
+		overflow-y: visible;
+	}
+
+	section.contenedor-triptico.triptico-pancreatico[id^='triptico'] .triptico .mostrar,
+	section.contenedor-triptico.triptico-pancreatico[id^='triptico'] .triptico .cerrar {
+		display: none;
+	}
+}
